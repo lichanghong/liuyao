@@ -39,7 +39,9 @@
                         </subviews>
                         <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4xn-ay-IFu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dfr-E7-hRP"/>
+                            <constraint firstItem="4xn-ay-IFu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dfr-E7-hRP">
+                                <variation key="heightClass=regular-widthClass=compact" constant="-276"/>
+                            </constraint>
                             <constraint firstItem="4xn-ay-IFu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vXZ-cX-qXn"/>
                         </constraints>
                         <variation key="default">
