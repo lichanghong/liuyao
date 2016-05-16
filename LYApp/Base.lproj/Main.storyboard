@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
+                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="TQg-vy-Wyk">
+                                <rect key="frame" x="-60" y="-14" width="121" height="29"/>
+                                <segments>
+                                    <segment title="甲子"/>
+                                    <segment title="乙丑"/>
+                                    <segment title="丙寅"/>
+                                    <segment title="丁卯"/>
+                                </segments>
+                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="乾金  》天风姤" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gjb-QC-l4W">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="140" id="jEE-ym-YnU">
+                                        <variation key="widthClass=compact" constant="131"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="jEE-ym-YnU"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="jEE-ym-YnU"/>
+                                    </mask>
+                                </variation>
+                            </label>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MeJ-Qt-KML" customClass="BaGuaView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="93" y="103" width="51" height="267"/>
+                                </variation>
+                            </view>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qKj-zo-qkc" customClass="BaGuaView">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="246" y="103" width="51" height="267"/>
+                                </variation>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="龙" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S8n-1a-kjI">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="351" width="34" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="雀" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yEC-mk-FVG">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="302" width="34" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="勾" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C6v-ie-5KT">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="251" width="34" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="蛇" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VPn-Vd-48F">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="199" width="29" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="虎" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lkj-Mv-QF8">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="145" width="34" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="武" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SXn-dl-oi9">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="10" y="99" width="29" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FoN-AV-i99">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="351" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4iP-fk-Qeq">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="302" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="TRV-Xo-1UJ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="251" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iSc-YM-8Ye">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="199" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hd6-Iw-YEf">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="145" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="38C-pL-3pn">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="38" y="99" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l6m-7z-KFs">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="101" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xiY-vw-nq0">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="147" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LER-4u-eKJ">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="201" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JZ7-0i-YVG">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="252" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jyw-PK-Q1O">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="303" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="世" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eRN-u8-Ysj">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="152" y="351" width="24" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="空" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="duh-Iw-CJn">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="6" y="61" width="119" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="I7m-iu-yHb">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="350" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GKJ-Ca-ysH">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="301" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5QG-Iz-RHP">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="250" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DAl-GP-eKX">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="198" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SvO-I1-7Uh">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="144" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="官午火" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQp-fW-Kko">
+                                <rect key="frame" x="-42" y="-21" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                                <variation key="widthClass=compact" fixedFrame="YES">
+                                    <rect key="frame" x="197" y="98" width="49" height="21"/>
+                                </variation>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OaE-ny-XSZ" userLabel="pickerViewContent">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <subviews>
+                                    <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7aR-FG-m0X">
+                                        <rect key="frame" x="0.0" y="-216" width="320" height="216"/>
+                                        <connections>
+                                            <outlet property="dataSource" destination="BYZ-38-t0r" id="6nB-dp-rAf"/>
+                                            <outlet property="delegate" destination="BYZ-38-t0r" id="FBQ-5Z-VQ5"/>
+                                        </connections>
+                                    </pickerView>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yyP-Ti-GtN">
+                                        <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                        <state key="normal" title="确定"/>
+                                        <connections>
+                                            <action selector="handleAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Xgu-NQ-PFW"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="0.97780172413793098" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="yyP-Ti-GtN" secondAttribute="trailing" constant="8" id="Cy8-LL-lXF"/>
+                                    <constraint firstItem="7aR-FG-m0X" firstAttribute="top" secondItem="OaE-ny-XSZ" secondAttribute="top" constant="40" id="FDj-gM-iET">
+                                        <variation key="widthClass=compact" constant="40"/>
+                                    </constraint>
+                                    <constraint firstAttribute="trailing" secondItem="7aR-FG-m0X" secondAttribute="trailing" id="YTy-0D-D4H"/>
+                                    <constraint firstAttribute="height" constant="200" id="aJn-Qw-dxm"/>
+                                    <constraint firstItem="7aR-FG-m0X" firstAttribute="leading" secondItem="OaE-ny-XSZ" secondAttribute="leading" id="jFs-2h-Afb"/>
+                                    <constraint firstAttribute="bottom" secondItem="7aR-FG-m0X" secondAttribute="bottom" id="tdV-KH-TO2"/>
+                                    <constraint firstItem="yyP-Ti-GtN" firstAttribute="top" secondItem="OaE-ny-XSZ" secondAttribute="top" id="v1h-RZ-jIm"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="subviews">
+                                        <exclude reference="7aR-FG-m0X"/>
+                                        <exclude reference="yyP-Ti-GtN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <exclude reference="aJn-Qw-dxm"/>
+                                        <exclude reference="FDj-gM-iET"/>
+                                        <exclude reference="YTy-0D-D4H"/>
+                                        <exclude reference="jFs-2h-Afb"/>
+                                        <exclude reference="tdV-KH-TO2"/>
+                                        <exclude reference="Cy8-LL-lXF"/>
+                                        <exclude reference="v1h-RZ-jIm"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="subviews">
+                                        <include reference="7aR-FG-m0X"/>
+                                        <include reference="yyP-Ti-GtN"/>
+                                    </mask>
+                                    <mask key="constraints">
+                                        <include reference="aJn-Qw-dxm"/>
+                                        <include reference="FDj-gM-iET"/>
+                                        <include reference="YTy-0D-D4H"/>
+                                        <include reference="jFs-2h-Afb"/>
+                                        <include reference="tdV-KH-TO2"/>
+                                        <include reference="Cy8-LL-lXF"/>
+                                        <include reference="v1h-RZ-jIm"/>
+                                    </mask>
+                                </variation>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="Gjb-QC-l4W" secondAttribute="trailing" constant="5" id="BH3-GP-gwv">
+                                <variation key="widthClass=compact" constant="14"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="OaE-ny-XSZ" secondAttribute="trailing" id="EPn-3W-Ith"/>
+                            <constraint firstItem="TQg-vy-Wyk" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="5" id="MrY-7w-wh6">
+                                <variation key="widthClass=compact" constant="25"/>
+                            </constraint>
+                            <constraint firstItem="Gjb-QC-l4W" firstAttribute="leading" secondItem="TQg-vy-Wyk" secondAttribute="trailing" constant="10" id="QQz-g7-ZvH"/>
+                            <constraint firstItem="Gjb-QC-l4W" firstAttribute="centerY" secondItem="TQg-vy-Wyk" secondAttribute="centerY" id="USj-ks-hYl"/>
+                            <constraint firstItem="OaE-ny-XSZ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="Wid-9p-uh5"/>
+                            <constraint firstItem="OaE-ny-XSZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Wv1-AO-vZ1"/>
+                            <constraint firstItem="TQg-vy-Wyk" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="5" id="c93-zk-5al"/>
+                            <constraint firstItem="OaE-ny-XSZ" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="glr-02-EL2"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="TQg-vy-Wyk"/>
+                                <exclude reference="Gjb-QC-l4W"/>
+                                <exclude reference="MeJ-Qt-KML"/>
+                                <exclude reference="qKj-zo-qkc"/>
+                                <exclude reference="S8n-1a-kjI"/>
+                                <exclude reference="yEC-mk-FVG"/>
+                                <exclude reference="C6v-ie-5KT"/>
+                                <exclude reference="VPn-Vd-48F"/>
+                                <exclude reference="Lkj-Mv-QF8"/>
+                                <exclude reference="SXn-dl-oi9"/>
+                                <exclude reference="FoN-AV-i99"/>
+                                <exclude reference="4iP-fk-Qeq"/>
+                                <exclude reference="TRV-Xo-1UJ"/>
+                                <exclude reference="iSc-YM-8Ye"/>
+                                <exclude reference="hd6-Iw-YEf"/>
+                                <exclude reference="38C-pL-3pn"/>
+                                <exclude reference="l6m-7z-KFs"/>
+                                <exclude reference="xiY-vw-nq0"/>
+                                <exclude reference="LER-4u-eKJ"/>
+                                <exclude reference="JZ7-0i-YVG"/>
+                                <exclude reference="jyw-PK-Q1O"/>
+                                <exclude reference="eRN-u8-Ysj"/>
+                                <exclude reference="duh-Iw-CJn"/>
+                                <exclude reference="I7m-iu-yHb"/>
+                                <exclude reference="GKJ-Ca-ysH"/>
+                                <exclude reference="5QG-Iz-RHP"/>
+                                <exclude reference="DAl-GP-eKX"/>
+                                <exclude reference="SvO-I1-7Uh"/>
+                                <exclude reference="yQp-fW-Kko"/>
+                                <exclude reference="OaE-ny-XSZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="MrY-7w-wh6"/>
+                                <exclude reference="c93-zk-5al"/>
+                                <exclude reference="EPn-3W-Ith"/>
+                                <exclude reference="Wid-9p-uh5"/>
+                                <exclude reference="Wv1-AO-vZ1"/>
+                                <exclude reference="glr-02-EL2"/>
+                                <exclude reference="BH3-GP-gwv"/>
+                                <exclude reference="QQz-g7-ZvH"/>
+                                <exclude reference="USj-ks-hYl"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="TQg-vy-Wyk"/>
+                                <include reference="Gjb-QC-l4W"/>
+                                <include reference="MeJ-Qt-KML"/>
+                                <include reference="qKj-zo-qkc"/>
+                                <include reference="S8n-1a-kjI"/>
+                                <include reference="yEC-mk-FVG"/>
+                                <include reference="C6v-ie-5KT"/>
+                                <include reference="VPn-Vd-48F"/>
+                                <include reference="Lkj-Mv-QF8"/>
+                                <include reference="SXn-dl-oi9"/>
+                                <include reference="FoN-AV-i99"/>
+                                <include reference="4iP-fk-Qeq"/>
+                                <include reference="TRV-Xo-1UJ"/>
+                                <include reference="iSc-YM-8Ye"/>
+                                <include reference="hd6-Iw-YEf"/>
+                                <include reference="38C-pL-3pn"/>
+                                <include reference="l6m-7z-KFs"/>
+                                <include reference="xiY-vw-nq0"/>
+                                <include reference="LER-4u-eKJ"/>
+                                <include reference="JZ7-0i-YVG"/>
+                                <include reference="jyw-PK-Q1O"/>
+                                <include reference="eRN-u8-Ysj"/>
+                                <include reference="duh-Iw-CJn"/>
+                                <include reference="I7m-iu-yHb"/>
+                                <include reference="GKJ-Ca-ysH"/>
+                                <include reference="5QG-Iz-RHP"/>
+                                <include reference="DAl-GP-eKX"/>
+                                <include reference="SvO-I1-7Uh"/>
+                                <include reference="yQp-fW-Kko"/>
+                                <include reference="OaE-ny-XSZ"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="MrY-7w-wh6"/>
+                                <include reference="c93-zk-5al"/>
+                                <include reference="EPn-3W-Ith"/>
+                                <include reference="Wid-9p-uh5"/>
+                                <include reference="Wv1-AO-vZ1"/>
+                                <include reference="glr-02-EL2"/>
+                                <include reference="BH3-GP-gwv"/>
+                                <include reference="QQz-g7-ZvH"/>
+                                <include reference="USj-ks-hYl"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="bianWuxing" destination="yQp-fW-Kko" id="P8j-vn-4AA"/>
+                        <outlet property="bianWuxing1" destination="SvO-I1-7Uh" id="Ebh-E7-QxA"/>
+                        <outlet property="bianWuxing2" destination="DAl-GP-eKX" id="5Yd-sE-kcH"/>
+                        <outlet property="bianWuxing3" destination="5QG-Iz-RHP" id="1rZ-PZ-lDk"/>
+                        <outlet property="bianWuxing4" destination="GKJ-Ca-ysH" id="TFj-DT-RKl"/>
+                        <outlet property="bianWuxing5" destination="I7m-iu-yHb" id="ki0-Of-OOf"/>
+                        <outlet property="firseBaGuaView" destination="MeJ-Qt-KML" id="eji-MG-aPG"/>
+                        <outlet property="guaTitle" destination="Gjb-QC-l4W" id="Clo-aM-cQZ"/>
+                        <outlet property="kongwu" destination="duh-Iw-CJn" id="pfF-XX-syg"/>
+                        <outlet property="liushou1" destination="S8n-1a-kjI" id="77T-tX-b0n"/>
+                        <outlet property="liushou2" destination="yEC-mk-FVG" id="okG-EW-SyL"/>
+                        <outlet property="liushou3" destination="C6v-ie-5KT" id="dkt-kT-yQ0"/>
+                        <outlet property="liushou4" destination="VPn-Vd-48F" id="Hqi-ik-vor"/>
+                        <outlet property="liushou5" destination="Lkj-Mv-QF8" id="kCd-n0-9mX"/>
+                        <outlet property="liushou6" destination="SXn-dl-oi9" id="8um-6V-sww"/>
+                        <outlet property="okButton" destination="yyP-Ti-GtN" id="nIL-Lp-hZu"/>
+                        <outlet property="pickerViewContent" destination="OaE-ny-XSZ" id="2IT-Ko-dXr"/>
+                        <outlet property="secondBaGuaView" destination="qKj-zo-qkc" id="3WA-zg-FSP"/>
+                        <outlet property="selectPickerView" destination="7aR-FG-m0X" id="mwk-2Y-bx8"/>
+                        <outlet property="shiying1" destination="l6m-7z-KFs" id="nW9-Bn-omM"/>
+                        <outlet property="shiying2" destination="xiY-vw-nq0" id="cnG-ic-uI5"/>
+                        <outlet property="shiying3" destination="LER-4u-eKJ" id="wBo-fh-H1d"/>
+                        <outlet property="shiying4" destination="JZ7-0i-YVG" id="x1z-D5-q8I"/>
+                        <outlet property="shiying5" destination="jyw-PK-Q1O" id="bsF-LN-Ll0"/>
+                        <outlet property="shiying6" destination="eRN-u8-Ysj" id="vfG-V3-1py"/>
+                        <outlet property="timeSegment" destination="TQg-vy-Wyk" id="iN3-Dj-JcY"/>
+                        <outlet property="wuxing1" destination="38C-pL-3pn" id="Ahv-fU-0iw"/>
+                        <outlet property="wuxing2" destination="hd6-Iw-YEf" id="618-my-sZR"/>
+                        <outlet property="wuxing3" destination="iSc-YM-8Ye" id="Ejs-ea-7S9"/>
+                        <outlet property="wuxing4" destination="TRV-Xo-1UJ" id="mA1-JD-qbG"/>
+                        <outlet property="wuxing5" destination="4iP-fk-Qeq" id="zdy-aK-eQg"/>
+                        <outlet property="wuxing6" destination="FoN-AV-i99" id="cJk-8e-iOg"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="232.5" y="365"/>
+        </scene>
+    </scenes>
+</document>
