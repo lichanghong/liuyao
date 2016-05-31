@@ -20,6 +20,7 @@
 		95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3951CE5E90200062FCA /* GuaManager.m */; };
 		95ACB39A1CE967ED00062FCA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3991CE967ED00062FCA /* Icon.png */; };
 		95ACB39C1CE973CC00062FCA /* bagua.gif in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB39B1CE973CC00062FCA /* bagua.gif */; };
+		95C6CFFA1CFDC63900CA83BB /* test.m in Sources */ = {isa = PBXBuildFile; fileRef = 95C6CFF91CFDC63900CA83BB /* test.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,8 @@
 		95ACB3951CE5E90200062FCA /* GuaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuaManager.m; sourceTree = "<group>"; };
 		95ACB3991CE967ED00062FCA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
 		95ACB39B1CE973CC00062FCA /* bagua.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bagua.gif; sourceTree = "<group>"; };
+		95C6CFF81CFDC63900CA83BB /* test.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = test.h; sourceTree = "<group>"; };
+		95C6CFF91CFDC63900CA83BB /* test.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = test.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +119,8 @@
 			children = (
 				95ACB35B1CE5D05100062FCA /* AppDelegate.h */,
 				95ACB35C1CE5D05100062FCA /* AppDelegate.m */,
+				95C6CFF81CFDC63900CA83BB /* test.h */,
+				95C6CFF91CFDC63900CA83BB /* test.m */,
 				95ACB39B1CE973CC00062FCA /* bagua.gif */,
 				95ACB35E1CE5D05100062FCA /* ViewController.h */,
 				95ACB35F1CE5D05100062FCA /* ViewController.m */,
@@ -293,6 +298,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				95C6CFFA1CFDC63900CA83BB /* test.m in Sources */,
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
