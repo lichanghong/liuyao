@@ -77,9 +77,24 @@
     [_timeSegment addTarget:self action:@selector(changeTime:) forControlEvents:UIControlEventValueChanged];
     shiyingArr = [NSArray arrayWithObjects:_shiying6,_shiying5, _shiying4,_shiying3,_shiying2, _shiying1,nil];
     [self createData];
-    
-    [[GuaManager shareManager]loadGanZhi:^(NSArray *nian) {
-        if (nian.count>=3) {
+  
+    NSDate *date = [NSDate date];
+    NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *comps = [[NSDateComponents alloc] init];
+    NSInteger unitFlags = NSYearCalendarUnit |
+    NSMonthCalendarUnit |
+    NSDayCalendarUnit |
+    NSWeekdayCalendarUnit |
+    NSHourCalendarUnit |
+    NSMinuteCalendarUnit |
+    NSSecondCalendarUnit;
+    comps = [calendar components:unitFlags fromDate:date];
+    int year = [comps year];
+    int mouth = [comps month];
+    int day = [comps day];
+    int hour = [comps hour];
+    [[GuaManager shareManager]loadGanZhWith:@[@(year),@(mouth),@(day),@(hour)] ganzhis:^(NSArray *nian) {
+        if (nian.count>=4) {
             [_timeSegment setTitle:nian[0] forSegmentAtIndex:0];
             [_timeSegment setTitle:nian[1] forSegmentAtIndex:1];
             [_timeSegment setTitle:nian[2] forSegmentAtIndex:2];
@@ -98,7 +113,9 @@
         {
             NSLog(@"时间错误");
         }
+        
     }];
+  
     [self refreshData];
     [self refreshBianData];
 

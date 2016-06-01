@@ -21,7 +21,7 @@
                     Yao5:(BOOL)isyang4
                     Yao6:(BOOL)isyang5;
 
-- (void)loadGanZhi:(void(^)(NSArray *nian))nianyueri;
+- (void)loadGanZhWith:(NSArray *)nianyueri ganzhis:(void(^)(NSArray *nian))ganzhis;
 
 - (NSArray *)liushenArrWithDay:(NSString *)day; //六神
 - (NSArray *)wuxingAtIndex:(int)index; //装卦五行

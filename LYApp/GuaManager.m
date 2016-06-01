@@ -362,87 +362,78 @@
    
     return result;
 }
-- (void)loadGanZhi:(void(^)(NSArray *nian))nianyueri
+- (void)loadGanZhWith:(NSArray *)nianyueri ganzhis:(void(^)(NSArray *nian))ganzhis
 {
-    NSString *hostname = @"http://www.laohuangli.net/wannianli/";
+    int hour =nianyueri[3];
+    NSString *shiStr = @"";
+
+    if (hour>=23 || hour<=1) {
+        shiStr = @"子时";
+    }
+    else if(hour>1 && hour<3) {
+        shiStr = @"丑时";
+    }
+    else if(hour>=3 && hour<5) {
+        shiStr = @"寅时";
+    }
+    else if(hour>=5 && hour<7) {
+        shiStr = @"卯时";
+    }
+    else if(hour>=7 && hour<9) {
+        shiStr = @"辰时";
+    }
+    else if(hour>=9 && hour<11) {
+        shiStr = @"巳时";
+    }
+    else if(hour>=11 && hour<13) {
+        shiStr = @"午时";
+    }
+    else if(hour>=13 && hour<15) {
+        shiStr = @"未时";
+    }
+    else if(hour>=15 && hour<17) {
+        shiStr = @"申时";
+    }
+    else if(hour>=17 && hour<19) {
+        shiStr = @"酉时";
+    }
+    else if(hour>=19 && hour<21) {
+        shiStr = @"戌时";
+    }
+    else if(hour>=21 && hour<23) {
+        shiStr = @"亥时";
+    }
+    
+     NSString *hostname =[NSString stringWithFormat:@"http://api.tuijs.com/solarToLunar?year=%@&month=%@&day=%@",nianyueri[0],nianyueri[1],nianyueri[2]];
     
     NSURLRequest *request = [NSURLRequest requestWithURL:[NSURL URLWithString:hostname]];
     [NSURLConnection sendAsynchronousRequest:request queue:[NSOperationQueue mainQueue] completionHandler:^(NSURLResponse * _Nullable response, NSData * _Nullable data, NSError * _Nullable connectionError) {
         if (data) {
-            NSStringEncoding enc = CFStringConvertEncodingToNSStringEncoding(kCFStringEncodingGB_18030_2000);
-            NSString *utf8str = [[NSString alloc] initWithData:data encoding:enc];
-            utf8str = [utf8str stringByReplacingOccurrencesOfString:@"\"GB2312\"" withString:@"\"utf-8\"" options:NSCaseInsensitiveSearch range:NSMakeRange(0,40)];
-            NSArray *firstarr =  [utf8str componentsSeparatedByString:@"target=\"_blank\"><span class=\"rl_txt_1\">"];
-            utf8str = [[[firstarr objectAtIndex:2] componentsSeparatedByString:@"</span></a>"]firstObject];
-            utf8str = [[utf8str componentsSeparatedByString:@"<br>"] lastObject];
-            NSArray *resultArr = [utf8str componentsSeparatedByString:@" "];
-            NSArray *nian = [NSArray arrayWithObjects:resultArr[0],resultArr[2],resultArr[4], nil];
-            
-            NSMutableString *nianstr =  [NSMutableString stringWithString: nian[0]];
-            nianstr = [nianstr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"年"]];
-            NSMutableString *yuestr =  [NSMutableString stringWithString: nian[1]];
-            yuestr = [yuestr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"月"]];
-            NSMutableString *ristr =  [NSMutableString stringWithString: nian[2]];
-            ristr = [ristr stringByTrimmingCharactersInSet:[NSCharacterSet characterSetWithCharactersInString:@"日"]];
-            NSDate *date = [NSDate date];
-            NSCalendar *calendar = [[NSCalendar alloc] initWithCalendarIdentifier:NSGregorianCalendar];
-            NSDateComponents *comps = [[NSDateComponents alloc] init];
-            NSInteger unitFlags = NSYearCalendarUnit |
-            NSMonthCalendarUnit |
-            NSDayCalendarUnit |
-            NSWeekdayCalendarUnit |
-            NSHourCalendarUnit |
-            NSMinuteCalendarUnit |
-            NSSecondCalendarUnit;
-            comps = [calendar components:unitFlags fromDate:date];
-           NSString *shiStr = @"";
-            int hour = [comps hour];
-            if (hour>=23 || hour<=1) {
-                shiStr = @"子时";
+            NSError *error;
+            NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableLeaves error:&error];
+            if (!error && json) {
+                NSString *ganzhiy =  json[@"GanZhiYear"];
+                NSString *ganzhim = json[@"GanZhiMonth"];
+                NSString *ganzhid = json[@"GanZhiDay"];
+               
+                NSArray *results = [NSArray arrayWithObjects:ganzhiy,ganzhim,ganzhid,shiStr, nil];
+                [[NSUserDefaults standardUserDefaults]setObject:results forKey:@"timeresult"];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                ganzhis( results);
+
             }
-            else if(hour>1 && hour<3) {
-                shiStr = @"丑时";
+            else
+            {
+                NSArray *results = [[NSUserDefaults standardUserDefaults]objectForKey: @"timeresult"];
+                ganzhis( results);
+                NSLog(@"data = nil");
+                NSLog(@"load ganzhi error");
             }
-            else if(hour>=3 && hour<5) {
-                shiStr = @"寅时";
-            }
-            else if(hour>=5 && hour<7) {
-                shiStr = @"卯时";
-            }
-            else if(hour>=7 && hour<9) {
-                shiStr = @"辰时";
-            }
-            else if(hour>=9 && hour<11) {
-                shiStr = @"巳时";
-            }
-            else if(hour>=11 && hour<13) {
-                shiStr = @"午时";
-            }
-            else if(hour>=13 && hour<15) {
-                shiStr = @"未时";
-            }
-            else if(hour>=15 && hour<17) {
-                shiStr = @"申时";
-            }
-            else if(hour>=17 && hour<19) {
-                shiStr = @"酉时";
-            }
-            else if(hour>=19 && hour<21) {
-                shiStr = @"戌时";
-            }
-            else if(hour>=21 && hour<23) {
-                shiStr = @"亥时";
-            }
-            NSArray *results = [NSArray arrayWithObjects:nianstr,yuestr,ristr,shiStr, nil];
-            [[NSUserDefaults standardUserDefaults]setObject:results forKey:@"timeresult"];
-            [[NSUserDefaults standardUserDefaults]synchronize];
-            nianyueri( results);
-            
         }
         else
         {
             NSArray *results = [[NSUserDefaults standardUserDefaults]objectForKey: @"timeresult"];
-            nianyueri( results);
+            ganzhis( results);
             NSLog(@"data = nil");
         }
     }];
