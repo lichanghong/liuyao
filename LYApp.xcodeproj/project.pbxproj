@@ -19,7 +19,8 @@
 		95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3921CE5DCD500062FCA /* BaGuaView.m */; };
 		95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3951CE5E90200062FCA /* GuaManager.m */; };
 		95ACB39A1CE967ED00062FCA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3991CE967ED00062FCA /* Icon.png */; };
-		95ACB39C1CE973CC00062FCA /* bagua.gif in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB39B1CE973CC00062FCA /* bagua.gif */; };
+		95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49C81D17FA8500C39546 /* LYMainViewController.m */; };
+		95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49CC1D17FB9400C39546 /* LYClientViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,7 +64,10 @@
 		95ACB3941CE5E90200062FCA /* GuaManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GuaManager.h; sourceTree = "<group>"; };
 		95ACB3951CE5E90200062FCA /* GuaManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GuaManager.m; sourceTree = "<group>"; };
 		95ACB3991CE967ED00062FCA /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon.png; sourceTree = "<group>"; };
-		95ACB39B1CE973CC00062FCA /* bagua.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = bagua.gif; sourceTree = "<group>"; };
+		95EC49C71D17FA8500C39546 /* LYMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMainViewController.h; sourceTree = "<group>"; };
+		95EC49C81D17FA8500C39546 /* LYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMainViewController.m; sourceTree = "<group>"; };
+		95EC49CB1D17FB9400C39546 /* LYClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYClientViewController.h; sourceTree = "<group>"; };
+		95EC49CC1D17FB9400C39546 /* LYClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYClientViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,18 +118,13 @@
 		95ACB3571CE5D05100062FCA /* LYApp */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49CA1D17FB5D00C39546 /* 求 */,
+				95EC49C61D17E8EF00C39546 /* Gua */,
 				95ACB35B1CE5D05100062FCA /* AppDelegate.h */,
 				95ACB35C1CE5D05100062FCA /* AppDelegate.m */,
-				95ACB39B1CE973CC00062FCA /* bagua.gif */,
 				95ACB35E1CE5D05100062FCA /* ViewController.h */,
 				95ACB35F1CE5D05100062FCA /* ViewController.m */,
 				95ACB3991CE967ED00062FCA /* Icon.png */,
-				95ACB38B1CE5D65D00062FCA /* YYView.h */,
-				95ACB38C1CE5D65D00062FCA /* YYView.m */,
-				95ACB3911CE5DCD500062FCA /* BaGuaView.h */,
-				95ACB3921CE5DCD500062FCA /* BaGuaView.m */,
-				95ACB3941CE5E90200062FCA /* GuaManager.h */,
-				95ACB3951CE5E90200062FCA /* GuaManager.m */,
 				95ACB3611CE5D05100062FCA /* Main.storyboard */,
 				95ACB3641CE5D05100062FCA /* Assets.xcassets */,
 				95ACB3661CE5D05100062FCA /* LaunchScreen.storyboard */,
@@ -159,6 +158,30 @@
 				95ACB37F1CE5D05200062FCA /* Info.plist */,
 			);
 			path = LYAppUITests;
+			sourceTree = "<group>";
+		};
+		95EC49C61D17E8EF00C39546 /* Gua */ = {
+			isa = PBXGroup;
+			children = (
+				95ACB38B1CE5D65D00062FCA /* YYView.h */,
+				95ACB38C1CE5D65D00062FCA /* YYView.m */,
+				95ACB3911CE5DCD500062FCA /* BaGuaView.h */,
+				95ACB3921CE5DCD500062FCA /* BaGuaView.m */,
+				95ACB3941CE5E90200062FCA /* GuaManager.h */,
+				95ACB3951CE5E90200062FCA /* GuaManager.m */,
+			);
+			name = Gua;
+			sourceTree = "<group>";
+		};
+		95EC49CA1D17FB5D00C39546 /* 求 */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
+				95EC49C81D17FA8500C39546 /* LYMainViewController.m */,
+				95EC49CB1D17FB9400C39546 /* LYClientViewController.h */,
+				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
+			);
+			name = "求";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,7 +291,6 @@
 				95ACB3681CE5D05100062FCA /* LaunchScreen.storyboard in Resources */,
 				95ACB3651CE5D05100062FCA /* Assets.xcassets in Resources */,
 				95ACB3631CE5D05100062FCA /* Main.storyboard in Resources */,
-				95ACB39C1CE973CC00062FCA /* bagua.gif in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,8 +318,10 @@
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
+				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
 				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,
 				95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */,
+				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -441,12 +465,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (TZN6JT85D4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
 				INFOPLIST_FILE = LYApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mobisentry.cl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "08d2b760-66c7-4b04-863f-7b34d8cfb2ba";
 			};
 			name = Debug;
 		};
@@ -454,12 +479,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (TZN6JT85D4)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
 				INFOPLIST_FILE = LYApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mobisentry.cl;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "08d2b760-66c7-4b04-863f-7b34d8cfb2ba";
 			};
 			name = Release;
 		};
