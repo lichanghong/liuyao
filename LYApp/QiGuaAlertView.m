@@ -7,6 +7,7 @@
 //
 
 #import "QiGuaAlertView.h"
+#import "GuaManager.h"
 
 @implementation QiGuaAlertView
 {
@@ -17,6 +18,8 @@
     
     NSArray *_titles ;
     UIButton *_confirmButton;
+    
+    NSMutableArray *_gua;
 }
 
 + (QiGuaAlertView *)createView
@@ -62,9 +65,10 @@
     tap.numberOfTouchesRequired =1;
     [self addGestureRecognizer: tap];
     
-    _pickerArray = [NSArray arrayWithObjects:@"两反一正",@"两正一反",@"三个反",@"三个正", nil];
+    _pickerArray = [NSArray arrayWithObjects:@"两反一正",@"两正一反",@"三个正",@"三个反", nil];
     _titles = [NSArray arrayWithObjects:@"第一爻",@"第二爻",@"第三爻",@"第四爻",@"第五爻",@"第六爻", nil];
     _pickerViewArray = [NSMutableArray array];
+    _gua             = [NSMutableArray arrayWithObjects:@"0",@"0",@"0",@"0",@"0",@"0", nil];
     CGFloat w=(ViewW(_contentView)-20*2)/3.0;
 
     for (int i=0; i<6; i++) { //间隔20，左右12
@@ -91,12 +95,48 @@
     [_confirmButton addTarget:self action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
     [_confirmButton setTitle:@"确定" forState:UIControlStateNormal];
     _confirmButton.backgroundColor = [UIColor colorForHex:@"009900"];
+    _confirmButton.layer.cornerRadius = 6;
     [_contentView addSubview:_confirmButton];
 }
 
 - (void)handleAction:(id)sender
 {
+    NSArray *__gua =[[_gua reverseObjectEnumerator]allObjects];
+    GuaManager *manager = [GuaManager shareManager];
     
+    int guaindex = [manager chargeGuaWithYao1:[self isYangWithInt:__gua[0]]
+                                         Yao2:[self isYangWithInt:__gua[1]]
+                                         Yao3:[self isYangWithInt:__gua[2]]
+                                         Yao4:[self isYangWithInt:__gua[3]]
+                                         Yao5:[self isYangWithInt:__gua[4]]
+                                         Yao6:[self isYangWithInt:__gua[5]]];
+    
+    int bianguaindex = [manager chargeGuaWithYao1:[self isYangWithIntB:__gua[0]]
+                                             Yao2:[self isYangWithIntB:__gua[1]]
+                                             Yao3:[self isYangWithIntB:__gua[2]]
+                                             Yao4:[self isYangWithIntB:__gua[3]]
+                                             Yao5:[self isYangWithIntB:__gua[4]]
+                                             Yao6:[self isYangWithIntB:__gua[5]]];
+    
+    [self.delegate QiGuaAlertViewResult:[NSArray arrayWithObjects:@(guaindex),@(bianguaindex),[__gua copy], nil]];
+    [self dismiss];
+}
+
+- (BOOL)isYangWithInt:(id)yao
+{
+    int i=[yao intValue];
+    if (i==0 || i==2) {
+        return NO;
+    }
+    else return YES;
+}
+- (BOOL)isYangWithIntB:(id)yao //变
+{
+    int i=[yao intValue];
+    if (i==0 || i==3) {
+        return NO;
+    }
+    else return YES;
 }
 - (UILabel *)createLabel
 {
@@ -107,6 +147,11 @@
     return label;
 }
 
+- (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
+{
+    NSString *obj = [NSString stringWithFormat:@"%d",(int)row];
+    [_gua replaceObjectAtIndex:((int)pickerView.tag-5) withObject:obj];
+}
 
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;

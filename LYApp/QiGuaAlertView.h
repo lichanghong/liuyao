@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QiGuaAlertView : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
+@protocol QiGuaAlertViewDelegate <NSObject>
 
+- (void)QiGuaAlertViewResult:(NSArray *)arr;
+
+@end
+
+@interface QiGuaAlertView : UIView<UIPickerViewDataSource,UIPickerViewDelegate>
+@property (nonatomic,weak)id<QiGuaAlertViewDelegate>delegate;
 
 + (QiGuaAlertView *)createView;
 

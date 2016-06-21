@@ -18,6 +18,8 @@
 	<string>六爻排盘</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 	<key>CFBundleShortVersionString</key>
 	<string>1.0.2</string>
 	<key>CFBundleSignature</key>

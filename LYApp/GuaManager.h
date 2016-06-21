@@ -15,7 +15,7 @@
 
 + (instancetype)shareManager;
 
-
+//返回卦序，从上往下查
 - (int)chargeGuaWithYao1:(BOOL)isyang0 Yao2:(BOOL)isyang1
                     Yao3:(BOOL)isyang2 Yao4:(BOOL)isyang3
                     Yao5:(BOOL)isyang4
