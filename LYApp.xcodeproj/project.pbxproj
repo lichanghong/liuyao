@@ -21,6 +21,8 @@
 		95ACB39A1CE967ED00062FCA /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3991CE967ED00062FCA /* Icon.png */; };
 		95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49C81D17FA8500C39546 /* LYMainViewController.m */; };
 		95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49CC1D17FB9400C39546 /* LYClientViewController.m */; };
+		95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D11D19116400C39546 /* QiGuaAlertView.m */; };
+		95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D51D192A0600C39546 /* UIColor+Hex.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +70,11 @@
 		95EC49C81D17FA8500C39546 /* LYMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMainViewController.m; sourceTree = "<group>"; };
 		95EC49CB1D17FB9400C39546 /* LYClientViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYClientViewController.h; sourceTree = "<group>"; };
 		95EC49CC1D17FB9400C39546 /* LYClientViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYClientViewController.m; sourceTree = "<group>"; };
+		95EC49CE1D18E63500C39546 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		95EC49D01D19116400C39546 /* QiGuaAlertView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QiGuaAlertView.h; sourceTree = "<group>"; };
+		95EC49D11D19116400C39546 /* QiGuaAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiGuaAlertView.m; sourceTree = "<group>"; };
+		95EC49D41D192A0600C39546 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
+		95EC49D51D192A0600C39546 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +125,7 @@
 		95ACB3571CE5D05100062FCA /* LYApp */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49D31D1929F100C39546 /* Vender */,
 				95EC49CA1D17FB5D00C39546 /* 求 */,
 				95EC49C61D17E8EF00C39546 /* Gua */,
 				95ACB35B1CE5D05100062FCA /* AppDelegate.h */,
@@ -138,6 +146,7 @@
 			isa = PBXGroup;
 			children = (
 				95ACB3591CE5D05100062FCA /* main.m */,
+				95EC49CE1D18E63500C39546 /* PrefixHeader.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -176,12 +185,31 @@
 		95EC49CA1D17FB5D00C39546 /* 求 */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49CF1D19114A00C39546 /* View */,
 				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
 				95EC49C81D17FA8500C39546 /* LYMainViewController.m */,
 				95EC49CB1D17FB9400C39546 /* LYClientViewController.h */,
 				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
 			);
 			name = "求";
+			sourceTree = "<group>";
+		};
+		95EC49CF1D19114A00C39546 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49D01D19116400C39546 /* QiGuaAlertView.h */,
+				95EC49D11D19116400C39546 /* QiGuaAlertView.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
+		95EC49D31D1929F100C39546 /* Vender */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49D41D192A0600C39546 /* UIColor+Hex.h */,
+				95EC49D51D192A0600C39546 /* UIColor+Hex.m */,
+			);
+			name = Vender;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,11 +344,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
+				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
 				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,
 				95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */,
+				95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */,
 				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,
 			);
@@ -464,8 +494,11 @@
 		95ACB3831CE5D05200062FCA /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = LYApp/PrefixHeader.pch;
 				INFOPLIST_FILE = LYApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -478,8 +511,11 @@
 		95ACB3841CE5D05200062FCA /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = LYApp/PrefixHeader.pch;
 				INFOPLIST_FILE = LYApp/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

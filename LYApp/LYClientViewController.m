@@ -7,18 +7,22 @@
 //
 
 #import "LYClientViewController.h"
+#import "QiGuaAlertView.h"
 
-@interface LYClientViewController ()
+@interface LYClientViewController () 
 
 @end
 
 @implementation LYClientViewController
+{
+    QiGuaAlertView *_qiguaAlertView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self.navigationController setNavigationBarHidden:NO animated:NO];
-
-    // Do any additional setup after loading the view.
+    _qiguaAlertView = [QiGuaAlertView createView];
+     // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,9 +32,23 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
-    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 
 }
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.navigationController setNavigationBarHidden:NO animated:NO];
+
+}
+
+- (IBAction)handleAction:(id)sender {
+    [_qiguaAlertView showInView:self.view];
+    
+}
+
+
 /*
 #pragma mark - Navigation
 
