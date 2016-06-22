@@ -208,6 +208,7 @@
         gua63 = [NSArray arrayWithObjects:@"0",@"1",@"0",@"1",@"0",@"1", @"63",nil];
         gua64 = [NSArray arrayWithObjects:@"1",@"0",@"1",@"0",@"1",@"0", @"64",nil];
       
+        _bazi = [NSMutableArray array];
         arrs = [NSArray arrayWithObjects:gua1,gua2,gua3,gua4,gua5,gua6,gua7,gua8,gua9,gua10,
                 gua11,gua12,gua13,gua14,gua15,gua16,gua17,gua18,gua19,gua20,gua21,gua22,gua23,gua24,gua25,
                 gua26,gua27,gua28,gua29,gua30,gua31,gua32,gua33,gua34,gua35,gua36,gua37,gua38,gua39,gua40,
@@ -364,7 +365,7 @@
 }
 - (void)loadGanZhWith:(NSArray *)nianyueri ganzhis:(void(^)(NSArray *nian))ganzhis
 {
-    int hour =nianyueri[3];
+    int hour =[nianyueri[3] intValue];
     NSString *shiStr = @"";
 
     if (hour>=23 || hour<=1) {

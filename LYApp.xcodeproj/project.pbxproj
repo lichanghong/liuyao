@@ -23,6 +23,7 @@
 		95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49CC1D17FB9400C39546 /* LYClientViewController.m */; };
 		95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D11D19116400C39546 /* QiGuaAlertView.m */; };
 		95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D51D192A0600C39546 /* UIColor+Hex.m */; };
+		95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +76,8 @@
 		95EC49D11D19116400C39546 /* QiGuaAlertView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QiGuaAlertView.m; sourceTree = "<group>"; };
 		95EC49D41D192A0600C39546 /* UIColor+Hex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hex.h"; sourceTree = "<group>"; };
 		95EC49D51D192A0600C39546 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
+		95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYHelpViewController.h; sourceTree = "<group>"; };
+		95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYHelpViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,6 +193,8 @@
 				95EC49C81D17FA8500C39546 /* LYMainViewController.m */,
 				95EC49CB1D17FB9400C39546 /* LYClientViewController.h */,
 				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
+				95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */,
+				95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */,
 			);
 			name = "求";
 			sourceTree = "<group>";
@@ -350,6 +355,7 @@
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
 				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,
 				95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */,
+				95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */,
 				95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */,
 				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,

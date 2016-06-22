@@ -13,6 +13,8 @@
 @property (nonatomic,strong)NSDictionary *tiangans;
 @property (nonatomic,strong)NSDictionary *dizhis;
 
+@property (nonatomic,strong)NSMutableArray *bazi;
+
 + (instancetype)shareManager;
 
 //返回卦序，从上往下查
