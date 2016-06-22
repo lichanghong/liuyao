@@ -9,17 +9,32 @@
 #import "LYClientViewController.h"
 #import "QiGuaAlertView.h"
 
-@interface LYClientViewController () 
+@interface LYClientViewController () <UIAlertViewDelegate>
 
 @end
 
 @implementation LYClientViewController
 {
     QiGuaAlertView *_qiguaAlertView;
+    
+    __weak IBOutlet UISegmentedControl *_segmentControl;
+    __weak IBOutlet UITextField *questionText;
+    
+    __weak IBOutlet UITextField *nianTextField;
+    __weak IBOutlet UITextField *yueTextField;
+    __weak IBOutlet UITextField *riTextField;
+    __weak IBOutlet UITextField *shiTextField;
+    
+    
+    __weak IBOutlet UIButton *helpButton;
+    __weak IBOutlet UIButton *startButton;
+    __weak IBOutlet UITextView *resultText;
+    BOOL _isWoman;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _isWoman = false;
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc]initWithTarget:self action:@selector(handleAction:)];
     tap.numberOfTapsRequired = 1;
     tap.numberOfTouchesRequired =1;
@@ -38,9 +53,29 @@
     if ([sender isKindOfClass: [UIGestureRecognizer class]]) {
         [self.view endEditing:YES];
     }
-    else
-    [_qiguaAlertView showInView:self.view];
-    
+    else if ([sender isKindOfClass: [UISegmentedControl class]]) {
+        if (_segmentControl.selectedSegmentIndex == 0) {
+            _isWoman = false;
+        }
+        else _isWoman = true;
+    }
+    else if ([sender isKindOfClass: [UIButton class]]) {
+        if (sender == startButton) {
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提醒" message:@"请确认起卦时间是正确的" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+            [alert show];
+        }
+       else if(sender == helpButton)
+       {
+           
+       }
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex == 1) {
+        [_qiguaAlertView showInView:self.view];
+    }
 }
 
 
