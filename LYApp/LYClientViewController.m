@@ -10,6 +10,7 @@
 #import "QiGuaAlertView.h"
 #import "LYHelpViewController.h"
 #import "GuaManager.h"
+#import "JingRoundView.h"
 
 @interface LYClientViewController () <UIAlertViewDelegate,QiGuaAlertViewDelegate,UITextFieldDelegate>
 
@@ -31,8 +32,16 @@
     __weak IBOutlet UIButton *helpButton;
     __weak IBOutlet UIButton *startButton;
     __weak IBOutlet UITextView *resultText;
+    
+    __weak IBOutlet UIButton *resetButton;
+    
+    __weak IBOutlet UIButton *releaseButton;
+    
+    JingRoundView *_roundView;
+    
     BOOL _isWoman;
     NSArray *_alertResult;
+    
 }
 
 - (void)fetchDate
@@ -61,6 +70,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self fetchDate];
+ 
+    [self startRotation];
+    
     [nianTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [yueTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [riTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -76,6 +88,14 @@
     _qiguaAlertView = [QiGuaAlertView createView];
     _qiguaAlertView.delegate =self;
      // Do any additional setup after loading the view.
+}
+
+-(void) startRotation
+{
+    JingRoundView *roundView = [[JingRoundView alloc]initWithFrame:CGRectMake(0, 0, 54, 54)];
+    roundView.roundImage = [UIImage imageNamed:@"qiguaBtn"];
+    roundView.isPlay = YES;
+    [startButton addSubview:roundView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -121,6 +141,20 @@ static bool isfirsttime=true;
        {
            [LYHelpViewController pushToHelpVCWithNav:self.navigationController];
        }
+        else if (sender == resetButton)
+        {
+            [_segmentControl setSelected:false];
+            questionText.text= @"";
+            [self fetchDate];
+            resultText.text = @"请按照原来的规则重新起卦";
+            resultText.textColor = [UIColor whiteColor];
+            [resetButton setHidden:YES];
+            [releaseButton setHidden:YES];
+        }
+        else if (sender == releaseButton)
+        {
+            
+        }
     }
 }
 

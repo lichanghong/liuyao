@@ -415,7 +415,7 @@
                                     <action selector="handleAction:" destination="p5H-TW-zhL" eventType="touchUpInside" id="iPY-gs-cnT"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="center" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGq-om-IFZ">
+                            <button opaque="NO" contentMode="bottom" contentHorizontalAlignment="center" contentVerticalAlignment="bottom" lineBreakMode="tailTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tGq-om-IFZ">
                                 <rect key="frame" x="-23" y="-15" width="46" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="55" id="JvC-05-rf5"/>
@@ -424,9 +424,8 @@
                                     </constraint>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="0.0" maxY="15"/>
-                                <state key="normal" title="开始起卦" image="qiguaBtn">
+                                <state key="normal" title="开始起卦">
                                     <color key="titleColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                                 <variation key="default">
@@ -467,15 +466,64 @@
                                     </mask>
                                 </variation>
                             </textView>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yvq-ek-urG">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="139" id="0eX-Zp-3u4">
+                                        <variation key="widthClass=compact" constant="158"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="一键求卦师们解卦" backgroundImage="buttonbg"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="0eX-Zp-3u4"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="0eX-Zp-3u4"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="handleAction:" destination="p5H-TW-zhL" eventType="touchUpInside" id="HmH-1h-Sds"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleAspectFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN2-Uk-QhD">
+                                <rect key="frame" x="-23" y="-15" width="46" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="130" id="u5r-TV-CUA">
+                                        <variation key="widthClass=compact" constant="80"/>
+                                    </constraint>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <state key="normal" title="重新起卦" backgroundImage="buttonbg"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="u5r-TV-CUA"/>
+                                    </mask>
+                                </variation>
+                                <variation key="widthClass=compact">
+                                    <mask key="constraints">
+                                        <include reference="u5r-TV-CUA"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="handleAction:" destination="p5H-TW-zhL" eventType="touchUpInside" id="9mJ-Pv-126"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="yvq-ek-urG" secondAttribute="trailing" constant="7" id="0V5-B0-sxC"/>
                             <constraint firstItem="i1z-7L-b9g" firstAttribute="centerY" secondItem="dtE-S2-xJb" secondAttribute="centerY" id="1ok-9z-93B"/>
+                            <constraint firstItem="qeH-Q1-Iyw" firstAttribute="top" secondItem="yvq-ek-urG" secondAttribute="bottom" constant="37" id="4Jt-EQ-R4b"/>
                             <constraint firstItem="dtE-S2-xJb" firstAttribute="top" secondItem="3Fc-tR-K6R" secondAttribute="bottom" constant="8" id="7ZK-zd-8Ao"/>
                             <constraint firstItem="chJ-Kx-vdY" firstAttribute="top" secondItem="mtz-Oa-TLN" secondAttribute="bottom" id="B4F-7x-UO9"/>
                             <constraint firstAttribute="trailingMargin" secondItem="Tpf-9o-5lv" secondAttribute="trailing" constant="30" id="ERc-rG-GGM"/>
                             <constraint firstItem="dtE-S2-xJb" firstAttribute="leading" secondItem="3Fc-tR-K6R" secondAttribute="leading" id="Hgq-8z-yoW"/>
                             <constraint firstItem="tGq-om-IFZ" firstAttribute="top" secondItem="dtE-S2-xJb" secondAttribute="bottom" constant="12" id="Qad-3e-rqr"/>
+                            <constraint firstItem="qeH-Q1-Iyw" firstAttribute="top" secondItem="IN2-Uk-QhD" secondAttribute="bottom" constant="37" id="Txw-e8-Z1q"/>
                             <constraint firstItem="Tpf-9o-5lv" firstAttribute="top" secondItem="tGq-om-IFZ" secondAttribute="bottom" constant="20" id="chV-zZ-oNe"/>
                             <constraint firstItem="tGq-om-IFZ" firstAttribute="centerX" secondItem="chJ-Kx-vdY" secondAttribute="centerX" id="d1c-vu-MYv"/>
                             <constraint firstItem="i1z-7L-b9g" firstAttribute="leading" secondItem="dtE-S2-xJb" secondAttribute="trailing" constant="3" id="e4d-BV-2Qf">
@@ -487,6 +535,7 @@
                             <constraint firstAttribute="trailing" secondItem="3Fc-tR-K6R" secondAttribute="trailing" id="hOp-d4-dDb">
                                 <variation key="widthClass=compact" constant="27"/>
                             </constraint>
+                            <constraint firstItem="IN2-Uk-QhD" firstAttribute="leading" secondItem="Gd1-eH-MNU" secondAttribute="leadingMargin" constant="7" id="ius-dY-I0f"/>
                             <constraint firstItem="Tpf-9o-5lv" firstAttribute="leading" secondItem="Gd1-eH-MNU" secondAttribute="leadingMargin" constant="30" id="jgx-Ik-9m7"/>
                             <constraint firstItem="3Fc-tR-K6R" firstAttribute="top" secondItem="mtz-Oa-TLN" secondAttribute="bottom" constant="15" id="plq-Au-cZe">
                                 <variation key="widthClass=compact" constant="44"/>
@@ -511,25 +560,31 @@
                                 <exclude reference="i1z-7L-b9g"/>
                                 <exclude reference="tGq-om-IFZ"/>
                                 <exclude reference="Tpf-9o-5lv"/>
+                                <exclude reference="yvq-ek-urG"/>
+                                <exclude reference="IN2-Uk-QhD"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="ERc-rG-GGM"/>
-                                <exclude reference="chV-zZ-oNe"/>
-                                <exclude reference="jgx-Ik-9m7"/>
                                 <exclude reference="B4F-7x-UO9"/>
                                 <exclude reference="f6i-Nu-AW6"/>
+                                <exclude reference="sdf-b9-APD"/>
+                                <exclude reference="tRv-2C-H3H"/>
                                 <exclude reference="hOp-d4-dDb"/>
                                 <exclude reference="plq-Au-cZe"/>
                                 <exclude reference="sYg-SV-A2T"/>
-                                <exclude reference="ywg-xQ-5YJ"/>
-                                <exclude reference="1ok-9z-93B"/>
-                                <exclude reference="e4d-BV-2Qf"/>
-                                <exclude reference="Qad-3e-rqr"/>
-                                <exclude reference="d1c-vu-MYv"/>
                                 <exclude reference="7ZK-zd-8Ao"/>
                                 <exclude reference="Hgq-8z-yoW"/>
-                                <exclude reference="sdf-b9-APD"/>
-                                <exclude reference="tRv-2C-H3H"/>
+                                <exclude reference="Qad-3e-rqr"/>
+                                <exclude reference="d1c-vu-MYv"/>
+                                <exclude reference="ERc-rG-GGM"/>
+                                <exclude reference="chV-zZ-oNe"/>
+                                <exclude reference="jgx-Ik-9m7"/>
+                                <exclude reference="1ok-9z-93B"/>
+                                <exclude reference="e4d-BV-2Qf"/>
+                                <exclude reference="ius-dY-I0f"/>
+                                <exclude reference="0V5-B0-sxC"/>
+                                <exclude reference="4Jt-EQ-R4b"/>
+                                <exclude reference="Txw-e8-Z1q"/>
+                                <exclude reference="ywg-xQ-5YJ"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
@@ -539,25 +594,31 @@
                                 <include reference="i1z-7L-b9g"/>
                                 <include reference="tGq-om-IFZ"/>
                                 <include reference="Tpf-9o-5lv"/>
+                                <include reference="yvq-ek-urG"/>
+                                <include reference="IN2-Uk-QhD"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="ERc-rG-GGM"/>
-                                <include reference="chV-zZ-oNe"/>
-                                <include reference="jgx-Ik-9m7"/>
                                 <include reference="B4F-7x-UO9"/>
                                 <include reference="f6i-Nu-AW6"/>
+                                <include reference="sdf-b9-APD"/>
+                                <include reference="tRv-2C-H3H"/>
                                 <include reference="hOp-d4-dDb"/>
                                 <include reference="plq-Au-cZe"/>
                                 <include reference="sYg-SV-A2T"/>
-                                <include reference="ywg-xQ-5YJ"/>
-                                <include reference="1ok-9z-93B"/>
-                                <include reference="e4d-BV-2Qf"/>
-                                <include reference="Qad-3e-rqr"/>
-                                <include reference="d1c-vu-MYv"/>
                                 <include reference="7ZK-zd-8Ao"/>
                                 <include reference="Hgq-8z-yoW"/>
-                                <include reference="sdf-b9-APD"/>
-                                <include reference="tRv-2C-H3H"/>
+                                <include reference="Qad-3e-rqr"/>
+                                <include reference="d1c-vu-MYv"/>
+                                <include reference="ERc-rG-GGM"/>
+                                <include reference="chV-zZ-oNe"/>
+                                <include reference="jgx-Ik-9m7"/>
+                                <include reference="1ok-9z-93B"/>
+                                <include reference="e4d-BV-2Qf"/>
+                                <include reference="ius-dY-I0f"/>
+                                <include reference="0V5-B0-sxC"/>
+                                <include reference="4Jt-EQ-R4b"/>
+                                <include reference="Txw-e8-Z1q"/>
+                                <include reference="ywg-xQ-5YJ"/>
                             </mask>
                         </variation>
                     </view>
@@ -568,6 +629,8 @@
                         <outlet property="helpButton" destination="i1z-7L-b9g" id="Kl7-Bc-dFD"/>
                         <outlet property="nianTextField" destination="5vG-HG-Pag" id="Uj7-dU-FCd"/>
                         <outlet property="questionText" destination="Odo-RE-vLl" id="lFF-lP-AqL"/>
+                        <outlet property="releaseButton" destination="yvq-ek-urG" id="Rum-Sd-yt1"/>
+                        <outlet property="resetButton" destination="IN2-Uk-QhD" id="dUj-2R-Kng"/>
                         <outlet property="resultText" destination="Tpf-9o-5lv" id="Oe4-Ce-c5d"/>
                         <outlet property="riTextField" destination="J4E-Tm-2qf" id="aQG-7n-sdz"/>
                         <outlet property="shiTextField" destination="ZSQ-se-xYF" id="FqF-Jk-NB5"/>
@@ -577,7 +640,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3KG-Os-ULu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="688.5" y="-128"/>
+            <point key="canvasLocation" x="685.5" y="-349"/>
         </scene>
         <!--Help View Controller-->
         <scene sceneID="rRB-nu-DLf">
@@ -1299,7 +1362,7 @@
     <resources>
         <image name="backbutton" width="40" height="40"/>
         <image name="bg" width="220" height="298"/>
+        <image name="buttonbg" width="16" height="40"/>
         <image name="help" width="128" height="128"/>
-        <image name="qiguaBtn" width="100" height="100"/>
     </resources>
 </document>

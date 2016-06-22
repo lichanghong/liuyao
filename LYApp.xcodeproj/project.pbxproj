@@ -24,6 +24,7 @@
 		95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D11D19116400C39546 /* QiGuaAlertView.m */; };
 		95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D51D192A0600C39546 /* UIColor+Hex.m */; };
 		95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */; };
+		95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E01D1A9F1300C39546 /* JingRoundView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,8 @@
 		95EC49D51D192A0600C39546 /* UIColor+Hex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hex.m"; sourceTree = "<group>"; };
 		95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYHelpViewController.h; sourceTree = "<group>"; };
 		95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYHelpViewController.m; sourceTree = "<group>"; };
+		95EC49E01D1A9F1300C39546 /* JingRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JingRoundView.m; sourceTree = "<group>"; };
+		95EC49E11D1A9F1300C39546 /* JingRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JingRoundView.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +214,8 @@
 		95EC49D31D1929F100C39546 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49E01D1A9F1300C39546 /* JingRoundView.m */,
+				95EC49E11D1A9F1300C39546 /* JingRoundView.h */,
 				95EC49D41D192A0600C39546 /* UIColor+Hex.h */,
 				95EC49D51D192A0600C39546 /* UIColor+Hex.m */,
 			);
@@ -349,6 +354,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
+				95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */,
 				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
