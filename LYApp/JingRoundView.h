@@ -37,7 +37,7 @@
  
 //开始播放
 -(void) play;
-
+- (void)forcePlay;
 //暂停
 -(void) pause;
 

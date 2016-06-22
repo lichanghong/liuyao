@@ -37,6 +37,8 @@
     
     __weak IBOutlet UIButton *releaseButton;
     
+    
+    __weak IBOutlet UIView *roundViewContent;
     JingRoundView *_roundView;
     
     BOOL _isWoman;
@@ -71,7 +73,9 @@
     [super viewDidLoad];
     [self fetchDate];
  
-    [self startRotation];
+    _roundView = [[JingRoundView alloc]initWithFrame:CGRectMake(0, 0, 54, 54)];
+    _roundView.roundImage = [UIImage imageNamed:@"qiguaBtn"];
+    [roundViewContent addSubview:_roundView];
     
     [nianTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
     [yueTextField addTarget:self action:@selector(textFieldDidChange:) forControlEvents:UIControlEventEditingChanged];
@@ -95,7 +99,7 @@
     JingRoundView *roundView = [[JingRoundView alloc]initWithFrame:CGRectMake(0, 0, 54, 54)];
     roundView.roundImage = [UIImage imageNamed:@"qiguaBtn"];
     roundView.isPlay = YES;
-    [startButton addSubview:roundView];
+    [roundViewContent addSubview:roundView];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -153,7 +157,9 @@ static bool isfirsttime=true;
         }
         else if (sender == releaseButton)
         {
-            
+            [[UIApplication sharedApplication]beginIgnoringInteractionEvents];
+            [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
+            [_roundView forcePlay];
         }
     }
 }
@@ -204,6 +210,8 @@ static bool isfirsttime=true;
                            questionText.text,
                           year,mouth,day,hour,
                           bazi[0],bazi[1],bazi[2],bazi[3]];
+        [resetButton setHidden:NO];
+        [releaseButton setHidden:NO];
         [self beginSuan];
     }
     else

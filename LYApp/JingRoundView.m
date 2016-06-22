@@ -143,12 +143,7 @@
     self.roundImageView.image = self.roundImage;
 }
 
-//touchesBegan
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
-{
-    self.isPlay = !self.isPlay;
-    [self.delegate playStatuUpdate:self.isPlay];
-}
+ 
 
 -(void) startRotation
 {
@@ -200,6 +195,11 @@
 -(void)pause
 {
     self.isPlay = NO;
+}
+
+- (void)forcePlay
+{
+    [self startRotation];
 }
 
 @end
