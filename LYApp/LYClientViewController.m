@@ -215,8 +215,6 @@ static bool isfirsttime=true;
                            questionText.text,
                           year,mouth,day,hour,
                           bazi[0],bazi[1],bazi[2],bazi[3]];
-        [resetButton setHidden:NO];
-        [releaseButton setHidden:NO];
         [self beginSuan];
     }
     else
@@ -239,6 +237,8 @@ static bool isfirsttime=true;
 
 - (void)QiGuaAlertViewResult:(NSArray *)arr
 {
+    [resetButton setHidden:NO];
+    [releaseButton setHidden:NO];
     _alertResult = arr;
     [self refreshData];
 }
