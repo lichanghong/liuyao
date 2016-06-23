@@ -13,13 +13,25 @@
 @end
 
 @implementation LYMainViewController
-
+{
+    __weak IBOutlet UIButton *button1;
+    
+    __weak IBOutlet UIButton *button2;
+    
+    __weak IBOutlet UIButton *button3;
+    
+    
+    
+}
 
 
 
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    button1.layer.cornerRadius = 6;
+    button2.layer.cornerRadius = 6;
+    button3.layer.cornerRadius = 6;
     // Do any additional setup after loading the view.
 }
 

@@ -35,6 +35,7 @@
     
     __weak IBOutlet UIButton *resetButton;
     
+    __weak IBOutlet UIButton *backButton;
     __weak IBOutlet UIButton *releaseButton;
     
     
@@ -145,6 +146,10 @@ static bool isfirsttime=true;
        {
            [LYHelpViewController pushToHelpVCWithNav:self.navigationController];
        }
+        else if(sender == backButton)
+        {
+            [self.navigationController popViewControllerAnimated:YES];
+        }
         else if (sender == resetButton)
         {
             [_segmentControl setSelected:false];
