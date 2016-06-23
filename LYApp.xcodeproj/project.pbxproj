@@ -28,6 +28,8 @@
 		95EC49EA1D1BBB7100C39546 /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */; };
 		95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */; };
 		95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */; };
+		95EC49F61D1BEAFE00C39546 /* LYProtocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F51D1BEAFE00C39546 /* LYProtocalViewController.m */; };
+		95EC49F81D1BEB5900C39546 /* protocal.txt in Resources */ = {isa = PBXBuildFile; fileRef = 95EC49F71D1BEB5900C39546 /* protocal.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +93,9 @@
 		95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLoginViewController.m; sourceTree = "<group>"; };
 		95EC49EF1D1BBFB100C39546 /* LYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYRegisterViewController.h; sourceTree = "<group>"; };
 		95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYRegisterViewController.m; sourceTree = "<group>"; };
+		95EC49F41D1BEAFE00C39546 /* LYProtocalViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYProtocalViewController.h; sourceTree = "<group>"; };
+		95EC49F51D1BEAFE00C39546 /* LYProtocalViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYProtocalViewController.m; sourceTree = "<group>"; };
+		95EC49F71D1BEB5900C39546 /* protocal.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = protocal.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -243,6 +248,9 @@
 				95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */,
 				95EC49EF1D1BBFB100C39546 /* LYRegisterViewController.h */,
 				95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */,
+				95EC49F41D1BEAFE00C39546 /* LYProtocalViewController.h */,
+				95EC49F51D1BEAFE00C39546 /* LYProtocalViewController.m */,
+				95EC49F71D1BEB5900C39546 /* protocal.txt */,
 			);
 			name = "登录注册";
 			sourceTree = "<group>";
@@ -352,6 +360,7 @@
 			files = (
 				95ACB3681CE5D05100062FCA /* LaunchScreen.storyboard in Resources */,
 				95ACB3651CE5D05100062FCA /* Assets.xcassets in Resources */,
+				95EC49F81D1BEB5900C39546 /* protocal.txt in Resources */,
 				95ACB3631CE5D05100062FCA /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -393,6 +402,7 @@
 				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
 				95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,
+				95EC49F61D1BEAFE00C39546 /* LYProtocalViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

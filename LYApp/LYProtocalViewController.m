@@ -1,26 +1,31 @@
 //
-//  LYRegisterViewController.m
+//  LYProtocalViewController.m
 //  LYApp
 //
 //  Created by lichanghong on 16/6/23.
 //  Copyright © 2016年 lichanghong. All rights reserved.
 //
 
-#import "LYRegisterViewController.h"
+#import "LYProtocalViewController.h"
 
+@interface LYProtocalViewController ()
 
-@interface LYRegisterViewController ()
 
 @end
 
-@implementation LYRegisterViewController
+@implementation LYProtocalViewController
 {
     __weak IBOutlet UIButton *_backButton;
-    
-    __weak IBOutlet UITextField *username;
-    __weak IBOutlet UITextField *password;
-    __weak IBOutlet UIButton *_registerButton;
-    __weak IBOutlet UIButton *_protocolButton;
+
+    __weak IBOutlet UITextView *textView;
+}
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    NSBundle *mainBundle = [NSBundle mainBundle];
+    NSString *txtPath = [mainBundle pathForResource:@"protocal" ofType:@"txt"];
+    NSString * content = [[NSString alloc] initWithContentsOfFile:txtPath encoding:NSUTF8StringEncoding error:nil];
+    [textView setText:content];
 
 }
 
@@ -28,24 +33,9 @@
     if (sender == _backButton) {
         [self dismissViewControllerAnimated:YES completion:nil];
     }
-    else if(sender == _registerButton)
-    {
-        
-    }
-    else if(sender == _protocolButton)
-    {
-        
-    }
 }
 
 
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    _registerButton.layer.cornerRadius = _registerButton.frame.size.height/2.0;
-    [username becomeFirstResponder];
-    // Do any additional setup after loading the view.
-}
- 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
