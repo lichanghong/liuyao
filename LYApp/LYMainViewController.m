@@ -20,11 +20,29 @@
     
     __weak IBOutlet UIButton *button3;
     
+    __weak IBOutlet UIButton *button4;
     
     
 }
 
 
+- (IBAction)handleAction:(id)sender {
+    if (sender == button3) {
+        if (false) { //已经登录
+            [self performSegueWithIdentifier:@"main_to_history" sender:nil];
+        }
+        else
+        {
+            [self toLoginPage];
+        }
+    }
+}
+
+//跳转到login界面
+- (void)toLoginPage
+{
+    [self showDetailViewController:[self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LYLoginViewController"] sender:self];
+}
 
 
 - (void)viewDidLoad {
@@ -32,6 +50,7 @@
     button1.layer.cornerRadius = 6;
     button2.layer.cornerRadius = 6;
     button3.layer.cornerRadius = 6;
+    button4.layer.cornerRadius = 6;
     // Do any additional setup after loading the view.
 }
 

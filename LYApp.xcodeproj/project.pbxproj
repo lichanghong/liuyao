@@ -24,6 +24,10 @@
 		95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49D51D192A0600C39546 /* UIColor+Hex.m */; };
 		95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */; };
 		95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E01D1A9F1300C39546 /* JingRoundView.m */; };
+		95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */; };
+		95EC49EA1D1BBB7100C39546 /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */; };
+		95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */; };
+		95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +83,14 @@
 		95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYHelpViewController.m; sourceTree = "<group>"; };
 		95EC49E01D1A9F1300C39546 /* JingRoundView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JingRoundView.m; sourceTree = "<group>"; };
 		95EC49E11D1A9F1300C39546 /* JingRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JingRoundView.h; sourceTree = "<group>"; };
+		95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMyHistoryViewController.h; sourceTree = "<group>"; };
+		95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMyHistoryViewController.m; sourceTree = "<group>"; };
+		95EC49E81D1BBB7100C39546 /* LYStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYStudyViewController.h; sourceTree = "<group>"; };
+		95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYStudyViewController.m; sourceTree = "<group>"; };
+		95EC49EC1D1BBFA400C39546 /* LYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLoginViewController.h; sourceTree = "<group>"; };
+		95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLoginViewController.m; sourceTree = "<group>"; };
+		95EC49EF1D1BBFB100C39546 /* LYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYRegisterViewController.h; sourceTree = "<group>"; };
+		95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYRegisterViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -188,6 +200,7 @@
 		95EC49CA1D17FB5D00C39546 /* 求 */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49EB1D1BBF9700C39546 /* 登录注册 */,
 				95EC49CF1D19114A00C39546 /* View */,
 				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
 				95EC49C81D17FA8500C39546 /* LYMainViewController.m */,
@@ -195,6 +208,10 @@
 				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
 				95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */,
 				95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */,
+				95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */,
+				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
+				95EC49E81D1BBB7100C39546 /* LYStudyViewController.h */,
+				95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */,
 			);
 			name = "求";
 			sourceTree = "<group>";
@@ -217,6 +234,17 @@
 				95EC49D51D192A0600C39546 /* UIColor+Hex.m */,
 			);
 			name = Vender;
+			sourceTree = "<group>";
+		};
+		95EC49EB1D1BBF9700C39546 /* 登录注册 */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49EC1D1BBFA400C39546 /* LYLoginViewController.h */,
+				95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */,
+				95EC49EF1D1BBFB100C39546 /* LYRegisterViewController.h */,
+				95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */,
+			);
+			name = "登录注册";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -352,7 +380,10 @@
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
 				95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */,
 				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
+				95EC49EA1D1BBB7100C39546 /* LYStudyViewController.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
+				95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */,
+				95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
 				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,
@@ -360,6 +391,7 @@
 				95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */,
 				95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */,
 				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
+				95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

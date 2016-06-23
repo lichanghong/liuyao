@@ -17,7 +17,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="4xn-ay-IFu">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="qiguaBtn" translatesAutoresizingMaskIntoConstraints="NO" id="4xn-ay-IFu">
                                 <rect key="frame" x="20" y="20" width="128" height="128"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="120" id="3El-Lg-l02"/>
@@ -37,11 +37,9 @@
                                 </variation>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="0.25098040700000002" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.50196081400000003" green="0.25098040700000002" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="4xn-ay-IFu" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="dfr-E7-hRP">
-                                <variation key="heightClass=regular-widthClass=compact" constant="-276"/>
-                            </constraint>
+                            <constraint firstItem="4xn-ay-IFu" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="55" id="AlV-Tg-gq7"/>
                             <constraint firstItem="4xn-ay-IFu" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="vXZ-cX-qXn"/>
                         </constraints>
                         <variation key="default">
@@ -49,7 +47,7 @@
                                 <exclude reference="4xn-ay-IFu"/>
                             </mask>
                             <mask key="constraints">
-                                <exclude reference="dfr-E7-hRP"/>
+                                <exclude reference="AlV-Tg-gq7"/>
                                 <exclude reference="vXZ-cX-qXn"/>
                             </mask>
                         </variation>
@@ -58,7 +56,7 @@
                                 <include reference="4xn-ay-IFu"/>
                             </mask>
                             <mask key="constraints">
-                                <include reference="dfr-E7-hRP"/>
+                                <include reference="AlV-Tg-gq7"/>
                                 <include reference="vXZ-cX-qXn"/>
                             </mask>
                         </variation>
@@ -70,6 +68,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Icon.png" width="57" height="57"/>
+        <image name="qiguaBtn" width="100" height="100"/>
     </resources>
 </document>
