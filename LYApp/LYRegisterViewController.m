@@ -7,6 +7,7 @@
 //
 
 #import "LYRegisterViewController.h"
+#import "HttpUtil.h"
 
 
 @interface LYRegisterViewController ()
@@ -30,7 +31,15 @@
     }
     else if(sender == _registerButton)
     {
-        
+        [HttpUtil doRegistNewUserWithUsername:username.text PW:password.text success:^(id json) {
+//            [self endLogin];
+            
+        } failure:^(NSError *error) {
+            NSLog(@"error = %@",error);
+//            [self endLogin];
+            [LYToast showToast:error.localizedDescription];
+            
+        }];
     }
     else if(sender == _protocolButton)
     {

@@ -7,6 +7,8 @@
 //
 
 #import "LYLoginViewController.h"
+#import "HttpUtil.h"
+#import "JingRoundView.h"
 
 @interface LYLoginViewController ()<UIScrollViewDelegate>
 
@@ -30,14 +32,14 @@
     __weak IBOutlet UIButton *registerButton;
     
     __weak IBOutlet UIScrollView *_scrollView;
-    
-    
+    JingRoundView *roundView;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     baseW.constant = KScreenWidth+5;
     loginButton.layer.cornerRadius = loginButton.frame.size.height/2.0;
+    [self startRotation:NO];
     // Do any additional setup after loading the view.
 }
 
@@ -60,11 +62,20 @@
     else if(sender == loginButton)
     {
         if ([self checkUsernameAndPwd]) {
-            
+            [self startLogin];
+            [HttpUtil doRegistNewUserWithUsername:username.text PW:password.text success:^(id json) {
+                [self endLogin];
+                
+            } failure:^(NSError *error) {
+                NSLog(@"error = %@",error);
+                [self endLogin];
+                [LYToast showToast:error.localizedDescription];
+
+            }];
         }
         else
         {
-//            [LYToast showToast:@"用户名密码格式错误"];
+            [LYToast showToast:@"用户名密码格式错误"];
         }
     }
     else if(sender == registerButton)
@@ -74,11 +85,43 @@
     }
 }
 
+- (void)startLogin
+{
+    [roundView forcePlay];
+    [self.view endEditing:YES];
+    [username setEnabled:NO];
+    [password setEnabled:NO];
+    [forgetPassword setEnabled:NO];
+    [registerButton setEnabled:NO];
+    [loginButton setEnabled:NO];
+    [_scrollView setScrollEnabled:NO];
+}
+
+- (void)endLogin
+{
+    [roundView pause];
+    [self.view endEditing:YES];
+    [username setEnabled:YES];
+    [password setEnabled:YES];
+    [forgetPassword setEnabled:YES];
+    [registerButton setEnabled:YES];
+    [loginButton setEnabled:YES];
+    [_scrollView setScrollEnabled:YES];
+}
+
+-(void) startRotation:(bool)isplay
+{
+    roundView = [[JingRoundView alloc]initWithFrame:CGRectMake(KScreenWidth/2.0-46, 72, 100, 100)];
+    roundView.roundImage = [UIImage imageNamed:@"qiguaBtn"];
+    roundView.isPlay = isplay;
+    [_scrollView addSubview:roundView];
+}
+
 - (BOOL)checkUsernameAndPwd
 {
     NSString *name = username.text;
     NSString *pwd  = password.text;
-    if (([self validateEmail:name]||[self validateMobile:name]) && pwd.length>6 && ![self isBlankString:pwd]) {
+    if (([self validateEmail:name]||[self validateMobile:name]) && pwd.length>5 && ![self isBlankString:pwd]) {
         return true;
     }
     return NO;
