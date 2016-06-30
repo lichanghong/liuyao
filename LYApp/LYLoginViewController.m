@@ -10,7 +10,7 @@
 #import "HttpUtil.h"
 #import "JingRoundView.h"
 
-@interface LYLoginViewController ()<UIScrollViewDelegate>
+@interface LYLoginViewController ()<UIScrollViewDelegate,UIAlertViewDelegate>
 
 @end
 
@@ -40,6 +40,10 @@
     baseW.constant = KScreenWidth+5;
     loginButton.layer.cornerRadius = loginButton.frame.size.height/2.0;
     [self startRotation:NO];
+    
+    
+    username.text = @"15652285555";
+    password.text = @"111111";
     // Do any additional setup after loading the view.
 }
 
@@ -57,20 +61,37 @@
     }
     else if(sender == forgetPassword)
     {
-        
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"忘记密码？" message:@"发短信/邮件给我们找回密码" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        [alert show];
     }
     else if(sender == loginButton)
     {
         if ([self checkUsernameAndPwd]) {
             [self startLogin];
-            [HttpUtil doRegistNewUserWithUsername:username.text PW:password.text success:^(id json) {
+            [HttpUtil doLoginWithUsername:username.text PW:password.text success:^(id json) {
                 [self endLogin];
-                
+                if (json) {
+                    NSString *errorno = json[@"errno"];
+                    if ([errorno intValue]==0) {
+                        UserManager *manager= [UserManager defaultManager];
+                        manager.userid = json[@"uid"];
+                        manager.username = json[@"username"];
+                        manager.gender = json[@"gender"];
+                        manager.nickname = json[@"nickname"];
+                        manager.blocked = json[@"blocked"];
+                    }
+                    else
+                    {
+                        [LYToast showToast:json[@"errmsg"]];
+                    }
+                }
+                else
+                    NSLog(@"resultsdfsfdaaa = %@",json);
+
             } failure:^(NSError *error) {
                 NSLog(@"error = %@",error);
                 [self endLogin];
                 [LYToast showToast:error.localizedDescription];
-
             }];
         }
         else
@@ -82,6 +103,27 @@
     {
         [self showDetailViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"LYRegisterViewController"] sender:self];
 
+    }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex==1) {
+        if ([self validateMobile: username.text]) {
+            NSString *smsstr = [NSString stringWithFormat:@"sms://18010476637"];
+            [[UIApplication sharedApplication]openURL:[NSURL URLWithString:smsstr]];
+        }
+        else if([self validateEmail:username.text])
+        {
+            NSString *url = @"mailto:haihong189@189.cn?subject=找回密码&body=我的邮箱是：手机号是：\n\n\n请填写您注册用的手机号或邮箱地址发给我们，以便确认。如果无法发送，请直接联系我们haihong189@189.cn";
+            url = [url stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            [[UIApplication sharedApplication] openURL: [NSURL URLWithString: url]];
+        }
+        else
+        {
+            NSLog(@"why?flajfsjfljllll.1900");
+            [LYToast showToast:@"请填写您注册时的用户名再找回密码！"];
+        }
     }
 }
 

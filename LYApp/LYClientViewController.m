@@ -162,9 +162,7 @@ static bool isfirsttime=true;
         }
         else if (sender == releaseButton)
         {
-            [[UIApplication sharedApplication]beginIgnoringInteractionEvents];
-            [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
-            [_roundView forcePlay];
+            [self refreshData:YES];
         }
     }
 }
@@ -184,13 +182,13 @@ static bool isfirsttime=true;
     __weak LYClientViewController *wself = self;
     [[GuaManager shareManager]loadGanZhWith:@[year,mouth,day,hour] ganzhis:^(NSArray *nian) {
         [GuaManager shareManager].bazi = [NSMutableArray arrayWithArray:nian];
-        [wself refreshData];
+        [wself refreshData:NO];
         
     }];
     [_qiguaAlertView showInView:self.view];
 }
 
-- (void)refreshData
+- (void)refreshData:(BOOL)upload
 {
     NSArray *arr = _alertResult;
     NSArray *bazi  =[GuaManager shareManager].bazi;
@@ -226,6 +224,20 @@ static bool isfirsttime=true;
     }
     resultText.text = desc;
     resultText.textColor = [UIColor whiteColor];
+    
+    if (upload) {
+        UserManager *manager= [UserManager defaultManager];
+         
+        //上传到服务器
+        [[UIApplication sharedApplication]beginIgnoringInteractionEvents];
+        [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
+        [_roundView forcePlay];
+        
+
+        
+        
+        
+    }
 
 }
 
@@ -240,7 +252,7 @@ static bool isfirsttime=true;
     [resetButton setHidden:NO];
     [releaseButton setHidden:NO];
     _alertResult = arr;
-    [self refreshData];
+    [self refreshData:NO];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

@@ -11,7 +11,7 @@
 #define OSVERSION_BIGTHAN_8 ([[[UIDevice currentDevice] systemVersion] floatValue] >= 8.0?YES:NO)
 #import "UIColor+Hex.h"
 #import "LYToast.h"
-
+#import "UserManager.h"
 
 #ifndef dispatch_main_sync_safe
 #define dispatch_main_sync_safe(block)\

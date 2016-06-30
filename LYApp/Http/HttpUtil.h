@@ -17,19 +17,17 @@
                             success:(void (^)(id json))success
                             failure:(void (^)(NSError*))failure;
 
--(void)doGetMessage:(void (^)())success
-          msfailure:(void (^)(long, NSString*))failure;
++ (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw
+                            success:(void (^)(id json))success
+                            failure:(void (^)(NSError*))failure;
 
-+(void)doGetMsgDetails:(int)msgid
-              mssecret:(NSString*)secret
-             mssuccess:(void (^)(id json))success
-             msfailure:(void (^)(long, NSString*))failure;
-
-+(void)doGetAllMsgDetails:(NSString*)bxuuid
-                mssuccess:(void (^)(id json))success
-                msfailure:(void (^)(long, NSString*))failure;
-
-
+ 
++ (void)doUploadGuaWithQuestion:(NSString *)question
+                     gua_gender:(NSString *)gender
+                       gua_date:(NSString *)date
+                        gua_gua:(NSString *)gua
+                        success:(void (^)(id))success
+                        failure:(void (^)(NSError *))failure;
 
 
 

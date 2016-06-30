@@ -11,7 +11,33 @@
 
 @implementation HttpUtil
 
++ (void)doUploadGuaWithQuestion:(NSString *)question
+                     gua_gender:(NSString *)gender
+                       gua_date:(NSString *)date
+                        gua_gua:(NSString *)gua
+                        success:(void (^)(id))success
+                        failure:(void (^)(NSError *))failure
+{
+    UserManager *user= [UserManager defaultManager];
 
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaupload",
+                    kHostName];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:user.userid forKey:@"uid"];
+    [dic setObject:gender   forKey:@"g_gender"];
+    [dic setObject:question forKey:@"g_question"];
+    [dic setObject:date forKey:@"g_date"];
+    [dic setObject:gua forKey:@"g_gua"];
+    
+    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
 
 
 + (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSError *error))failure
@@ -19,25 +45,43 @@
     if( username==nil || pw==nil)
         return;
 
-    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/regist?username=%@&password=%@",
-                    kHostName,username,pw];
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/regist",
+                    kHostName];
     
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    manager.requestSerializer = [AFJSONRequestSerializer serializer];
-    [manager.requestSerializer setValue:@"application/json" forHTTPHeaderField:@"Content-Type"];
-    [manager POST:api parameters:nil progress:^(NSProgress * _Nonnull uploadProgress) {
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:username forKey:@"username"];
+    [dic setObject:pw forKey:@"password"];
+    
+    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
         
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        NSLog(@"JSON: %@", responseObject);
-
+        success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         failure(error);
     }];
-    
-    
-    
 }
 
++ (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSError *))failure
+{
+    if( username==nil || pw==nil)
+    return;
+    
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/login",
+                    kHostName];
+    
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:username forKey:@"username"];
+    [dic setObject:pw forKey:@"password"];
+    
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        failure(error);
+    }];
+}
 
 
 
