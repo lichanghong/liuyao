@@ -27,7 +27,7 @@
 
 - (IBAction)handleAction:(id)sender {
     if (sender == _backButton) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismiss];
     }
     else if(sender == _registerButton)
     {
@@ -44,6 +44,11 @@
                         manager.gender = json[@"gender"];
                         manager.nickname = json[@"nickname"];
                         manager.blocked = json[@"blocked"];
+                        BOOL archived = [UserManager archiveUserManager:manager];
+                        if (!archived) {
+                            NSLog(@"archive usernanager fail for register");
+                        }
+                        [self dismiss];
                     }
                     else
                     {
@@ -53,10 +58,9 @@
                 else
                     NSLog(@"result = %@",json);
                 
-            } failure:^(NSError *error) {
-                NSLog(@"error = %@",error);
+            } failure:^(NSString *errmsg) {
                 [self endRegist];
-                [LYToast showToast:error.localizedDescription];
+                [LYToast showToast:errmsg];
             }];
         }
         else
@@ -64,6 +68,11 @@
             [LYToast showToast:@"用户名密码格式错误"];
         }
     }
+}
+
+- (void)dismiss
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (BOOL)checkUsernameAndPwd

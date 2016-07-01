@@ -11,6 +11,7 @@
 #import "LYHelpViewController.h"
 #import "GuaManager.h"
 #import "JingRoundView.h"
+#import "HttpUtil.h"
 
 @interface LYClientViewController () <UIAlertViewDelegate,QiGuaAlertViewDelegate,UITextFieldDelegate>
 
@@ -125,7 +126,7 @@ static bool isfirsttime=true;
             }
             else
             {
-                if (questionText.text.length>4) {
+                if (questionText.text.length>=2) {
                     if (isfirsttime) {
                         isfirsttime = false;
                         UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提醒" message:@"请确认起卦时间是正确的" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
@@ -148,7 +149,7 @@ static bool isfirsttime=true;
        }
         else if(sender == backButton)
         {
-            [self.navigationController popViewControllerAnimated:YES];
+            [self dismiss];
         }
         else if (sender == resetButton)
         {
@@ -167,6 +168,10 @@ static bool isfirsttime=true;
     }
 }
 
+- (void)dismiss
+{
+    [self.navigationController popViewControllerAnimated:YES];
+}
 - (void)alertErrorWithMessage:(NSString *)msg
 {
     UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
@@ -213,7 +218,6 @@ static bool isfirsttime=true;
                            questionText.text,
                           year,mouth,day,hour,
                           bazi[0],bazi[1],bazi[2],bazi[3]];
-        [self beginSuan];
     }
     else
     {
@@ -227,24 +231,65 @@ static bool isfirsttime=true;
     
     if (upload) {
         UserManager *manager= [UserManager defaultManager];
-         
-        //上传到服务器
-        [[UIApplication sharedApplication]beginIgnoringInteractionEvents];
-        [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
-        [_roundView forcePlay];
-        
-
-        
-        
-        
+        if (manager.userid) {
+            //上传到服务器
+            [self beginSending];
+            [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
+            [_roundView forcePlay];
+            __weak LYClientViewController *wself = self;
+            
+            NSString *date =[NSString stringWithFormat:@"%@:%@:%@:%@",year,mouth,day,hour];
+            [HttpUtil doUploadGuaWithQuestion:questionText.text
+                                   gua_gender:_isWoman?@"0":@"1"
+                                     gua_date:date
+                                      gua_gua:[_alertResult componentsJoinedByString:@":"]
+                                      success:^(id data) {
+                [self endSending];
+                [LYToast showToast:@"发送成功！请等待大师解卦"];
+                [wself dismiss];
+            } failure:^(NSString* errmsg) {
+                [_roundView pause];
+                [LYToast showToast:errmsg];
+                [self endSending];
+            }];
+        }
+        else
+        {
+            NSLog(@"error for uid nil，to login");
+            [self toLoginPage];
+        }
     }
 
 }
 
-//信息全部采集，开始算
-- (void)beginSuan
+- (void)beginSending
 {
-    
+    [_segmentControl setEnabled:NO];
+    [questionText setEnabled:NO];
+    [nianTextField setEnabled:NO];
+    [yueTextField setEnabled:NO];
+    [riTextField setEnabled:NO];
+    [shiTextField setEnabled:NO];
+    [helpButton setEnabled:NO];
+    [startButton setEnabled:NO];
+}
+- (void)endSending
+{
+    [_segmentControl setEnabled:YES];
+    [questionText setEnabled:YES];
+    [nianTextField setEnabled:YES];
+    [yueTextField setEnabled:YES];
+    [riTextField setEnabled:YES];
+    [shiTextField setEnabled:YES];
+    [helpButton setEnabled:YES];
+    [startButton setEnabled:YES];
+}
+
+
+//跳转到login界面
+- (void)toLoginPage
+{
+    [self showDetailViewController:[self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LYLoginViewController"] sender:self];
 }
 
 - (void)QiGuaAlertViewResult:(NSArray *)arr
@@ -258,6 +303,7 @@ static bool isfirsttime=true;
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex == 1) {
+        [self.view endEditing:YES];
         [self showAlertView];
     }
 }

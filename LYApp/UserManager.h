@@ -8,7 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface UserManager : NSObject
+static NSString *kuserid  = @"userid";
+static NSString *kusername = @"username";
+static NSString *kgender     = @"gender";
+static NSString *knickname      = @"nickname";
+static NSString *kblocked      = @"blocked";
+
+@interface UserManager : NSObject <NSCoding>
 
 @property (nonatomic,strong)NSString *userid;
 @property (nonatomic,strong)NSString *username;
@@ -18,7 +24,8 @@
 
 
 
-
++ (BOOL)archiveUserManager:(UserManager *)usermanager;
++ (UserManager *)unarchiveUserManager;
 
 + (instancetype)defaultManager;
 

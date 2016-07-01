@@ -23,7 +23,7 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 }
 #endif
 
-#define kHostName @"http://10.19.75.127"
+#define kHostName @"http://10.17.20.64"
 
 //frame
 #define KScreenWidth            [[UIScreen mainScreen] bounds].size.width

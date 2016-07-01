@@ -59,12 +59,12 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LYApp/LYRegisterViewController.m"
-            timestampString = "488967737.405154"
+            filePath = "LYApp/LYLoginViewController.m"
+            timestampString = "489051885.194442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "59"
-            endingLineNumber = "59"
+            startingLineNumber = "115"
+            endingLineNumber = "115"
             landmarkName = "-handleAction:"
             landmarkType = "5">
          </BreakpointContent>
@@ -75,13 +75,13 @@
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "LYApp/LYLoginViewController.m"
-            timestampString = "488971379.134861"
+            filePath = "LYApp/Http/HttpUtil.m"
+            timestampString = "489053176.347099"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "77"
-            endingLineNumber = "77"
-            landmarkName = "-handleAction:"
+            startingLineNumber = "104"
+            endingLineNumber = "104"
+            landmarkName = "+doLoginWithUsername:PW:success:failure:"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -92,11 +92,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "LYApp/LYLoginViewController.m"
-            timestampString = "488971379.134861"
+            timestampString = "489051885.194442"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "-handleAction:"
             landmarkType = "5">
          </BreakpointContent>

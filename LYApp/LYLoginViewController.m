@@ -37,6 +37,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     baseW.constant = KScreenWidth+5;
     loginButton.layer.cornerRadius = loginButton.frame.size.height/2.0;
     [self startRotation:NO];
@@ -45,6 +46,14 @@
     username.text = @"15652285555";
     password.text = @"111111";
     // Do any additional setup after loading the view.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [super viewDidAppear:animated];
+    if ([UserManager defaultManager]) {
+        [self dismiss];
+    }
 }
 
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
@@ -57,7 +66,7 @@
     [self.view endEditing:YES];
 
     if (sender == _backButton) {
-        [self dismissViewControllerAnimated:YES completion:nil];
+        [self dismiss];
     }
     else if(sender == forgetPassword)
     {
@@ -74,11 +83,32 @@
                     NSString *errorno = json[@"errno"];
                     if ([errorno intValue]==0) {
                         UserManager *manager= [UserManager defaultManager];
-                        manager.userid = json[@"uid"];
-                        manager.username = json[@"username"];
-                        manager.gender = json[@"gender"];
-                        manager.nickname = json[@"nickname"];
-                        manager.blocked = json[@"blocked"];
+                        NSArray *datalist = json[@"data"];
+                        if (datalist && datalist.count>0) {
+                            NSDictionary *data = [datalist lastObject];
+                            if (data) {
+                                manager.userid = data[@"uid"];
+                                manager.username = data[@"username"];
+                                manager.gender = data[@"gender"];
+                                manager.nickname = data[@"nickname"];
+                                manager.blocked = data[@"blocked"];
+                                BOOL archived = [UserManager archiveUserManager:manager];
+                                if (!archived) {
+                                    NSLog(@"archive usernanager fail for login");
+                                }
+                                [self dismiss];
+                            }
+                            else
+                            {
+                                NSLog(@"sfdasfasfasdf data nil ");
+                                [LYToast showToast:@"服务器错误,请联系管理员(10090)"];
+                            }
+                        }
+                        else
+                        {
+                            NSLog(@"sfdasfasfasdf datalist nil ");
+                            [LYToast showToast:@"服务器错误,请联系管理员(10091)"];
+                        }
                     }
                     else
                     {
@@ -88,10 +118,9 @@
                 else
                     NSLog(@"resultsdfsfdaaa = %@",json);
 
-            } failure:^(NSError *error) {
-                NSLog(@"error = %@",error);
+            } failure:^(NSString* errmsg) {
                 [self endLogin];
-                [LYToast showToast:error.localizedDescription];
+                [LYToast showToast:errmsg];
             }];
         }
         else
@@ -104,6 +133,11 @@
         [self showDetailViewController:[self.storyboard instantiateViewControllerWithIdentifier:@"LYRegisterViewController"] sender:self];
 
     }
+}
+
+- (void)dismiss
+{
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex

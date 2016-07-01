@@ -15,11 +15,11 @@
 
 + (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw
                             success:(void (^)(id json))success
-                            failure:(void (^)(NSError*))failure;
+                            failure:(void (^)(NSString*errmsg))failure;
 
 + (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw
                             success:(void (^)(id json))success
-                            failure:(void (^)(NSError*))failure;
+                            failure:(void (^)(NSString* errmsg))failure;
 
  
 + (void)doUploadGuaWithQuestion:(NSString *)question
@@ -27,7 +27,7 @@
                        gua_date:(NSString *)date
                         gua_gua:(NSString *)gua
                         success:(void (^)(id))success
-                        failure:(void (^)(NSError *))failure;
+                        failure:(void (^)(NSString* errmsg))failure;
 
 
 

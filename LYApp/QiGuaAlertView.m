@@ -118,7 +118,7 @@
                                              Yao5:[self isYangWithIntB:__gua[4]]
                                              Yao6:[self isYangWithIntB:__gua[5]]];
     
-    [self.delegate QiGuaAlertViewResult:[NSArray arrayWithObjects:@(guaindex),@(bianguaindex),[__gua copy], nil]];
+    [self.delegate QiGuaAlertViewResult:[NSArray arrayWithObjects:@(guaindex),@(bianguaindex),[__gua componentsJoinedByString:@":"], nil]];
     [self dismiss];
 }
 
