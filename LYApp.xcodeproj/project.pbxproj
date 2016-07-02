@@ -29,6 +29,7 @@
 		95016FD91D24C5B0003460ED /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FC81D24C5B0003460ED /* UIProgressView+AFNetworking.m */; };
 		95016FDA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FCA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m */; };
 		95016FDB1D24C5B0003460ED /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FCC1D24C5B0003460ED /* UIWebView+AFNetworking.m */; };
+		957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7191D274D0500F17E7A /* LYStudyViewController.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* ViewController.m */; };
@@ -47,7 +48,6 @@
 		95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */; };
 		95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E01D1A9F1300C39546 /* JingRoundView.m */; };
 		95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */; };
-		95EC49EA1D1BBB7100C39546 /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */; };
 		95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */; };
 		95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F01D1BBFB100C39546 /* LYRegisterViewController.m */; };
 		95EC49F61D1BEAFE00C39546 /* LYProtocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F51D1BEAFE00C39546 /* LYProtocalViewController.m */; };
@@ -118,6 +118,8 @@
 		95016FCA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		95016FCB1D24C5B0003460ED /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		95016FCC1D24C5B0003460ED /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		957FA7181D274D0500F17E7A /* LYStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYStudyViewController.h; path = Learn/LYStudyViewController.h; sourceTree = "<group>"; };
+		957FA7191D274D0500F17E7A /* LYStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYStudyViewController.m; path = Learn/LYStudyViewController.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -155,8 +157,6 @@
 		95EC49E11D1A9F1300C39546 /* JingRoundView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JingRoundView.h; sourceTree = "<group>"; };
 		95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYMyHistoryViewController.h; sourceTree = "<group>"; };
 		95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYMyHistoryViewController.m; sourceTree = "<group>"; };
-		95EC49E81D1BBB7100C39546 /* LYStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYStudyViewController.h; sourceTree = "<group>"; };
-		95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYStudyViewController.m; sourceTree = "<group>"; };
 		95EC49EC1D1BBFA400C39546 /* LYLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYLoginViewController.h; sourceTree = "<group>"; };
 		95EC49ED1D1BBFA400C39546 /* LYLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYLoginViewController.m; sourceTree = "<group>"; };
 		95EC49EF1D1BBFB100C39546 /* LYRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LYRegisterViewController.h; sourceTree = "<group>"; };
@@ -377,8 +377,8 @@
 				95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */,
 				95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */,
 				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
-				95EC49E81D1BBB7100C39546 /* LYStudyViewController.h */,
-				95EC49E91D1BBB7100C39546 /* LYStudyViewController.m */,
+				957FA7181D274D0500F17E7A /* LYStudyViewController.h */,
+				957FA7191D274D0500F17E7A /* LYStudyViewController.m */,
 			);
 			name = "页面";
 			sourceTree = "<group>";
@@ -559,12 +559,12 @@
 				95016FD61D24C5B0003460ED /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
 				95016FDA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m in Sources */,
-				95EC49EA1D1BBB7100C39546 /* LYStudyViewController.m in Sources */,
 				95016FD21D24C5B0003460ED /* AFURLSessionManager.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */,
 				95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
+				957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */,
 				95016F9C1D24B7F5003460ED /* LYToast.m in Sources */,
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
 				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,

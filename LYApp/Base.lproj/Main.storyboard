@@ -575,41 +575,95 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="xSj-Y5-HPo">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="LYLearnCell" textLabel="acn-yr-2JW" detailTextLabel="wIK-K0-qY9" style="IBUITableViewCellStyleSubtitle" id="en5-Ta-T1f">
+                                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="en5-Ta-T1f" id="d4E-VM-oXf">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="acn-yr-2JW">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    </variation>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="wIK-K0-qY9">
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <nil key="highlightedColor"/>
+                                                    <variation key="widthClass=compact">
+                                                        <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    </variation>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="tTz-Uv-uvq" id="y3N-kU-4Zf"/>
+                                    <outlet property="delegate" destination="tTz-Uv-uvq" id="x5F-oU-HXq"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="bbU-z0-T0S" firstAttribute="top" secondItem="YIo-V5-ay8" secondAttribute="topMargin" id="9Rg-ZX-hco"/>
                             <constraint firstAttribute="trailingMargin" secondItem="bbU-z0-T0S" secondAttribute="trailing" constant="-20" id="COn-mi-gfz"/>
                             <constraint firstItem="bbU-z0-T0S" firstAttribute="leading" secondItem="YIo-V5-ay8" secondAttribute="leadingMargin" constant="-20" id="LOA-t0-aQw"/>
+                            <constraint firstItem="iZV-qD-bqd" firstAttribute="top" secondItem="xSj-Y5-HPo" secondAttribute="bottom" id="ORM-FP-3Sd"/>
+                            <constraint firstItem="xSj-Y5-HPo" firstAttribute="leading" secondItem="YIo-V5-ay8" secondAttribute="leading" id="bYR-3g-kcX"/>
+                            <constraint firstItem="xSj-Y5-HPo" firstAttribute="top" secondItem="ZVe-KE-gwR" secondAttribute="bottom" constant="-2" id="dkG-Of-ZtL">
+                                <variation key="widthClass=compact" constant="0.0"/>
+                            </constraint>
+                            <constraint firstAttribute="trailing" secondItem="xSj-Y5-HPo" secondAttribute="trailing" id="wLR-wQ-TF5"/>
                         </constraints>
                         <variation key="default">
                             <mask key="subviews">
                                 <exclude reference="bbU-z0-T0S"/>
+                                <exclude reference="xSj-Y5-HPo"/>
                             </mask>
                             <mask key="constraints">
                                 <exclude reference="9Rg-ZX-hco"/>
                                 <exclude reference="COn-mi-gfz"/>
                                 <exclude reference="LOA-t0-aQw"/>
+                                <exclude reference="bYR-3g-kcX"/>
+                                <exclude reference="dkG-Of-ZtL"/>
+                                <exclude reference="wLR-wQ-TF5"/>
+                                <exclude reference="ORM-FP-3Sd"/>
                             </mask>
                         </variation>
                         <variation key="widthClass=compact">
                             <mask key="subviews">
                                 <include reference="bbU-z0-T0S"/>
+                                <include reference="xSj-Y5-HPo"/>
                             </mask>
                             <mask key="constraints">
                                 <include reference="9Rg-ZX-hco"/>
                                 <include reference="COn-mi-gfz"/>
                                 <include reference="LOA-t0-aQw"/>
+                                <include reference="bYR-3g-kcX"/>
+                                <include reference="dkG-Of-ZtL"/>
+                                <include reference="wLR-wQ-TF5"/>
+                                <include reference="ORM-FP-3Sd"/>
                             </mask>
                         </variation>
                     </view>
                     <connections>
                         <outlet property="_backButton" destination="XcI-kU-eKA" id="Rgl-Dh-9kR"/>
+                        <outlet property="tableView" destination="xSj-Y5-HPo" id="Hdg-Fe-dXB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ne0-J9-jV7" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-385.5" y="542"/>
+            <point key="canvasLocation" x="-418.5" y="478"/>
         </scene>
         <!--My History View Controller-->
         <scene sceneID="9af-zV-nsx">
