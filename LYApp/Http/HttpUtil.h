@@ -30,8 +30,8 @@
                         failure:(void (^)(NSString* errmsg))failure;
 
 
-
-
++ (void)doLoadGuaItemsSuccess:(void (^)(id))success
+                      failure:(void (^)(NSString* errmsg))failure;
 
 
 

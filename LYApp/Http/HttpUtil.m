@@ -11,6 +11,29 @@
 
 @implementation HttpUtil
 
++ (void)doLoadGuaItemsSuccess:(void (^)(id))success
+                      failure:(void (^)(NSString* errmsg))failure
+{
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
+                    kHostName];
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:api parameters:nil progress:^(NSProgress * _Nonnull uploadProgress){
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error=%@",error);
+        if (error.code==3840) {
+            failure(@"服务器错误,请联系管理员！");
+        }
+        else if (error.code==-1001) {
+            failure(@"请求超时,请过会重试");
+        }
+        else
+            failure(error.localizedDescription);
+    }];
+}
+
 + (void)doUploadGuaWithQuestion:(NSString *)question
                      gua_gender:(NSString *)gender
                        gua_date:(NSString *)date

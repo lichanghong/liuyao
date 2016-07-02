@@ -8,6 +8,7 @@
 
 #import "AppDelegate.h"
 #import "UserManager.h"
+#import <JSPatch/JSPatch.h>
 
 @interface AppDelegate ()
 
@@ -18,8 +19,11 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+//    [JSPatch startWithAppKey:@"f7a5f0d7916932c1"];
+//    [JSPatch sync];
     
+    [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
+ 
     return YES;
 }
 
@@ -39,6 +43,8 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [JSPatch sync];
+
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
