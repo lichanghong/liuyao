@@ -51,7 +51,7 @@
 - (void)viewDidAppear:(BOOL)animated
 {
     [super viewDidAppear:animated];
-    if ([UserManager defaultManager]) {
+    if ([UserManager defaultManager].userid) {
         [self dismiss];
     }
 }

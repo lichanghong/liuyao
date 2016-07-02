@@ -26,6 +26,7 @@
     [dic setObject:date?date:@""                forKey:@"g_date"];
     [dic setObject:gua?gua:@""                  forKey:@"g_gua"];
     
+    NSLog(@"dic=%@",dic);
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaupload",
                     kHostName];
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
@@ -38,7 +39,7 @@
         if (error.code==3840) {
             failure(@"服务器错误,请联系管理员！");
         }
-        if (error.code==-1001) {
+        else if (error.code==-1001) {
             failure(@"请求超时,请过会重试");
         }
         else
@@ -68,7 +69,7 @@
         if (error.code==3840) {
             failure(@"服务器错误,请联系管理员！");
         }
-        if (error.code==-1001) {
+        else if (error.code==-1001) {
             failure(@"请求超时,请过会重试");
         }
         else
@@ -97,7 +98,7 @@
         if (error.code==3840) {
             failure(@"服务器错误,请联系管理员！");
         }
-        if (error.code==-1001) {
+        else if (error.code==-1001) {
             failure(@"请求超时,请过会重试");
         }
         else

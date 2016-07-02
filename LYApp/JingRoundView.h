@@ -40,6 +40,7 @@
 - (void)forcePlay;
 //暂停
 -(void) pause;
+- (void)forceStop;
 
 - (void)changeStyleWithButton;
 

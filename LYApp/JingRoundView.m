@@ -201,5 +201,9 @@
 {
     [self startRotation];
 }
+- (void)forceStop
+{
+    [self pauseRotation];
+}
 
 @end

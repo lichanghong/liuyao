@@ -96,14 +96,6 @@
      // Do any additional setup after loading the view.
 }
 
--(void) startRotation
-{
-    JingRoundView *roundView = [[JingRoundView alloc]initWithFrame:CGRectMake(0, 0, 54, 54)];
-    roundView.roundImage = [UIImage imageNamed:@"qiguaBtn"];
-    roundView.isPlay = YES;
-    [roundViewContent addSubview:roundView];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
@@ -129,8 +121,26 @@ static bool isfirsttime=true;
                 if (questionText.text.length>=2) {
                     if (isfirsttime) {
                         isfirsttime = false;
-                        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提醒" message:@"请确认起卦时间是正确的" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
-                        [alert show];
+                        [self.view endEditing:YES];
+                        
+                        if ([UIAlertController class]) {
+                            UIAlertController *alert  = [UIAlertController alertControllerWithTitle:@"提醒"
+                                                                                            message:@"请确认起卦时间是正确的"
+                                                                                     preferredStyle:UIAlertControllerStyleAlert];
+                            UIAlertAction *cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil];
+                            [alert addAction:cancel];
+                            UIAlertAction *confirm = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
+//                                [self.view endEditing:YES];
+                                [self showAlertView];
+                            }];
+                            [alert addAction:confirm];
+                            [self presentViewController:alert animated:YES completion:nil];
+                        }else{
+                            
+                            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"提醒" message:@"请确认起卦时间是正确的" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+                            [alert show];
+                        }
+
                     }
                     else
                     {
@@ -174,7 +184,7 @@ static bool isfirsttime=true;
 }
 - (void)alertErrorWithMessage:(NSString *)msg
 {
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:msg delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"错误" message:msg delegate:nil cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
     [alert show];
 }
 
@@ -244,14 +254,25 @@ static bool isfirsttime=true;
                                      gua_date:date
                                       gua_gua:[_alertResult componentsJoinedByString:@":"]
                                       success:^(id data) {
-                [self endSending];
-                [LYToast showToast:@"发送成功！请等待大师解卦"];
-                [wself dismiss];
-            } failure:^(NSString* errmsg) {
-                [_roundView pause];
-                [LYToast showToast:errmsg];
-                [self endSending];
-            }];
+                                          NSString *errorno = data[@"errno"];
+                                          if ([errorno intValue]==0) {
+                                              [LYToast showToast:@"发送成功！请等待大师解卦"];
+                                              [wself dismiss];
+                                          }
+                                          else
+                                          {
+                                              [_roundView forceStop];
+                                              [LYToast showToast:data[@"errmsg"]];
+                                              [startButton setTitle:@"重新发送" forState:UIControlStateNormal];
+                                          }
+                                          [wself endSending];
+                                          
+                                      } failure:^(NSString* errmsg) {
+                                          [_roundView forceStop];
+                                          [LYToast showToast:errmsg];
+                                          [wself endSending];
+                                          [startButton setTitle:@"重新发送" forState:UIControlStateNormal];
+                                      }];
         }
         else
         {
