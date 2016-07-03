@@ -14,5 +14,8 @@
 
 
 @property (strong, nonatomic) IBOutlet UILabel *detailLabel;
+@property (strong, nonatomic) IBOutlet UIImageView *verifyImage;
+
+
 
 @end

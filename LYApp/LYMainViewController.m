@@ -28,7 +28,8 @@
 
 - (IBAction)handleAction:(id)sender {
     if (sender == button3) {
-        if (false) { //已经登录
+        UserManager *manager= [UserManager defaultManager];
+        if (manager.userid) {//已经登录
             [self performSegueWithIdentifier:@"main_to_history" sender:nil];
         }
         else

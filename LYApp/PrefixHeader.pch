@@ -24,8 +24,9 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 #endif
 
 //#define kHostName @"http://10.17.20.64"
-#define kHostName @"http://10.19.75.127"
-#define kHostName @"http://192.168.0.17"
+//#define kHostName @"http://10.19.75.127"
+//#define kHostName @"http://192.168.0.17"
+#define kHostName @"http://192.168.1.115"
 
 //frame
 #define KScreenWidth            [[UIScreen mainScreen] bounds].size.width
@@ -35,7 +36,9 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 #define ViewH(v)                (v).frame.size.height
 #define MinX(v)                 CGRectGetMinX((v).frame)
 #define MinY(v)                 CGRectGetMinY((v).frame)
-
+#define MaxX(v)                 CGRectGetMaxX((v).frame)
+#define MaxY(v)                 CGRectGetMaxY((v).frame)
+#define setY(v,y)   v.frame=CGRectMake(v.frame.origin.x, y , v.frame.size.width, v.frame.size.height)
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 

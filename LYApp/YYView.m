@@ -10,9 +10,7 @@
 
 @implementation YYView
 {
-    UIView *yangV;
-    UIView *yinV1;
-    UIView *yinV2;
+    UIImageView *yao;
     
 }
 
@@ -20,74 +18,35 @@
 {
     self = [super init];
     if (self) {
-        yangV = [self createV];
-        yinV1 = [self createV];
-        yinV2 = [self createV];
-        [self addSubview:yangV];
-        [self addSubview:yinV1];
-        [self addSubview:yinV2];
-        self.isYang = true;
-       
+        yao = [[UIImageView alloc]initWithFrame:CGRectMake(0, 0, 12, 12)];
+        yao.backgroundColor = [UIColor clearColor];
+        [self addSubview:yao];
+        self.state = YYView_Laoyang;
     }
     return self;
 }
 
-
-- (UIView *)createV
+- (void)setState:(YYViewState)state
 {
-    UIView *v = [[UIView alloc]init];
-    v.backgroundColor = [UIColor blackColor];
-    return v;
-}
+    switch (state) {
+        case YYView_Yin:
+            yao.image = [UIImage imageNamed:@"yin"];
+            break;
+        case YYView_Yang:
+            yao.image = [UIImage imageNamed:@"yang"];
 
-- (void)changeState
-{
-    if (self.isYang) {
-        self.isYang = NO;
+            break;
+        case YYView_Laoyin:
+            yao.image = [UIImage imageNamed:@"laoyin"];
+
+            break;
+        case YYView_Laoyang:
+            yao.image = [UIImage imageNamed:@"laoyang"];
+
+            break;
+        default:
+            break;
     }
-    else self.isYang = YES;
-}
-
-- (void)setIsYang:(BOOL)isYang
-{
-    _isYang = isYang;
-    if (isYang) {
-        [yinV1 setHidden:YES];
-        [yinV2 setHidden:YES];
-        [yangV setHidden:NO];
-    }
-    else
-    {
-        [yinV1 setHidden:NO];
-        [yinV2 setHidden:NO];
-        [yangV setHidden:YES];
-    }
-}
-
-- (void)changeToBianYao:(BOOL)isbian
-{
-    if (isbian) {
-        yinV1.backgroundColor = [UIColor blueColor];
-        yinV2.backgroundColor = [UIColor blueColor];
-        yangV.backgroundColor = [UIColor blueColor];
-    }
-    else
-    {
-        yinV1.backgroundColor = [UIColor blackColor];
-        yinV2.backgroundColor = [UIColor blackColor];
-        yangV.backgroundColor = [UIColor blackColor];
-
-    }
-}
-
-
-- (void)layoutSubviews
-{
-    CGFloat height = self.frame.size.height;
-    CGFloat width = self.frame.size.width;
-    yangV.frame = CGRectMake(0, 0, width, height);
-    yinV1.frame = CGRectMake(0, 0, (width-10)/2.0, height);
-    yinV2.frame = CGRectMake((width-10)/2.0+10, 0, (width-10)/2.0, height);
 }
 
 /*

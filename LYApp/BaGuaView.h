@@ -7,31 +7,53 @@
 //
 
 #import <UIKit/UIKit.h>
-
-typedef enum : NSUInteger {
-    selectOne,
-    selectTwo,
-    selectThree,
-    selectFore,
-    selectFive,
-    selectSix,
-} SelectType;
-
-@protocol BaGuaViewDelegate <NSObject>
-
-- (void)BaGuaView:(id)sender ActionType:(SelectType)type;
-
-@end
-
+#import "YYView.h"
 
 
 @interface BaGuaView : UIView
 
-@property(assign)BOOL isbianyao;
-@property(nonatomic,weak)id<BaGuaViewDelegate>delegate;
+@property (nonatomic,strong)NSDictionary *guaItem;
+
+@property (nonatomic,strong)NSArray *liushenArr;//六神
 
 
-- (void)changeAtIndex:(int)index;
-- (void)clearBianAtIndex:(int)index;
+@property (nonatomic,strong) YYView *view1;
+@property (nonatomic,strong) YYView *view2;
+@property (nonatomic,strong) YYView *view3;
+@property (nonatomic,strong) YYView *view4;
+@property (nonatomic,strong) YYView *view5;
+@property (nonatomic,strong) YYView *view6;
+ 
+
+@property (strong, nonatomic)  UILabel *liushou1;
+@property (strong, nonatomic)  UILabel *liushou2;
+@property (strong, nonatomic)  UILabel *liushou3;
+@property (strong, nonatomic)  UILabel *liushou4;
+@property (strong, nonatomic)  UILabel *liushou5;
+@property (strong, nonatomic)  UILabel *liushou6;
+
+
+
+@property (strong, nonatomic)  UILabel *wuxing1;
+@property (strong, nonatomic)  UILabel *wuxing2;
+@property (strong, nonatomic)  UILabel *wuxing3;
+@property (strong, nonatomic)  UILabel *wuxing4;
+@property (strong, nonatomic)  UILabel *wuxing5;
+@property (strong, nonatomic)  UILabel *wuxing6;
+
+
+@property (strong, nonatomic)  UILabel *shiying1;
+@property (strong, nonatomic)  UILabel *shiying2;
+@property (strong, nonatomic)  UILabel *shiying3;
+@property (strong, nonatomic)  UILabel *shiying4;
+@property (strong, nonatomic)  UILabel *shiying5;
+@property (strong, nonatomic)  UILabel *shiying6;
+
+@property (strong, nonatomic)  UILabel *bianWuxing;
+@property (strong, nonatomic)  UILabel *bianWuxing1;
+@property (strong, nonatomic)  UILabel *bianWuxing2;
+@property (strong, nonatomic)  UILabel *bianWuxing3;
+@property (strong, nonatomic)  UILabel *bianWuxing4;
+@property (strong, nonatomic)  UILabel *bianWuxing5;
 
 @end

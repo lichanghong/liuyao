@@ -8,8 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
+@interface GuaItemDetailViewController : UIViewController
 
+@property (nonatomic,strong)NSDictionary *guaItem;
+
+@property (nonatomic,assign)BOOL isyourself;
 
 @end
 

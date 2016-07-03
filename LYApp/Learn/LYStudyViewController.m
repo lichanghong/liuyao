@@ -10,10 +10,10 @@
 #import "HttpUtil.h"
 #import "GuaManager.h"
 #import "LYTitleCell.h"
+#import "GuaItemDetailViewController.h"
 
 @interface LYStudyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
 
 
 @end
@@ -88,6 +88,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    GuaItemDetailViewController *detailVC =[[GuaItemDetailViewController alloc]init];
+    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
+    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -103,13 +106,14 @@
     NSDictionary *guaNames = [[GuaManager shareManager].guaNames objectAtIndex:guaindex];
     NSDictionary *bguaNames = [[GuaManager shareManager].guaNames objectAtIndex:bianguaindex];
     NSArray      *timestr = [dic[@"g_date"] componentsSeparatedByString:@":"];
-    NSString *sex = [dic[@"g_gender"] isEqualToString:@"0"]?@"先生":@"女士";
+    NSString *sex = [dic[@"g_gender"] isEqualToString:@"1"]?@"先生":@"女士";
     cell.titleLabel.text = [NSString stringWithFormat:@"一位%@ 问:%@",sex,dic[@"g_question"]];
 
     if (timestr.count > 3 && [guaNames allKeys].count>0) {
         NSString *time=   [NSString stringWithFormat:@"%@年%@月%@日%@时",timestr[0],timestr[1],timestr[2],timestr[3]];
         cell.detailLabel.text = [NSString stringWithFormat:@"%@起卦  %@ 之 %@ 卦",time,                                                    [[guaNames allKeys]lastObject],[[bguaNames allKeys]lastObject]];
     }
+    
     return cell;
 }
 
