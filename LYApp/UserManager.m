@@ -49,6 +49,22 @@
     self.blocked = [aDecoder decodeObjectForKey:kblocked];
     return self;
 }
++ (bool)clearData
+{
+    UserManager *manager= [UserManager defaultManager];
+    manager.userid = nil;
+    manager.username = nil;
+    manager.gender = nil;
+    manager.nickname = nil;
+    manager.blocked = nil;
+    NSError *err;
+    [[NSFileManager defaultManager]removeItemAtPath:[UserManager savedFilePath] error:&err];
+    if (err) {
+        NSLog(@"cleardata error %@",err);
+        return NO;
+    }
+    return YES;
+}
 
 +(instancetype)defaultManager
 {

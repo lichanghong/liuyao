@@ -36,6 +36,8 @@
 		9579E2201D291DF400F499DD /* LYSolveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9579E21E1D291DF400F499DD /* LYSolveCell.m */; };
 		9579E2211D291DF400F499DD /* LYSolveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9579E21F1D291DF400F499DD /* LYSolveCell.xib */; };
 		957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7191D274D0500F17E7A /* LYStudyViewController.m */; };
+		957FA71E1D2A053500F17E7A /* LYSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA71D1D2A053500F17E7A /* LYSettingViewController.m */; };
+		957FA7221D2A0B8900F17E7A /* LYSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7211D2A0B8900F17E7A /* LYSettingCell.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
@@ -115,6 +117,10 @@
 		9579E21F1D291DF400F499DD /* LYSolveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LYSolveCell.xib; path = Learn/LYSolveCell.xib; sourceTree = "<group>"; };
 		957FA7181D274D0500F17E7A /* LYStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYStudyViewController.h; path = Learn/LYStudyViewController.h; sourceTree = "<group>"; };
 		957FA7191D274D0500F17E7A /* LYStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYStudyViewController.m; path = Learn/LYStudyViewController.m; sourceTree = "<group>"; };
+		957FA71C1D2A053500F17E7A /* LYSettingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYSettingViewController.h; path = setting/LYSettingViewController.h; sourceTree = "<group>"; };
+		957FA71D1D2A053500F17E7A /* LYSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYSettingViewController.m; path = setting/LYSettingViewController.m; sourceTree = "<group>"; };
+		957FA7201D2A0B8900F17E7A /* LYSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYSettingCell.h; path = setting/LYSettingCell.h; sourceTree = "<group>"; };
+		957FA7211D2A0B8900F17E7A /* LYSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYSettingCell.m; path = setting/LYSettingCell.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -265,6 +271,25 @@
 			path = "Http/UIKit+AFNetworking";
 			sourceTree = "<group>";
 		};
+		957FA71B1D2A050000F17E7A /* 设置 */ = {
+			isa = PBXGroup;
+			children = (
+				957FA71F1D2A0B7100F17E7A /* View */,
+				957FA71C1D2A053500F17E7A /* LYSettingViewController.h */,
+				957FA71D1D2A053500F17E7A /* LYSettingViewController.m */,
+			);
+			name = "设置";
+			sourceTree = "<group>";
+		};
+		957FA71F1D2A0B7100F17E7A /* View */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7201D2A0B8900F17E7A /* LYSettingCell.h */,
+				957FA7211D2A0B8900F17E7A /* LYSettingCell.m */,
+			);
+			name = View;
+			sourceTree = "<group>";
+		};
 		95ACB34C1CE5D05100062FCA = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +373,7 @@
 		95EC49CA1D17FB5D00C39546 /* 页面 */ = {
 			isa = PBXGroup;
 			children = (
+				957FA71B1D2A050000F17E7A /* 设置 */,
 				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
 				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
 				95EC49EB1D1BBF9700C39546 /* 登录注册 */,
@@ -501,6 +527,7 @@
 				95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */,
 				95016F1F1D23D1D4003460ED /* UserManager.m in Sources */,
 				95016FCE1D24C5B0003460ED /* AFNetworkReachabilityManager.m in Sources */,
+				957FA71E1D2A053500F17E7A /* LYSettingViewController.m in Sources */,
 				95016FD31D24C5B0003460ED /* AFAutoPurgingImageCache.m in Sources */,
 				95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */,
 				95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */,
@@ -519,6 +546,7 @@
 				95016F991D24B7C0003460ED /* Toast+UIView.m in Sources */,
 				95016FDB1D24C5B0003460ED /* UIWebView+AFNetworking.m in Sources */,
 				95ACB35A1CE5D05100062FCA /* main.m in Sources */,
+				957FA7221D2A0B8900F17E7A /* LYSettingCell.m in Sources */,
 				95016FD11D24C5B0003460ED /* AFURLResponseSerialization.m in Sources */,
 				95EC49F61D1BEAFE00C39546 /* LYProtocalViewController.m in Sources */,
 			);
@@ -635,7 +663,7 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MoBiShenQi (Beijing) IT Technology Co., Ltd.";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -657,8 +685,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: MoBiShenQi (Beijing) IT Technology Co., Ltd.";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LYApp",

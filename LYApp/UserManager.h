@@ -30,4 +30,7 @@ static NSString *kblocked      = @"blocked";
 + (instancetype)defaultManager;
 
 
++ (bool)clearData;
+
+
 @end

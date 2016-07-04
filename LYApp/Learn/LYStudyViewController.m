@@ -15,6 +15,7 @@
 @interface LYStudyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 
+@property (strong,nonatomic)    UIActivityIndicatorView *activityIndicator;
 
 @end
 
@@ -27,6 +28,11 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_tableView setTableHeaderView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0,1)]];
+    _activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _activityIndicator.frame = CGRectMake(0, 0, 100, 100);
+    _activityIndicator.center = self.view.center;
+    [self.tableView addSubview:_activityIndicator];
+    
     [self loadData];
     _guaItems = [NSMutableArray array];
     // Do any additional setup after loading the view.
@@ -34,8 +40,10 @@
 
 - (void)loadData
 {
+    [_activityIndicator startAnimating];
     __weak LYStudyViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+        [wself.activityIndicator stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
@@ -55,6 +63,7 @@
             NSLog(@"resultsdfsfdaaa = %@",json);
     } failure:^(NSString *errmsg) {
         NSLog(@"lll = %@",errmsg);
+        [wself.activityIndicator stopAnimating];
         [LYToast showToast:errmsg];
     }];
 }

@@ -14,6 +14,7 @@
 
 @interface LYMyHistoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic)    UIActivityIndicatorView *activityIndicator;
 
 
 @end
@@ -22,7 +23,6 @@
 {
     __weak IBOutlet UIButton *_backButton;
     NSMutableArray    *_guaItems;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,8 +73,10 @@
 }
 - (void)loadData
 {
+    [_activityIndicator startAnimating];
     __weak LYMyHistoryViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+        [wself.activityIndicator stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
@@ -94,6 +96,7 @@
             NSLog(@"LYMyHistoryViewControllererr = %@",json);
     } failure:^(NSString *errmsg) {
         NSLog(@"sdfsfffaa = %@",errmsg);
+        [wself.activityIndicator stopAnimating];
         [LYToast showToast:errmsg];
     }];
 }
@@ -101,10 +104,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_tableView setTableHeaderView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0,1)]];
-
-    [self loadData];
-
     _guaItems = [NSMutableArray array];
+    _activityIndicator = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    _activityIndicator.frame = CGRectMake(0, 0, 100, 100);
+    _activityIndicator.center = self.view.center;
+    [self.tableView addSubview:_activityIndicator];
+    
+    [self loadData];
 
     // Do any additional setup after loading the view.
 }
