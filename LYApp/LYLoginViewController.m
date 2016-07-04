@@ -107,7 +107,7 @@
                         else
                         {
                             NSLog(@"sfdasfasfasdf datalist nil ");
-                            [LYToast showToast:@"服务器错误,请联系管理员(10091)"];
+                            [LYToast showToast:@"用户不存在！您是否已注册？"];
                         }
                     }
                     else

@@ -7,12 +7,17 @@
 //
 
 #import <UIKit/UIKit.h>
+
+typedef enum : NSUInteger {
+    YYView_Yin,
+    YYView_Yang,
+    YYView_Laoyin,
+    YYView_Laoyang
+} YYViewState;
 //阴阳视图
 @interface YYView : UIView
+@property (nonatomic,assign)YYViewState state;
+
 @property (nonatomic,assign)BOOL isYang;
-
-- (void)changeState;
-
-- (void)changeToBianYao:(BOOL)isbian;
 
 @end

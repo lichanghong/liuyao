@@ -247,12 +247,13 @@ static bool isfirsttime=true;
             [startButton setTitle:@"正在发送..." forState:UIControlStateNormal];
             [_roundView forcePlay];
             __weak LYClientViewController *wself = self;
+            NSString *guastrresult =[_alertResult componentsJoinedByString:@":"];
             
             NSString *date =[NSString stringWithFormat:@"%@:%@:%@:%@",year,mouth,day,hour];
             [HttpUtil doUploadGuaWithQuestion:questionText.text
                                    gua_gender:_isWoman?@"0":@"1"
                                      gua_date:date
-                                      gua_gua:[_alertResult componentsJoinedByString:@":"]
+                                      gua_gua:guastrresult
                                       success:^(id data) {
                                           NSString *errorno = data[@"errno"];
                                           if ([errorno intValue]==0) {

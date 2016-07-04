@@ -29,15 +29,19 @@
 		95016FD91D24C5B0003460ED /* UIProgressView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FC81D24C5B0003460ED /* UIProgressView+AFNetworking.m */; };
 		95016FDA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FCA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m */; };
 		95016FDB1D24C5B0003460ED /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FCC1D24C5B0003460ED /* UIWebView+AFNetworking.m */; };
+		9526975B1D27A466001A6E3B /* JSPatch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9526975A1D27A466001A6E3B /* JSPatch.framework */; };
+		9526975D1D27A4D1001A6E3B /* libz.1.2.5.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 9526975C1D27A4D1001A6E3B /* libz.1.2.5.tbd */; };
+		9526975F1D27A4DA001A6E3B /* JavaScriptCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9526975E1D27A4DA001A6E3B /* JavaScriptCore.framework */; };
+		952697621D27C9D7001A6E3B /* LYTitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 952697611D27C9D7001A6E3B /* LYTitleCell.m */; };
+		9579E2201D291DF400F499DD /* LYSolveCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9579E21E1D291DF400F499DD /* LYSolveCell.m */; };
+		9579E2211D291DF400F499DD /* LYSolveCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9579E21F1D291DF400F499DD /* LYSolveCell.xib */; };
 		957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7191D274D0500F17E7A /* LYStudyViewController.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
-		95ACB3601CE5D05100062FCA /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* ViewController.m */; };
+		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
 		95ACB3631CE5D05100062FCA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3611CE5D05100062FCA /* Main.storyboard */; };
 		95ACB3651CE5D05100062FCA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3641CE5D05100062FCA /* Assets.xcassets */; };
 		95ACB3681CE5D05100062FCA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 95ACB3661CE5D05100062FCA /* LaunchScreen.storyboard */; };
-		95ACB3731CE5D05200062FCA /* LYAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3721CE5D05200062FCA /* LYAppTests.m */; };
-		95ACB37E1CE5D05200062FCA /* LYAppUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB37D1CE5D05200062FCA /* LYAppUITests.m */; };
 		95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB38C1CE5D65D00062FCA /* YYView.m */; };
 		95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3921CE5DCD500062FCA /* BaGuaView.m */; };
 		95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3951CE5E90200062FCA /* GuaManager.m */; };
@@ -53,23 +57,6 @@
 		95EC49F61D1BEAFE00C39546 /* LYProtocalViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95EC49F51D1BEAFE00C39546 /* LYProtocalViewController.m */; };
 		95EC49F81D1BEB5900C39546 /* protocal.txt in Resources */ = {isa = PBXBuildFile; fileRef = 95EC49F71D1BEB5900C39546 /* protocal.txt */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		95ACB36F1CE5D05200062FCA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95ACB34D1CE5D05100062FCA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95ACB3541CE5D05100062FCA;
-			remoteInfo = LYApp;
-		};
-		95ACB37A1CE5D05200062FCA /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 95ACB34D1CE5D05100062FCA /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 95ACB3541CE5D05100062FCA;
-			remoteInfo = LYApp;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		95016F1D1D23D1D4003460ED /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
@@ -118,22 +105,28 @@
 		95016FCA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIRefreshControl+AFNetworking.m"; sourceTree = "<group>"; };
 		95016FCB1D24C5B0003460ED /* UIWebView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIWebView+AFNetworking.h"; sourceTree = "<group>"; };
 		95016FCC1D24C5B0003460ED /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
+		9526975A1D27A466001A6E3B /* JSPatch.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = JSPatch.framework; sourceTree = "<group>"; };
+		9526975C1D27A4D1001A6E3B /* libz.1.2.5.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.1.2.5.tbd; path = usr/lib/libz.1.2.5.tbd; sourceTree = SDKROOT; };
+		9526975E1D27A4DA001A6E3B /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
+		952697601D27C9D7001A6E3B /* LYTitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYTitleCell.h; path = Learn/LYTitleCell.h; sourceTree = "<group>"; };
+		952697611D27C9D7001A6E3B /* LYTitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYTitleCell.m; path = Learn/LYTitleCell.m; sourceTree = "<group>"; };
+		9579E21D1D291DF400F499DD /* LYSolveCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYSolveCell.h; path = Learn/LYSolveCell.h; sourceTree = "<group>"; };
+		9579E21E1D291DF400F499DD /* LYSolveCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYSolveCell.m; path = Learn/LYSolveCell.m; sourceTree = "<group>"; };
+		9579E21F1D291DF400F499DD /* LYSolveCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = LYSolveCell.xib; path = Learn/LYSolveCell.xib; sourceTree = "<group>"; };
 		957FA7181D274D0500F17E7A /* LYStudyViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYStudyViewController.h; path = Learn/LYStudyViewController.h; sourceTree = "<group>"; };
 		957FA7191D274D0500F17E7A /* LYStudyViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYStudyViewController.m; path = Learn/LYStudyViewController.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		95ACB35C1CE5D05100062FCA /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		95ACB35E1CE5D05100062FCA /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		95ACB35F1CE5D05100062FCA /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GuaItemDetailViewController.h; sourceTree = "<group>"; };
+		95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = GuaItemDetailViewController.m; sourceTree = "<group>"; };
 		95ACB3621CE5D05100062FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		95ACB3641CE5D05100062FCA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		95ACB3671CE5D05100062FCA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		95ACB3691CE5D05100062FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95ACB36E1CE5D05200062FCA /* LYAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LYAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3721CE5D05200062FCA /* LYAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYAppTests.m; sourceTree = "<group>"; };
 		95ACB3741CE5D05200062FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		95ACB3791CE5D05200062FCA /* LYAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LYAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB37D1CE5D05200062FCA /* LYAppUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = LYAppUITests.m; sourceTree = "<group>"; };
 		95ACB37F1CE5D05200062FCA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		95ACB38B1CE5D65D00062FCA /* YYView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = YYView.h; sourceTree = "<group>"; };
@@ -171,21 +164,10 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9526975F1D27A4DA001A6E3B /* JavaScriptCore.framework in Frameworks */,
+				9526975D1D27A4D1001A6E3B /* libz.1.2.5.tbd in Frameworks */,
+				9526975B1D27A466001A6E3B /* JSPatch.framework in Frameworks */,
 				95016F921D23E1FF003460ED /* QuartzCore.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95ACB36B1CE5D05200062FCA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95ACB3761CE5D05200062FCA /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +268,8 @@
 		95ACB34C1CE5D05100062FCA = {
 			isa = PBXGroup;
 			children = (
+				9526975E1D27A4DA001A6E3B /* JavaScriptCore.framework */,
+				9526975C1D27A4D1001A6E3B /* libz.1.2.5.tbd */,
 				95016F911D23E1FF003460ED /* QuartzCore.framework */,
 				95ACB3571CE5D05100062FCA /* LYApp */,
 				95ACB3711CE5D05200062FCA /* LYAppTests */,
@@ -298,8 +282,6 @@
 			isa = PBXGroup;
 			children = (
 				95ACB3551CE5D05100062FCA /* LYApp.app */,
-				95ACB36E1CE5D05200062FCA /* LYAppTests.xctest */,
-				95ACB3791CE5D05200062FCA /* LYAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -313,8 +295,6 @@
 				95EC49C61D17E8EF00C39546 /* Gua */,
 				95ACB35B1CE5D05100062FCA /* AppDelegate.h */,
 				95ACB35C1CE5D05100062FCA /* AppDelegate.m */,
-				95ACB35E1CE5D05100062FCA /* ViewController.h */,
-				95ACB35F1CE5D05100062FCA /* ViewController.m */,
 				95ACB3611CE5D05100062FCA /* Main.storyboard */,
 				95ACB3641CE5D05100062FCA /* Assets.xcassets */,
 				95ACB3661CE5D05100062FCA /* LaunchScreen.storyboard */,
@@ -327,6 +307,7 @@
 		95ACB3581CE5D05100062FCA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				9526975A1D27A466001A6E3B /* JSPatch.framework */,
 				95ACB3591CE5D05100062FCA /* main.m */,
 				95EC49CE1D18E63500C39546 /* PrefixHeader.pch */,
 			);
@@ -367,6 +348,8 @@
 		95EC49CA1D17FB5D00C39546 /* 页面 */ = {
 			isa = PBXGroup;
 			children = (
+				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
+				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
 				95EC49EB1D1BBF9700C39546 /* 登录注册 */,
 				95EC49CF1D19114A00C39546 /* View */,
 				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
@@ -388,6 +371,11 @@
 			children = (
 				95EC49D01D19116400C39546 /* QiGuaAlertView.h */,
 				95EC49D11D19116400C39546 /* QiGuaAlertView.m */,
+				952697601D27C9D7001A6E3B /* LYTitleCell.h */,
+				952697611D27C9D7001A6E3B /* LYTitleCell.m */,
+				9579E21D1D291DF400F499DD /* LYSolveCell.h */,
+				9579E21E1D291DF400F499DD /* LYSolveCell.m */,
+				9579E21F1D291DF400F499DD /* LYSolveCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -440,42 +428,6 @@
 			productReference = 95ACB3551CE5D05100062FCA /* LYApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		95ACB36D1CE5D05200062FCA /* LYAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95ACB3851CE5D05200062FCA /* Build configuration list for PBXNativeTarget "LYAppTests" */;
-			buildPhases = (
-				95ACB36A1CE5D05200062FCA /* Sources */,
-				95ACB36B1CE5D05200062FCA /* Frameworks */,
-				95ACB36C1CE5D05200062FCA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				95ACB3701CE5D05200062FCA /* PBXTargetDependency */,
-			);
-			name = LYAppTests;
-			productName = LYAppTests;
-			productReference = 95ACB36E1CE5D05200062FCA /* LYAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		95ACB3781CE5D05200062FCA /* LYAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 95ACB3881CE5D05200062FCA /* Build configuration list for PBXNativeTarget "LYAppUITests" */;
-			buildPhases = (
-				95ACB3751CE5D05200062FCA /* Sources */,
-				95ACB3761CE5D05200062FCA /* Frameworks */,
-				95ACB3771CE5D05200062FCA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				95ACB37B1CE5D05200062FCA /* PBXTargetDependency */,
-			);
-			name = LYAppUITests;
-			productName = LYAppUITests;
-			productReference = 95ACB3791CE5D05200062FCA /* LYAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -487,14 +439,7 @@
 				TargetAttributes = {
 					95ACB3541CE5D05100062FCA = {
 						CreatedOnToolsVersion = 7.3;
-					};
-					95ACB36D1CE5D05200062FCA = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = 95ACB3541CE5D05100062FCA;
-					};
-					95ACB3781CE5D05200062FCA = {
-						CreatedOnToolsVersion = 7.3;
-						TestTargetID = 95ACB3541CE5D05100062FCA;
+						DevelopmentTeam = 86455TAXDJ;
 					};
 				};
 			};
@@ -512,8 +457,6 @@
 			projectRoot = "";
 			targets = (
 				95ACB3541CE5D05100062FCA /* LYApp */,
-				95ACB36D1CE5D05200062FCA /* LYAppTests */,
-				95ACB3781CE5D05200062FCA /* LYAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -527,20 +470,7 @@
 				95ACB3651CE5D05100062FCA /* Assets.xcassets in Resources */,
 				95EC49F81D1BEB5900C39546 /* protocal.txt in Resources */,
 				95ACB3631CE5D05100062FCA /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95ACB36C1CE5D05200062FCA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95ACB3771CE5D05200062FCA /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
+				9579E2211D291DF400F499DD /* LYSolveCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -555,6 +485,7 @@
 				95016FD01D24C5B0003460ED /* AFURLRequestSerialization.m in Sources */,
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
 				95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */,
+				952697621D27C9D7001A6E3B /* LYTitleCell.m in Sources */,
 				95016FD91D24C5B0003460ED /* UIProgressView+AFNetworking.m in Sources */,
 				95016FD61D24C5B0003460ED /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
@@ -567,7 +498,7 @@
 				957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */,
 				95016F9C1D24B7F5003460ED /* LYToast.m in Sources */,
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
-				95ACB3601CE5D05100062FCA /* ViewController.m in Sources */,
+				95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */,
 				95016F1F1D23D1D4003460ED /* UserManager.m in Sources */,
 				95016FCE1D24C5B0003460ED /* AFNetworkReachabilityManager.m in Sources */,
 				95016FD31D24C5B0003460ED /* AFAutoPurgingImageCache.m in Sources */,
@@ -580,6 +511,7 @@
 				95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */,
 				95016FA91D24C0DE003460ED /* HttpUtil.m in Sources */,
 				95016FD81D24C5B0003460ED /* UIImageView+AFNetworking.m in Sources */,
+				9579E2201D291DF400F499DD /* LYSolveCell.m in Sources */,
 				95EC49CD1D17FB9400C39546 /* LYClientViewController.m in Sources */,
 				95016FA01D24BC1B003460ED /* FetchBaseTask.m in Sources */,
 				95EC49F11D1BBFB100C39546 /* LYRegisterViewController.m in Sources */,
@@ -592,36 +524,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		95ACB36A1CE5D05200062FCA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95ACB3731CE5D05200062FCA /* LYAppTests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		95ACB3751CE5D05200062FCA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				95ACB37E1CE5D05200062FCA /* LYAppUITests.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		95ACB3701CE5D05200062FCA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95ACB3541CE5D05100062FCA /* LYApp */;
-			targetProxy = 95ACB36F1CE5D05200062FCA /* PBXContainerItemProxy */;
-		};
-		95ACB37B1CE5D05200062FCA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 95ACB3541CE5D05100062FCA /* LYApp */;
-			targetProxy = 95ACB37A1CE5D05200062FCA /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		95ACB3611CE5D05100062FCA /* Main.storyboard */ = {
@@ -732,15 +635,20 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LYApp",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = LYApp/PrefixHeader.pch;
 				INFOPLIST_FILE = LYApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.mobisentry.cl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihong.lyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08d2b760-66c7-4b04-863f-7b34d8cfb2ba";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -749,61 +657,20 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/LYApp",
+				);
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = LYApp/PrefixHeader.pch;
 				INFOPLIST_FILE = LYApp/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = cn.mobisentry.cl;
+				PRODUCT_BUNDLE_IDENTIFIER = com.haihong.lyapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "08d2b760-66c7-4b04-863f-7b34d8cfb2ba";
-			};
-			name = Release;
-		};
-		95ACB3861CE5D05200062FCA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LYAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sdf.LYAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LYApp.app/LYApp";
-			};
-			name = Debug;
-		};
-		95ACB3871CE5D05200062FCA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = LYAppTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sdf.LYAppTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/LYApp.app/LYApp";
-			};
-			name = Release;
-		};
-		95ACB3891CE5D05200062FCA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = LYAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sdf.LYAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LYApp;
-			};
-			name = Debug;
-		};
-		95ACB38A1CE5D05200062FCA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = LYAppUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = sdf.LYAppUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = LYApp;
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
@@ -824,24 +691,6 @@
 			buildConfigurations = (
 				95ACB3831CE5D05200062FCA /* Debug */,
 				95ACB3841CE5D05200062FCA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		95ACB3851CE5D05200062FCA /* Build configuration list for PBXNativeTarget "LYAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95ACB3861CE5D05200062FCA /* Debug */,
-				95ACB3871CE5D05200062FCA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		95ACB3881CE5D05200062FCA /* Build configuration list for PBXNativeTarget "LYAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				95ACB3891CE5D05200062FCA /* Debug */,
-				95ACB38A1CE5D05200062FCA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
