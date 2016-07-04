@@ -96,6 +96,8 @@
                                 if (!archived) {
                                     NSLog(@"archive usernanager fail for login");
                                 }
+                                [LYToast showToast:@"登录成功"];
+
                                 [self dismiss];
                             }
                             else

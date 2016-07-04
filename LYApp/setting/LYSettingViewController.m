@@ -9,6 +9,7 @@
 #import "LYSettingViewController.h"
 #import "LYSettingCell.h"
 #import "UserManager.h"
+#import "LYLocalUtil.h"
 
 @interface LYSettingViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,retain) UITableView* tableView;
@@ -96,7 +97,7 @@
 - (void)logout
 {
     if ([UserManager defaultManager].userid) {
-        if ([UserManager clearData]) {
+        if ([LYLocalUtil clearData]) {
             [LYToast showToast:@"退出成功"];
             [self.navigationController popToRootViewControllerAnimated:YES];
             

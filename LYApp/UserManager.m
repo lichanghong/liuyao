@@ -7,6 +7,7 @@
 //
 
 #import "UserManager.h"
+#import "LYLocalUtil.h"
 
 @implementation UserManager
 
@@ -21,21 +22,14 @@
     
 }
 
-+ (NSString *)savedFilePath
-{
-    // 获取文件路径
-    NSArray *documents = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *userFilePath      = [[documents firstObject] stringByAppendingPathComponent:@"UserManager"];
-    return userFilePath;
-}
 + (BOOL)archiveUserManager:(UserManager *)usermanager
 {
-   return [NSKeyedArchiver archiveRootObject:usermanager toFile:[UserManager savedFilePath]];
+   return [NSKeyedArchiver archiveRootObject:usermanager toFile:[LYLocalUtil documentPathWithFile:@"UserManager"]];
 }
 
 + (UserManager *)unarchiveUserManager
 {
-    UserManager *manager = [NSKeyedUnarchiver unarchiveObjectWithFile:[UserManager savedFilePath]];
+    UserManager *manager = [NSKeyedUnarchiver unarchiveObjectWithFile:[LYLocalUtil documentPathWithFile:@"UserManager"]];
     return manager;
 }
 
@@ -58,7 +52,7 @@
     manager.nickname = nil;
     manager.blocked = nil;
     NSError *err;
-    [[NSFileManager defaultManager]removeItemAtPath:[UserManager savedFilePath] error:&err];
+    [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:@"UserManager"] error:&err];
     if (err) {
         NSLog(@"cleardata error %@",err);
         return NO;

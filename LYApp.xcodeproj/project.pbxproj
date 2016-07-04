@@ -12,7 +12,6 @@
 		95016F991D24B7C0003460ED /* Toast+UIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016F981D24B7C0003460ED /* Toast+UIView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		95016F9C1D24B7F5003460ED /* LYToast.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016F9B1D24B7F5003460ED /* LYToast.m */; };
 		95016FA01D24BC1B003460ED /* FetchBaseTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016F9F1D24BC1B003460ED /* FetchBaseTask.m */; };
-		95016FA61D24BD04003460ED /* FetchUserTask.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FA51D24BD04003460ED /* FetchUserTask.m */; };
 		95016FA91D24C0DE003460ED /* HttpUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FA81D24C0DE003460ED /* HttpUtil.m */; };
 		95016FCD1D24C5B0003460ED /* AFHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FAC1D24C5B0003460ED /* AFHTTPSessionManager.m */; };
 		95016FCE1D24C5B0003460ED /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 95016FAF1D24C5B0003460ED /* AFNetworkReachabilityManager.m */; };
@@ -38,6 +37,9 @@
 		957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7191D274D0500F17E7A /* LYStudyViewController.m */; };
 		957FA71E1D2A053500F17E7A /* LYSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA71D1D2A053500F17E7A /* LYSettingViewController.m */; };
 		957FA7221D2A0B8900F17E7A /* LYSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7211D2A0B8900F17E7A /* LYSettingCell.m */; };
+		957FA72E1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA72A1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m */; };
+		957FA72F1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA72C1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.m */; };
+		957FA7331D2A6D7A00F17E7A /* LYLocalUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7321D2A6D7A00F17E7A /* LYLocalUtil.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
@@ -70,8 +72,6 @@
 		95016F9B1D24B7F5003460ED /* LYToast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LYToast.m; sourceTree = "<group>"; };
 		95016F9E1D24BC1B003460ED /* FetchBaseTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchBaseTask.h; path = Http/FetchBaseTask.h; sourceTree = "<group>"; };
 		95016F9F1D24BC1B003460ED /* FetchBaseTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchBaseTask.m; path = Http/FetchBaseTask.m; sourceTree = "<group>"; };
-		95016FA41D24BD04003460ED /* FetchUserTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FetchUserTask.h; path = Http/FetchUserTask.h; sourceTree = "<group>"; };
-		95016FA51D24BD04003460ED /* FetchUserTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = FetchUserTask.m; path = Http/FetchUserTask.m; sourceTree = "<group>"; };
 		95016FA71D24C0DE003460ED /* HttpUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = HttpUtil.h; path = Http/HttpUtil.h; sourceTree = "<group>"; };
 		95016FA81D24C0DE003460ED /* HttpUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = HttpUtil.m; path = Http/HttpUtil.m; sourceTree = "<group>"; };
 		95016FAB1D24C5B0003460ED /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
@@ -121,6 +121,13 @@
 		957FA71D1D2A053500F17E7A /* LYSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYSettingViewController.m; path = setting/LYSettingViewController.m; sourceTree = "<group>"; };
 		957FA7201D2A0B8900F17E7A /* LYSettingCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYSettingCell.h; path = setting/LYSettingCell.h; sourceTree = "<group>"; };
 		957FA7211D2A0B8900F17E7A /* LYSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYSettingCell.m; path = setting/LYSettingCell.m; sourceTree = "<group>"; };
+		957FA7281D2A695500F17E7A /* SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SVPullToRefresh.h; sourceTree = "<group>"; };
+		957FA7291D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVInfiniteScrolling.h"; sourceTree = "<group>"; };
+		957FA72A1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVInfiniteScrolling.m"; sourceTree = "<group>"; };
+		957FA72B1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIScrollView+SVPullToRefresh.h"; sourceTree = "<group>"; };
+		957FA72C1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIScrollView+SVPullToRefresh.m"; sourceTree = "<group>"; };
+		957FA7311D2A6D7A00F17E7A /* LYLocalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYLocalUtil.h; path = Util/LYLocalUtil.h; sourceTree = "<group>"; };
+		957FA7321D2A6D7A00F17E7A /* LYLocalUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYLocalUtil.m; path = Util/LYLocalUtil.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -212,8 +219,6 @@
 		95016F9D1D24BB09003460ED /* 网络请求 */ = {
 			isa = PBXGroup;
 			children = (
-				95016FA41D24BD04003460ED /* FetchUserTask.h */,
-				95016FA51D24BD04003460ED /* FetchUserTask.m */,
 				95016F9E1D24BC1B003460ED /* FetchBaseTask.h */,
 				95016F9F1D24BC1B003460ED /* FetchBaseTask.m */,
 				95016FA71D24C0DE003460ED /* HttpUtil.h */,
@@ -290,6 +295,27 @@
 			name = View;
 			sourceTree = "<group>";
 		};
+		957FA7251D2A695500F17E7A /* SVPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7281D2A695500F17E7A /* SVPullToRefresh.h */,
+				957FA7291D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.h */,
+				957FA72A1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m */,
+				957FA72B1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.h */,
+				957FA72C1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.m */,
+			);
+			path = SVPullToRefresh;
+			sourceTree = "<group>";
+		};
+		957FA7301D2A6D5400F17E7A /* 本地化 */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7311D2A6D7A00F17E7A /* LYLocalUtil.h */,
+				957FA7321D2A6D7A00F17E7A /* LYLocalUtil.m */,
+			);
+			name = "本地化";
+			sourceTree = "<group>";
+		};
 		95ACB34C1CE5D05100062FCA = {
 			isa = PBXGroup;
 			children = (
@@ -314,6 +340,7 @@
 		95ACB3571CE5D05100062FCA /* LYApp */ = {
 			isa = PBXGroup;
 			children = (
+				957FA7301D2A6D5400F17E7A /* 本地化 */,
 				95016F9D1D24BB09003460ED /* 网络请求 */,
 				95EC49D31D1929F100C39546 /* Vender */,
 				95EC49CA1D17FB5D00C39546 /* 页面 */,
@@ -409,6 +436,7 @@
 		95EC49D31D1929F100C39546 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				957FA7251D2A695500F17E7A /* SVPullToRefresh */,
 				95016FAA1D24C5B0003460ED /* AFNetworking */,
 				95016FB81D24C5B0003460ED /* UIKit+AFNetworking */,
 				95016F961D24B7C0003460ED /* toast */,
@@ -519,8 +547,10 @@
 				95016FD21D24C5B0003460ED /* AFURLSessionManager.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
 				95EC49EE1D1BBFA400C39546 /* LYLoginViewController.m in Sources */,
+				957FA72F1D2A695500F17E7A /* UIScrollView+SVPullToRefresh.m in Sources */,
 				95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
+				957FA72E1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m in Sources */,
 				957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */,
 				95016F9C1D24B7F5003460ED /* LYToast.m in Sources */,
 				95EC49C91D17FA8500C39546 /* LYMainViewController.m in Sources */,
@@ -532,10 +562,10 @@
 				95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */,
 				95EC49DB1D1A5D4300C39546 /* LYHelpViewController.m in Sources */,
 				95016FD41D24C5B0003460ED /* AFImageDownloader.m in Sources */,
-				95016FA61D24BD04003460ED /* FetchUserTask.m in Sources */,
 				95016FD51D24C5B0003460ED /* AFNetworkActivityIndicatorManager.m in Sources */,
 				95016FCD1D24C5B0003460ED /* AFHTTPSessionManager.m in Sources */,
 				95EC49D21D19116400C39546 /* QiGuaAlertView.m in Sources */,
+				957FA7331D2A6D7A00F17E7A /* LYLocalUtil.m in Sources */,
 				95016FA91D24C0DE003460ED /* HttpUtil.m in Sources */,
 				95016FD81D24C5B0003460ED /* UIImageView+AFNetworking.m in Sources */,
 				9579E2201D291DF400F499DD /* LYSolveCell.m in Sources */,

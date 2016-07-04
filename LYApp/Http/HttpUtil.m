@@ -8,32 +8,35 @@
 
 #import "HttpUtil.h"
 #import "AFNetworking.h"
+#import "FetchBaseTask.h"
 
 @implementation HttpUtil
 
+static bool isloading1=false;
 + (void)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
                     kHostName];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:api parameters:nil progress:^(NSProgress * _Nonnull uploadProgress){
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error=%@",error);
-        if (error.code==3840) {
-            failure(@"服务器错误,请联系管理员！");
-        }
-        else if (error.code==-1001) {
-            failure(@"请求超时,请过会重试");
-        }
-        else
-            failure(error.localizedDescription);
-    }];
+    if (!isloading1) {
+        isloading1=true;
+        [FetchBaseTask POST:api parameters:nil success:^(id obj) {
+            isloading1=false;
+            success(obj);
+            
+        } failure:^(NSString *errmsg) {
+            isloading1=false;
+            failure(errmsg);
+        }];
+    }
+    else
+    {
+        NSLog(@"loading... skip..");
+    }
+    
 }
 
+static bool isloading2=false;
 + (void)doUploadGuaWithQuestion:(NSString *)question
                      gua_gender:(NSString *)gender
                        gua_date:(NSString *)date
@@ -49,28 +52,26 @@
     [dic setObject:date?date:@""                forKey:@"g_date"];
     [dic setObject:gua?gua:@""                  forKey:@"g_gua"];
     
-    NSLog(@"dic=%@",dic);
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaupload",
                     kHostName];
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress){
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error=%@",error);
-        if (error.code==3840) {
-            failure(@"服务器错误,请联系管理员！");
-        }
-        else if (error.code==-1001) {
-            failure(@"请求超时,请过会重试");
-        }
-        else
-            failure(error.localizedDescription);
-    }];
+    if (!isloading2) {
+        isloading2=true;
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+            isloading2=false;
+            success(obj);
+            
+        } failure:^(NSString *errmsg) {
+            isloading2=false;
+            failure(errmsg);
+        }];
+    }
+    else
+    {
+        NSLog(@"loading... skip..");
+    }
 }
 
-
+static bool isloading3=false;
 + (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
@@ -79,27 +80,28 @@
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/regist",
                     kHostName];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:username forKey:@"username"];
     [dic setObject:pw forKey:@"password"];
     
-    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-        
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (error.code==3840) {
-            failure(@"服务器错误,请联系管理员！");
-        }
-        else if (error.code==-1001) {
-            failure(@"请求超时,请过会重试");
-        }
-        else
-            failure(error.localizedDescription);
-    }];
+    if (!isloading3) {
+        isloading3=true;
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+            isloading3=false;
+            success(obj);
+            
+        } failure:^(NSString *errmsg) {
+            isloading3=false;
+            failure(errmsg);
+        }];
+    }
+    else
+    {
+        NSLog(@"loading... skip..");
+    }
 }
 
+static bool isloading4=false;
 + (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)( NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
@@ -112,21 +114,22 @@
     [dic setObject:username forKey:@"username"];
     [dic setObject:pw forKey:@"password"];
     
-    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
-    [manager POST:api parameters:dic progress:^(NSProgress * _Nonnull uploadProgress) {
-    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        success(responseObject);
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error=%@",error);
-        if (error.code==3840) {
-            failure(@"服务器错误,请联系管理员！");
-        }
-        else if (error.code==-1001) {
-            failure(@"请求超时,请过会重试");
-        }
-        else
-            failure(error.localizedDescription);
-    }];
+    if (!isloading4) {
+        isloading4=true;
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+            isloading4=false;
+            success(obj);
+            
+        } failure:^(NSString *errmsg) {
+            isloading4=false;
+            failure(errmsg);
+        }];
+    }
+    else
+    {
+        NSLog(@"loading... skip..");
+    }
+    
 }
 
 

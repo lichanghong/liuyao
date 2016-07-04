@@ -7,32 +7,33 @@
 //
 
 #import "FetchBaseTask.h"
+#import "AFNetworking.h"
 
 @implementation FetchBaseTask
 
-- (id)initWithSuccess:(void (^)(id json))success failure:(void (^)(NSError*))failure skipped:(void (^)())skipped force:(BOOL)bForceRefresh
++ (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
-    if (self = [super init]) {
-        self.success = ^(id json){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                success(json);
-            });
-        };
-        self.failure = ^(NSError *error){
-            dispatch_async(dispatch_get_main_queue(), ^{
-                failure(error);
-            });
-        };
-        self.skipped= ^(){
-            dispatch_async(dispatch_get_main_queue(),^{
-                skipped();
-            });
-        };
-        self.isCanceled =false;
-        self.bForceRefresh=bForceRefresh;
-    }
-    return self;
+    AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress){
+        
+    } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        success(responseObject);
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        NSLog(@"error=%@",error);
+        if (error.code==3840) {
+            failure(@"服务器错误,请联系管理员！");
+        }
+        else if (error.code==-1001) {
+            failure(@"请求超时,请过会重试");
+        }
+        else if (error.code==-1009) {
+            failure(@"您未连接网络");
+        }
+        else
+            failure(error.localizedDescription);
+    }];
 }
+ 
 
 
 
