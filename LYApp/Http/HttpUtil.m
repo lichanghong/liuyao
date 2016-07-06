@@ -113,7 +113,9 @@ static bool isloading4=false;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:username forKey:@"username"];
     [dic setObject:pw forKey:@"password"];
-    
+    [dic setObject:random() forKey:@"loginrandom"];
+    md5(username+md5(pw)+random())
+//    客户端根据相同规则计算，random传过去
     if (!isloading4) {
         isloading4=true;
         [FetchBaseTask POST:api parameters:dic success:^(id obj) {
