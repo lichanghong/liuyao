@@ -132,7 +132,34 @@ static bool isloading4=false;
     
 }
 
+static bool isloading5=false;
++ (void)deleteGuaItemsWithId:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
+{
+    if( gid==nil)
+        return;
+    
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/deleteguaitem",
+                    kHostName];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:gid forKey:@"g_id"];
+    
+    if (!isloading5) {
+        isloading5=true;
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+            isloading5=false;
+            success(obj);
+            
+        } failure:^(NSString *errmsg) {
+            isloading5=false;
+            failure(errmsg);
+        }];
+    }
+    else
+    {
+        NSLog(@"loading... skip..");
+    }
 
+}
 
 
 

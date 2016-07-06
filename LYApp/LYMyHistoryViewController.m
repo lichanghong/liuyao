@@ -90,10 +90,40 @@
 -(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{//请求数据源提交的插入或删除指定行接收者。
     if (editingStyle ==UITableViewCellEditingStyleDelete) {//如果编辑样式为删除样式
         if (indexPath.row<[_guaItems count]) {
+            [self deleteGuaItemWithId:[_guaItems objectAtIndex:indexPath.row][@"g_id"]];
             [_guaItems removeObjectAtIndex:indexPath.row];//移除数据源的数据
+            [LYLocalUtil archiveArray:self.guaItems withFileName:[self guaItemsFileName]];
+
+            [tableView beginUpdates];
             [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];//移除tableView中的数据
+            [tableView endUpdates];
+
         }
     }
+}
+
+- (void)deleteGuaItemWithId:(NSString *)gid
+{
+    [HttpUtil deleteGuaItemsWithId:gid success:^(id json) {
+        if (json) {
+            NSString *errorno = json[@"errno"];
+            if ([errorno intValue]==0) {
+//                删除成功
+                NSLog(@"deleteGuaItemWithIdsuccess = %@",json);
+
+            }
+            else
+            {
+                NSLog(@"deleteGuaItemWithIdfaill566 = %@",json);
+                [LYToast showToast:@"删除失败"];
+            }
+        }
+        else
+            NSLog(@"deleteGuaItemWithId = %@",json);
+    } failure:^(NSString *errmsg) {
+        NSLog(@"deleteGuaItemWithIdfaill = %@",errmsg);
+        [LYToast showToast:errmsg];
+    }];
 }
 
 - (void)loadDataWithPull:(BOOL)pull
@@ -152,7 +182,7 @@
     _guaItems = [NSMutableArray array];
     
     [self loadDataWithPull:NO];
-
+    [self.tableView reloadData];
     // Do any additional setup after loading the view.
 }
 

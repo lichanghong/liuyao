@@ -33,7 +33,8 @@
 + (void)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure;
 
-
++ (void)deleteGuaItemsWithId:(NSString *)gid  success:(void (^)(id))success
+                     failure:(void (^)(NSString* errmsg))failure;
 
 
 
