@@ -214,20 +214,31 @@
 - (void)loadLiuJia
 {
     __weak GuaItemDetailViewController *wself = self;
-    [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
-        if (nian.count>=4) {
-            liujiaArr = nian;
-            [self refreshData];
-        }
-        else
-        {
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                [wself loadLiuJia];
-            });
-            DDLogError(@"时间错误");
-        }
-        
-    }];
+    NSString *time=[timestr componentsJoinedByString:@":"];
+    NSArray *liuj =[[NSUserDefaults standardUserDefaults]objectForKey:time];
+    if (liuj) {
+        liujiaArr=liuj;
+        [self refreshData];
+    }
+    else
+    {
+        [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
+            if (nian.count>=4) {
+                liujiaArr = nian;
+                [[NSUserDefaults standardUserDefaults]setObject:liujiaArr forKey:time];
+                [[NSUserDefaults standardUserDefaults]synchronize];
+                [self refreshData];
+            }
+            else
+            {
+                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                    [wself loadLiuJia];
+                });
+                DDLogError(@"时间错误");
+            }
+            
+        }];
+    }
 
 }
 

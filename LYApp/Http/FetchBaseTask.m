@@ -15,7 +15,6 @@
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress){
-        
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
