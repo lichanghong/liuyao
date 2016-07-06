@@ -11,9 +11,12 @@
 #import "GuaItemDetailViewController.h"
 #import "GuaManager.h"
 #import "HttpUtil.h"
+#import "SVPullToRefresh.h"
+#import "LYLocalUtil.h"
 
 @interface LYMyHistoryViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong,nonatomic)    NSMutableArray *guaItems;
 
 
 @end
@@ -21,8 +24,6 @@
 @implementation LYMyHistoryViewController
 {
     __weak IBOutlet UIButton *_backButton;
-    NSMutableArray    *_guaItems;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -71,41 +72,117 @@
     cell.verifyImage.image = [UIImage imageNamed:@"verify_ing"];
     return cell;
 }
-- (void)loadData
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return true;
+}
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return UITableViewCellEditingStyleDelete;
+}
+
+-(void)setEditing:(BOOL)editing animated:(BOOL)animated{//设置是否显示一个可编辑视图的视图控制器。
+    [super setEditing:editing animated:animated];
+    [self.tableView setEditing:editing animated:animated];//切换接收者的进入和退出编辑模式。
+}
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath{//请求数据源提交的插入或删除指定行接收者。
+    if (editingStyle ==UITableViewCellEditingStyleDelete) {//如果编辑样式为删除样式
+        if (indexPath.row<[_guaItems count]) {
+            [self deleteGuaItemWithId:[_guaItems objectAtIndex:indexPath.row][@"g_id"]];
+            [_guaItems removeObjectAtIndex:indexPath.row];//移除数据源的数据
+            [LYLocalUtil archiveArray:self.guaItems withFileName:[self guaItemsFileName]];
+
+            [tableView beginUpdates];
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationLeft];//移除tableView中的数据
+            [tableView endUpdates];
+
+        }
+    }
+}
+
+- (void)deleteGuaItemWithId:(NSString *)gid
+{
+    [HttpUtil deleteGuaItemsWithId:gid success:^(id json) {
+        if (json) {
+            NSString *errorno = json[@"errno"];
+            if ([errorno intValue]==0) {
+//                删除成功
+                DDLogError(@"deleteGuaItemWithIdsuccess = %@",json);
+
+            }
+            else
+            {
+                DDLogError(@"deleteGuaItemWithIdfaill566 = %@",json);
+                [LYToast showToast:@"删除失败"];
+            }
+        }
+        else
+            DDLogError(@"deleteGuaItemWithId = %@",json);
+    } failure:^(NSString *errmsg) {
+        DDLogError(@"deleteGuaItemWithIdfaill = %@",errmsg);
+        [LYToast showToast:errmsg];
+    }];
+}
+
+- (void)loadDataWithPull:(BOOL)pull
 {
     __weak LYMyHistoryViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+        [wself.tableView.pullToRefreshView stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
                 if (datalist && datalist.count>0) {
-                    _guaItems = [datalist mutableCopy];
-                    [wself.tableView reloadData];
+                    wself.guaItems = [datalist mutableCopy];
+                   NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
+                    if (guaitemArr && guaitemArr.count==datalist.count) {
+                        //数据无更新，不处理
+                    }
+                    else
+                    {
+                        [LYLocalUtil archiveArray:wself.guaItems withFileName:[self guaItemsFileName]];
+                        [wself.tableView reloadData];
+                    }
                 }
                 else
                 {
-                    NSLog(@"LYMyHistoryViewController data nil ");
+                    DDLogError(@"LYMyHistoryViewController data nil ");
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
             }
         }
         else
-            NSLog(@"LYMyHistoryViewControllererr = %@",json);
+            DDLogError(@"LYMyHistoryViewControllererr = %@",json);
     } failure:^(NSString *errmsg) {
-        NSLog(@"sdfsfffaa = %@",errmsg);
+        DDLogError(@"sdfsfffaa = %@",errmsg);
+        [wself.tableView.pullToRefreshView stopAnimating];
         [LYToast showToast:errmsg];
     }];
+}
+
+- (NSString *)guaItemsFileName
+{
+    return [LYLocalUtil historyVCDataFileName];
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_tableView setTableHeaderView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0,1)]];
-
-    [self loadData];
-
+    [_tableView addPullToRefreshWithActionHandler:^{
+        [self loadDataWithPull:YES];
+    }];
+    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
+    if (guaitemArr) {
+        _guaItems = [guaitemArr mutableCopy];
+    }
+    else
     _guaItems = [NSMutableArray array];
-
+    
+    [self loadDataWithPull:NO];
+    [self.tableView reloadData];
     // Do any additional setup after loading the view.
 }
 

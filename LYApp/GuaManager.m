@@ -427,15 +427,15 @@
             {
                 NSArray *results = [[NSUserDefaults standardUserDefaults]objectForKey: @"timeresult"];
                 ganzhis( results);
-                NSLog(@"data = nil");
-                NSLog(@"load ganzhi error");
+                DDLogError(@"data = nil");
+                DDLogError(@"load ganzhi error");
             }
         }
         else
         {
             NSArray *results = [[NSUserDefaults standardUserDefaults]objectForKey: @"timeresult"];
             ganzhis( results);
-            NSLog(@"data = nil");
+            DDLogError(@"data = nil");
         }
     }];
     

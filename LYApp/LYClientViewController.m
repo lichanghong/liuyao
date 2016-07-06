@@ -277,7 +277,7 @@ static bool isfirsttime=true;
         }
         else
         {
-            NSLog(@"error for uid nil，to login");
+            DDLogError(@"error for uid nil，to login");
             [self toLoginPage];
         }
     }

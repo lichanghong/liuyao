@@ -94,19 +94,21 @@
                                 manager.blocked = data[@"blocked"];
                                 BOOL archived = [UserManager archiveUserManager:manager];
                                 if (!archived) {
-                                    NSLog(@"archive usernanager fail for login");
+                                    DDLogError(@"archive usernanager fail for login");
                                 }
+                                [LYToast showToast:@"登录成功"];
+
                                 [self dismiss];
                             }
                             else
                             {
-                                NSLog(@"sfdasfasfasdf data nil ");
+                                DDLogError(@"sfdasfasfasdf data nil ");
                                 [LYToast showToast:@"服务器错误,请联系管理员(10090)"];
                             }
                         }
                         else
                         {
-                            NSLog(@"sfdasfasfasdf datalist nil ");
+                            DDLogError(@"sfdasfasfasdf datalist nil ");
                             [LYToast showToast:@"用户不存在！您是否已注册？"];
                         }
                     }
@@ -116,7 +118,7 @@
                     }
                 }
                 else
-                    NSLog(@"resultsdfsfdaaa = %@",json);
+                    DDLogError(@"resultsdfsfdaaa = %@",json);
 
             } failure:^(NSString* errmsg) {
                 [self endLogin];
@@ -155,7 +157,7 @@
         }
         else
         {
-            NSLog(@"why?flajfsjfljllll.1900");
+            DDLogError(@"why?flajfsjfljllll.1900");
             [LYToast showToast:@"请填写您注册时的用户名再找回密码！"];
         }
     }

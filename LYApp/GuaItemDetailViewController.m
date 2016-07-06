@@ -224,7 +224,7 @@
             dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
                 [wself loadLiuJia];
             });
-            NSLog(@"时间错误");
+            DDLogError(@"时间错误");
         }
         
     }];

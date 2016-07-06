@@ -8,16 +8,13 @@
 
 #import <Foundation/Foundation.h>
 
-@interface FetchBaseTask : NSOperation
+@interface FetchBaseTask : NSObject
 
-@property (nonatomic,strong) void (^success)(id json) ;
-@property (nonatomic,strong) void (^failure)(NSError *error) ;
-@property (nonatomic,strong) void (^skipped)() ;
-@property (nonatomic,assign) BOOL isCanceled ;
-@property (nonatomic,assign) BOOL bForceRefresh;
 
-- (id)initWithSuccess:(void (^)(id json))success failure:(void (^)(NSError *))failure skipped:(void (^)())skipped force:(BOOL)bForceRefresh;
-
++ (void)POST:(NSString *)URLString
+  parameters:(id)parameters
+     success:(void (^)(id  obj))success
+     failure:(void (^)(NSString*errmsg))failure;
 
 
 @end

@@ -11,52 +11,78 @@
 #import "GuaManager.h"
 #import "LYTitleCell.h"
 #import "GuaItemDetailViewController.h"
+#import "SVPullToRefresh.h"
+#import "LYLocalUtil.h"
 
 @interface LYStudyViewController ()<UITableViewDelegate,UITableViewDataSource>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-
-
+@property (nonatomic,strong)NSMutableArray *guaItems;
 @end
 
 @implementation LYStudyViewController
 {
     IBOutlet NSObject *_backButton;
-    NSMutableArray    *_guaItems;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_tableView setTableHeaderView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0,1)]];
-    [self loadData];
+    [_tableView addPullToRefreshWithActionHandler:^{
+        [self loadDataWithPull:YES];
+    }];
+    
+    [self loadDataWithPull:NO];
+    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
+    if (guaitemArr) {
+        _guaItems = [guaitemArr mutableCopy];
+    }
+    else
     _guaItems = [NSMutableArray array];
     // Do any additional setup after loading the view.
 }
 
-- (void)loadData
+- (void)loadDataWithPull:(BOOL)pull
 {
     __weak LYStudyViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+        [wself.tableView.pullToRefreshView stopAnimating];
+
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
                 if (datalist && datalist.count>0) {
-                    _guaItems = [datalist mutableCopy];
-                    [wself.tableView reloadData];
+                    wself.guaItems = [datalist mutableCopy];
+                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
+                    if (guaitemArr && guaitemArr.count==datalist.count) {
+                        //数据无更新，不处理
+                    }
+                    else
+                    {
+                        [LYLocalUtil archiveArray:wself.guaItems withFileName:[self guaItemsFileName]];
+                        [wself.tableView reloadData];
+                    }
                 }
                 else
                 {
-                    NSLog(@"jkfjdll data nil ");
+                    DDLogError(@"jkfjdll data nil ");
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
             }
         }
         else
-            NSLog(@"resultsdfsfdaaa = %@",json);
+            DDLogError(@"resultsdfsfdaaa = %@",json);
     } failure:^(NSString *errmsg) {
-        NSLog(@"lll = %@",errmsg);
+        DDLogError(@"lll = %@",errmsg);
+        [wself.tableView.pullToRefreshView stopAnimating];
         [LYToast showToast:errmsg];
     }];
+}
+
+- (NSString *)guaItemsFileName
+{
+    return [LYLocalUtil studyVCDataFileName];
 }
 
 - (IBAction)handleAction:(id)sender {
