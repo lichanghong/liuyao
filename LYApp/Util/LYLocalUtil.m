@@ -59,7 +59,7 @@
     [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:[LYLocalUtil historyVCDataFileName]] error:&err];
     [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:[LYLocalUtil studyVCDataFileName]] error:&err1];
     if (err1 || err) {
-        NSLog(@"err=%@  --- err1=%@",err,err1);
+        DDLogError(@"err=%@  --- err1=%@",err,err1);
         return false;
     }
     return YES;

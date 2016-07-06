@@ -33,6 +33,7 @@
     if (_timer == nil) {
         //每20分钟检查一次，是否距离上次成功上传时间超过24小时
         _timer = [NSTimer  scheduledTimerWithTimeInterval:60*20 target:self selector:@selector(checkUploadInterval:) userInfo:nil repeats:YES];
+//        _timer = [NSTimer  scheduledTimerWithTimeInterval:20 target:self selector:@selector(checkUploadInterval:) userInfo:nil repeats:YES];
     }
     return _timer;
 }
@@ -41,9 +42,11 @@
 - (void)deleteLoggersWhenPostSuccess:(NSString *)tempDir
 {
     NSError *error;
-    BOOL success = [[NSFileManager defaultManager] removeItemAtPath:tempDir error:&error];
-    if (!success) {
-        DDLogInfo(@"failed to delete log file..error = %@",error);
+    if ([[NSFileManager defaultManager]fileExistsAtPath:tempDir]) {
+        BOOL success = [[NSFileManager defaultManager] removeItemAtPath:tempDir error:&error];
+        if (!success) {
+            DDLogInfo(@"failed to delete log file..error = %@",error);
+        }
     }
     //if nil,had printed log,so don't need else statement..
 }
@@ -53,7 +56,7 @@
     //获得日志文件所有内容到contents
     NSMutableString *contents = nil;
     NSArray *logfilepathes = [self rawLogFilePaths];
-    if (logfilepathes) {
+    if (logfilepathes && logfilepathes.count>0) {
         contents = [NSMutableString string];
         for (NSString *path in logfilepathes) {
             NSError *error = nil;
@@ -66,15 +69,6 @@
                 DDLogInfo(@"read log content error = %@",error);
             }
         }
-    }
-    
-    //如果只要消息日志
-    NSArray *strArr = [contents componentsSeparatedByString:@"\n"];
-    contents = [NSMutableString string];
-    
-    for (NSString *item in strArr) {
-        NSString* item2 = [NSString stringWithFormat:@"%@\n",item];
-        [contents appendString:item2];
     }
     return contents;
 }
@@ -94,24 +88,38 @@
     }
 }
 
-- (void)doUploadLog:(NSString *)data withPath:tpath failed:(void (^)())failed
+- (void)uploadLog:(BOOL)bforceUpload
 {
-    [HttpUtil doUploadErrorLogs:data success:^(id result) {
-        //                         //记录上传成功的时间，reason:需检测下次上传距离这次24小时
-        [[NSUserDefaults standardUserDefaults] setObject:@([[NSDate date]timeIntervalSinceNow]) forKey:@"APP_LOG_UPLOAD_TIME"];
-        [self deleteLoggersWhenPostSuccess:tpath];
+    [self doUploadLog];
+}
 
-    } failure:^(NSString *errmsg) {
-        DDLogInfo(@"uploadLog error =%@",errmsg);
-        failed();
-    }];
+- (void)doUploadLog
+{
+    NSString *logcontent =[NSString stringWithFormat:@"ios %@",[self logContents]];
+    if (logcontent) {
+        [self moveLogsToTempLogs:[self uploadDir]];
+        
+        [HttpUtil doUploadErrorLogs:logcontent success:^(id result) {
+            //                         //记录上传成功的时间，reason:需检测下次上传距离这次24小时
+            [[NSUserDefaults standardUserDefaults] setObject:@([[NSDate date]timeIntervalSinceNow]) forKey:@"APP_LOG_UPLOAD_TIME"];
+            [self deleteLoggersWhenPostSuccess:[self uploadDir]];
+            
+        } failure:^(NSString *errmsg) {
+            DDLogInfo(@"uploadLog error =%@",errmsg);
+        }];
+    }
+    else
+    {
+        DDLogInfo(@"uploadLog error =log content = nil");
+    }
+   
 }
 
 //距离上次成功上传时间超过24小时
 - (void)checkUploadInterval:(NSTimer *)timer
 {
     //程序第一次执行，APP_LOG_UPLOAD_TIME初始化时间（当做已经上传一次日志）
-    NSString *dateStr = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults]objectForKey:@"APP_LOG_UPLOAD_TIME"]];
+    NSString *dateStr = [[NSUserDefaults standardUserDefaults]objectForKey:@"APP_LOG_UPLOAD_TIME"];
     if (dateStr) {
         //已经上传一次日志，距离24H开始再次上传
         if ([self isMorethan24HoursLogupload])
@@ -124,6 +132,7 @@
     else
     {
         DDLogInfo(@"程序第一次启动，上传日志");
+        [self uploadLog:NO];
     }
 }
 
@@ -140,45 +149,6 @@
     return result;
 }
 
-//是否无条件上传日志
-- (void)uploadLog:(BOOL)bforceUpload
-{
-    void (^failed)()=^{
-          DDLogInfo(@"someerroralksfjlsjflkajfadf");
-    };
-    //临时文件目录开始创建并移动日志文件到临时目录
-    NSString *uploaddir = [self uploadDir];
-    [self moveLogsToTempLogs:uploaddir];
-    
-    NSString *zipFilePath = [uploaddir stringByAppendingPathComponent:@"upload"];
-    //如果临时目录不存在zip文件，创建 info.log文件
-    BOOL isDirectory=NO;
-    BOOL zipExists = [[NSFileManager defaultManager] fileExistsAtPath:zipFilePath isDirectory:&isDirectory];
-    if (!zipExists) {
-        //不存在zip文件，创建 info.log文件
-        NSString *filePath = [uploaddir stringByAppendingPathComponent:@"info.log"];
-#ifdef DEBUG
-      NSString* debug=@"DEBUG";
-#else
-      NSString* debug=@"RELEASE";
-#endif
-        NSString *result = [NSString stringWithFormat:@"version: %@ %@\n",VERSION_STRING,debug];
-        NSData *contents = [result dataUsingEncoding:NSUTF8StringEncoding];
-        [[NSFileManager defaultManager]createFileAtPath:filePath contents:contents attributes:nil];
-    }
-    //没有压缩失败就读取zip数据上传
-    NSString *data = [NSString stringWithContentsOfFile:zipFilePath usedEncoding:NSUTF8StringEncoding error:nil];
-    
-    if (!bforceUpload)
-    {
-        DDLogInfo(@"========================================upload log ===================%s",__func__);
-        [self doUploadLog:data withPath:uploaddir failed:failed];
-    }
-    else
-    {
-        [self doUploadLog:data withPath:uploaddir failed:failed];
-    }
-}
 
 //临时文件目录
 - (NSString *)uploadDir
@@ -214,9 +184,11 @@
             //tempLogFile 全路径path
             NSString *tempLogFilePath = [tempLogFileDir stringByAppendingPathComponent:[[path componentsSeparatedByString:@"/"]lastObject]];
             NSError *moveError = nil;
-            [[NSFileManager defaultManager]moveItemAtPath:path toPath:tempLogFilePath error:&moveError];
-            if (moveError!=nil && [moveError code]!=0) {
-                DDLogInfo(@"sklfjlsjflajff = %@",moveError);
+            if ([[NSFileManager defaultManager]fileExistsAtPath:tempLogFileDir]) {
+                [[NSFileManager defaultManager]moveItemAtPath:path toPath:tempLogFilePath error:&moveError];
+                if (moveError!=nil && [moveError code]!=0) {
+                    DDLogInfo(@"sklfjlsjflajff = %@",moveError);
+                }
             }
         }
     }

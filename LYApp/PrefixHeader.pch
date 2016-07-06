@@ -12,6 +12,11 @@
 #import "UIColor+Hex.h"
 #import "LYToast.h"
 #import "UserManager.h"
+#import "Classes/CocoaLumberjack.h"
+
+//static const DDLogLevel ddLogLevel = DDLogLevelAll;
+static const DDLogLevel ddLogLevel = DDLogLevelError;
+
 
 #ifndef dispatch_main_sync_safe
 #define dispatch_main_sync_safe(block)\

@@ -54,7 +54,7 @@
     NSError *err;
     [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:@"UserManager"] error:&err];
     if (err) {
-        NSLog(@"cleardata error %@",err);
+        DDLogError(@"cleardata error %@",err);
         return NO;
     }
     return YES;

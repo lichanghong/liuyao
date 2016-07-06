@@ -166,8 +166,10 @@ static bool isloading5=false;
                   failure:(void (^)(NSString* errmsg))failure
 {
     if( content==nil)
+    {
+        DDLogError(@"log content=nil");
         return;
-    
+    }
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/upload_client_errorlog",
                     kHostName];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
