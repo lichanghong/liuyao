@@ -30,6 +30,7 @@
 @implementation GuaItemDetailViewController
 {
     UIView *tableHeadView;
+    UIView *tableFootView;
     NSArray *liujiaArr;
     
     NSArray      *timestr;
@@ -48,7 +49,8 @@
 
 - (void)initUI
 {
-    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, KScreenHeight-40) style:UITableViewStyleGrouped];
+    _tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 40,
+                                                              KScreenWidth, KScreenHeight-80) style:UITableViewStyleGrouped];
     _tableView.delegate = self;
     _tableView.dataSource = self;
     [self.view addSubview:_tableView];
@@ -76,7 +78,8 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 270)];
-    [self.view addSubview:tableHeadView];
+    tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
+    tableFootView.backgroundColor = [UIColor redColor];
     tableHeadView.backgroundColor = [UIColor clearColor];
     
     _gua_who_ask_label = [self createGuaBaseLabel];
@@ -116,7 +119,7 @@
     [_gua_contentView addSubview:_baGuaView];
     
     [_tableView setTableHeaderView:tableHeadView];
-
+    [self.view addSubview:tableFootView];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
