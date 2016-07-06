@@ -46,7 +46,7 @@
                         manager.blocked = json[@"blocked"];
                         BOOL archived = [UserManager archiveUserManager:manager];
                         if (!archived) {
-                            NSLog(@"archive usernanager fail for register");
+                            DDLogError(@"archive usernanager fail for register");
                         }
                         [self dismiss];
                     }
@@ -56,7 +56,7 @@
                     }
                 }
                 else
-                    NSLog(@"result = %@",json);
+                    DDLogError(@"result = %@",json);
                 
             } failure:^(NSString *errmsg) {
                 [self endRegist];

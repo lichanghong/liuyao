@@ -109,19 +109,19 @@
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
 //                删除成功
-                NSLog(@"deleteGuaItemWithIdsuccess = %@",json);
+                DDLogError(@"deleteGuaItemWithIdsuccess = %@",json);
 
             }
             else
             {
-                NSLog(@"deleteGuaItemWithIdfaill566 = %@",json);
+                DDLogError(@"deleteGuaItemWithIdfaill566 = %@",json);
                 [LYToast showToast:@"删除失败"];
             }
         }
         else
-            NSLog(@"deleteGuaItemWithId = %@",json);
+            DDLogError(@"deleteGuaItemWithId = %@",json);
     } failure:^(NSString *errmsg) {
-        NSLog(@"deleteGuaItemWithIdfaill = %@",errmsg);
+        DDLogError(@"deleteGuaItemWithIdfaill = %@",errmsg);
         [LYToast showToast:errmsg];
     }];
 }
@@ -149,15 +149,15 @@
                 }
                 else
                 {
-                    NSLog(@"LYMyHistoryViewController data nil ");
+                    DDLogError(@"LYMyHistoryViewController data nil ");
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
             }
         }
         else
-            NSLog(@"LYMyHistoryViewControllererr = %@",json);
+            DDLogError(@"LYMyHistoryViewControllererr = %@",json);
     } failure:^(NSString *errmsg) {
-        NSLog(@"sdfsfffaa = %@",errmsg);
+        DDLogError(@"sdfsfffaa = %@",errmsg);
         [wself.tableView.pullToRefreshView stopAnimating];
         [LYToast showToast:errmsg];
     }];

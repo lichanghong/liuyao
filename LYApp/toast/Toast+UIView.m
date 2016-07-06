@@ -274,7 +274,7 @@ static NSString *kToastKey = @"toast";
         return [point CGPointValue];
     }
     
-    NSLog(@"Error: Invalid position for toast.");
+    DDLogError(@"Error: Invalid position for toast.");
     return [self getPositionFor:kDefaultPosition toast:toast];
 }
 

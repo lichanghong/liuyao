@@ -66,15 +66,15 @@
                 }
                 else
                 {
-                    NSLog(@"jkfjdll data nil ");
+                    DDLogError(@"jkfjdll data nil ");
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
             }
         }
         else
-            NSLog(@"resultsdfsfdaaa = %@",json);
+            DDLogError(@"resultsdfsfdaaa = %@",json);
     } failure:^(NSString *errmsg) {
-        NSLog(@"lll = %@",errmsg);
+        DDLogError(@"lll = %@",errmsg);
         [wself.tableView.pullToRefreshView stopAnimating];
         [LYToast showToast:errmsg];
     }];

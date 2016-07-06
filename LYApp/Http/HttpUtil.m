@@ -31,7 +31,7 @@ static bool isloading1=false;
     }
     else
     {
-        NSLog(@"loading... skip..");
+        DDLogError(@"loading... skip..");
     }
     
 }
@@ -67,7 +67,7 @@ static bool isloading2=false;
     }
     else
     {
-        NSLog(@"loading... skip..");
+        DDLogError(@"loading... skip..");
     }
 }
 
@@ -97,7 +97,7 @@ static bool isloading3=false;
     }
     else
     {
-        NSLog(@"loading... skip..");
+        DDLogError(@"loading... skip..");
     }
 }
 
@@ -127,7 +127,7 @@ static bool isloading4=false;
     }
     else
     {
-        NSLog(@"loading... skip..");
+        DDLogError(@"loading... skip..");
     }
     
 }
@@ -156,9 +156,28 @@ static bool isloading5=false;
     }
     else
     {
-        NSLog(@"loading... skip..");
+        DDLogError(@"loading... skip..");
     }
 
+}
+
++ (void)doUploadErrorLogs:(NSString *)content
+                  success:(void (^)(id))success
+                  failure:(void (^)(NSString* errmsg))failure
+{
+    if( content==nil)
+        return;
+    
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/upload_client_errorlog",
+                    kHostName];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:content forKey:@"content"];
+    
+    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        success(obj);
+    } failure:^(NSString *errmsg) {
+        failure(errmsg);
+    }];
 }
 
 

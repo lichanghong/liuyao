@@ -19,7 +19,7 @@
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        NSLog(@"error=%@",error);
+        DDLogError(@"error=%@",error);
         if (error.code==3840) {
             failure(@"服务器错误,请联系管理员！");
         }

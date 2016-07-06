@@ -37,6 +37,10 @@
                      failure:(void (^)(NSString* errmsg))failure;
 
 
++ (void)doUploadErrorLogs:(NSString *)content
+                        success:(void (^)(id))success
+                        failure:(void (^)(NSString* errmsg))failure;
+
 
 
 
