@@ -9,34 +9,23 @@
 #import "HttpUtil.h"
 #import "AFNetworking.h"
 #import "FetchBaseTask.h"
+#import "EncryptUtils.h"
 
 @implementation HttpUtil
 
-static bool isloading1=false;
 + (void)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
                     kHostName];
-    if (!isloading1) {
-        isloading1=true;
         [FetchBaseTask POST:api parameters:nil success:^(id obj) {
-            isloading1=false;
             success(obj);
             
         } failure:^(NSString *errmsg) {
-            isloading1=false;
             failure(errmsg);
         }];
-    }
-    else
-    {
-        DDLogError(@"loading... skip..");
-    }
-    
 }
 
-static bool isloading2=false;
 + (void)doUploadGuaWithQuestion:(NSString *)question
                      gua_gender:(NSString *)gender
                        gua_date:(NSString *)date
@@ -54,24 +43,14 @@ static bool isloading2=false;
     
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaupload",
                     kHostName];
-    if (!isloading2) {
-        isloading2=true;
         [FetchBaseTask POST:api parameters:dic success:^(id obj) {
-            isloading2=false;
             success(obj);
             
         } failure:^(NSString *errmsg) {
-            isloading2=false;
             failure(errmsg);
         }];
-    }
-    else
-    {
-        DDLogError(@"loading... skip..");
-    }
 }
 
-static bool isloading3=false;
 + (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
@@ -82,26 +61,16 @@ static bool isloading3=false;
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:username forKey:@"username"];
-    [dic setObject:pw forKey:@"password"];
-    
-    if (!isloading3) {
-        isloading3=true;
+    [dic setObject:[EncryptUtils md5:pw] forKey:@"password"];
+
         [FetchBaseTask POST:api parameters:dic success:^(id obj) {
-            isloading3=false;
             success(obj);
             
         } failure:^(NSString *errmsg) {
-            isloading3=false;
             failure(errmsg);
         }];
-    }
-    else
-    {
-        DDLogError(@"loading... skip..");
-    }
 }
 
-static bool isloading4=false;
 + (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)( NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
@@ -112,29 +81,16 @@ static bool isloading4=false;
     
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:username forKey:@"username"];
-    [dic setObject:pw forKey:@"password"];
-    [dic setObject:random() forKey:@"loginrandom"];
-    md5(username+md5(pw)+random())
+    [dic setObject:[EncryptUtils md5:pw] forKey:@"password"];
 //    客户端根据相同规则计算，random传过去
-    if (!isloading4) {
-        isloading4=true;
         [FetchBaseTask POST:api parameters:dic success:^(id obj) {
-            isloading4=false;
             success(obj);
             
         } failure:^(NSString *errmsg) {
-            isloading4=false;
             failure(errmsg);
         }];
-    }
-    else
-    {
-        DDLogError(@"loading... skip..");
-    }
-    
 }
 
-static bool isloading5=false;
 + (void)deleteGuaItemsWithId:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     if( gid==nil)
@@ -145,22 +101,12 @@ static bool isloading5=false;
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:gid forKey:@"g_id"];
     
-    if (!isloading5) {
-        isloading5=true;
         [FetchBaseTask POST:api parameters:dic success:^(id obj) {
-            isloading5=false;
             success(obj);
             
         } failure:^(NSString *errmsg) {
-            isloading5=false;
             failure(errmsg);
         }];
-    }
-    else
-    {
-        DDLogError(@"loading... skip..");
-    }
-
 }
 
 + (void)doUploadErrorLogs:(NSString *)content

@@ -47,7 +47,6 @@
     __weak LYStudyViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
         [wself.tableView.pullToRefreshView stopAnimating];
-
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
@@ -69,6 +68,12 @@
                     DDLogError(@"jkfjdll data nil ");
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
+            }
+            else
+            {
+               NSString *errmsg = json[@"errmsg"];
+                DDLogError(@"LYStudyViewController loadDataWithPull %@ ",errmsg);
+                [LYToast showToast:errmsg];
             }
         }
         else

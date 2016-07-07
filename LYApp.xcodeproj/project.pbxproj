@@ -51,6 +51,7 @@
 		957FA75A1D2CFE0600F17E7A /* DDDispatchQueueLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA74E1D2CFE0600F17E7A /* DDDispatchQueueLogFormatter.m */; };
 		957FA75B1D2CFE0600F17E7A /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7501D2CFE0600F17E7A /* DDMultiFormatter.m */; };
 		957FA75E1D2D06F600F17E7A /* LogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA75D1D2D06F600F17E7A /* LogManager.m */; };
+		957FA7631D2DF72D00F17E7A /* EncryptUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7621D2DF72D00F17E7A /* EncryptUtils.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
@@ -166,6 +167,8 @@
 		957FA7501D2CFE0600F17E7A /* DDMultiFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDMultiFormatter.m; sourceTree = "<group>"; };
 		957FA75C1D2D06F600F17E7A /* LogManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LogManager.h; sourceTree = "<group>"; };
 		957FA75D1D2D06F600F17E7A /* LogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogManager.m; sourceTree = "<group>"; };
+		957FA7611D2DF72D00F17E7A /* EncryptUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptUtils.h; sourceTree = "<group>"; };
+		957FA7621D2DF72D00F17E7A /* EncryptUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptUtils.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -411,6 +414,15 @@
 			name = LogManager;
 			sourceTree = "<group>";
 		};
+		957FA7601D2DF72600F17E7A /* 加密 */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7611D2DF72D00F17E7A /* EncryptUtils.h */,
+				957FA7621D2DF72D00F17E7A /* EncryptUtils.m */,
+			);
+			name = "加密";
+			sourceTree = "<group>";
+		};
 		95ACB34C1CE5D05100062FCA = {
 			isa = PBXGroup;
 			children = (
@@ -531,6 +543,7 @@
 		95EC49D31D1929F100C39546 /* Vender */ = {
 			isa = PBXGroup;
 			children = (
+				957FA7601D2DF72600F17E7A /* 加密 */,
 				957FA75F1D2D06FB00F17E7A /* LogManager */,
 				957FA7341D2CFE0600F17E7A /* Classes */,
 				957FA7251D2A695500F17E7A /* SVPullToRefresh */,
@@ -679,6 +692,7 @@
 				957FA7551D2CFE0600F17E7A /* DDASLLogger.m in Sources */,
 				95016FCF1D24C5B0003460ED /* AFSecurityPolicy.m in Sources */,
 				95016F991D24B7C0003460ED /* Toast+UIView.m in Sources */,
+				957FA7631D2DF72D00F17E7A /* EncryptUtils.m in Sources */,
 				957FA7581D2CFE0600F17E7A /* DDTTYLogger.m in Sources */,
 				957FA75A1D2CFE0600F17E7A /* DDDispatchQueueLogFormatter.m in Sources */,
 				957FA7541D2CFE0600F17E7A /* DDASLLogCapture.m in Sources */,

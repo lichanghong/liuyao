@@ -8,6 +8,7 @@
 
 #import "UserManager.h"
 #import "LYLocalUtil.h"
+#import "EncryptUtils.h"
 
 @implementation UserManager
 
@@ -71,6 +72,12 @@
         s_manager = manager?manager:[[UserManager alloc]init];
     }
     return s_manager;
+}
+
++ (NSString *)token:(long)time random:(u_int32_t)random
+{
+    NSString *key=[NSString stringWithFormat:@"??!%ld%u##p",time,random];
+    return [EncryptUtils md5:[EncryptUtils md5:key]];
 }
 
 @end

@@ -31,7 +31,8 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 //#define kHostName @"http://10.17.28.132"
 //#define kHostName @"http://10.19.75.127"
 //#define kHostName @"http://192.168.0.17"
-#define kHostName @"http://192.168.1.115"
+//#define kHostName @"http://192.168.1.115"
+#define kHostName @"http://10.17.1.39"
 
 #define VERSION_STRING @"V1.0.2"
 

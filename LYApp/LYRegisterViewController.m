@@ -48,6 +48,7 @@
                         if (!archived) {
                             DDLogError(@"archive usernanager fail for register");
                         }
+                        [LYToast showToast:@"注册成功"];
                         [self dismiss];
                     }
                     else

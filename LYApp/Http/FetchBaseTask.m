@@ -8,12 +8,22 @@
 
 #import "FetchBaseTask.h"
 #import "AFNetworking.h"
+#import "UserManager.h"
 
 @implementation FetchBaseTask
 
 + (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
+    u_int32_t value = (arc4random() % 9999999) + 1001010;
+    time_t t =time(NULL);
+    if (!parameters) {
+        parameters = [NSMutableDictionary dictionary];
+    }
+    [parameters setObject:@(value) forKey:@"random"];
+    [parameters setObject:@(t) forKey:@"timestamp"];
+    [parameters setObject:[UserManager token:t random:value] forKey:@"token"];
+    
     [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress){
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);

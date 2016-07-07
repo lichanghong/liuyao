@@ -153,6 +153,12 @@
                     [LYToast showToast:@"服务器错误,请联系管理员(10060)"];
                 }
             }
+            else
+            {
+                NSString *errmsg = json[@"errmsg"];
+                DDLogError(@"history loadDataWithPull %@ ",errmsg);
+                [LYToast showToast:errmsg];
+            }
         }
         else
             DDLogError(@"LYMyHistoryViewControllererr = %@",json);

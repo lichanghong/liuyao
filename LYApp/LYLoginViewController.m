@@ -102,13 +102,13 @@
                             }
                             else
                             {
-                                DDLogError(@"sfdasfasfasdf data nil ");
+                                DDLogError(@"sfdasfasfasdf data nil %@",json);
                                 [LYToast showToast:@"服务器错误,请联系管理员(10090)"];
                             }
                         }
                         else
                         {
-                            DDLogError(@"sfdasfasfasdf datalist nil ");
+                            DDLogError(@"sfdasfasfasdf datalist nil %@",json);
                             [LYToast showToast:@"用户不存在！您是否已注册？"];
                         }
                     }

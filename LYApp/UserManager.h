@@ -33,4 +33,6 @@ static NSString *kblocked      = @"blocked";
 + (bool)clearData;
 
 
++ (NSString *)token:(long)time random:(u_int32_t)random;
+
 @end
