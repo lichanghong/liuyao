@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dAU-BY-KPM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="14F1808" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="dAU-BY-KPM">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -122,7 +122,9 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="44" id="C8d-we-Cfg"/>
                                             <constraint firstAttribute="bottom" secondItem="bWc-ko-Ea7" secondAttribute="bottom" constant="7" id="GHn-hO-hL3"/>
-                                            <constraint firstItem="Kg0-tz-pVU" firstAttribute="centerY" secondItem="T5X-99-gXR" secondAttribute="centerY" id="HpW-es-JTk"/>
+                                            <constraint firstItem="Kg0-tz-pVU" firstAttribute="centerY" secondItem="T5X-99-gXR" secondAttribute="centerY" id="HpW-es-JTk">
+                                                <variation key="widthClass=compact" constant="2"/>
+                                            </constraint>
                                             <constraint firstItem="bWc-ko-Ea7" firstAttribute="leading" secondItem="T5X-99-gXR" secondAttribute="leading" constant="12" id="NLF-oY-c06"/>
                                             <constraint firstItem="bWc-ko-Ea7" firstAttribute="top" secondItem="T5X-99-gXR" secondAttribute="top" constant="7" id="YPm-6j-kCa"/>
                                             <constraint firstItem="Lwd-fe-ylm" firstAttribute="leading" secondItem="bWc-ko-Ea7" secondAttribute="trailing" constant="8" id="ihd-B2-AzM"/>
@@ -605,7 +607,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="jeH-Bw-y8Y" id="D8Q-4V-d1k">
-                                            <rect key="frame" x="0.0" y="0.0" width="207" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xHC-Ke-mbF">
@@ -796,7 +798,7 @@
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="diM-lY-IT3" id="4Nl-FK-REf">
-                                            <rect key="frame" x="0.0" y="0.0" width="207" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="207" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8kt-Vv-GHC">
@@ -831,7 +833,8 @@
                                                             <exclude reference="cgL-dz-eNb"/>
                                                         </mask>
                                                     </variation>
-                                                    <variation key="widthClass=compact">
+                                                    <variation key="widthClass=compact" misplaced="YES">
+                                                        <rect key="frame" x="192" y="15" width="14" height="14"/>
                                                         <mask key="constraints">
                                                             <include reference="Po0-GL-Agz"/>
                                                             <include reference="cgL-dz-eNb"/>
@@ -1725,6 +1728,7 @@
                         <viewControllerLayoutGuide type="bottom" id="CgC-qb-4vA"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="jvS-hf-tr5">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qix-Rv-0w7" userLabel="navView">
@@ -1829,7 +1833,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uOS-g4-roP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1846.5" y="-366"/>
+            <point key="canvasLocation" x="1846" y="-366"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="BcW-wo-00Y">
