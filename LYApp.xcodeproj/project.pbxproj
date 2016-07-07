@@ -52,6 +52,8 @@
 		957FA75B1D2CFE0600F17E7A /* DDMultiFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7501D2CFE0600F17E7A /* DDMultiFormatter.m */; };
 		957FA75E1D2D06F600F17E7A /* LogManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA75D1D2D06F600F17E7A /* LogManager.m */; };
 		957FA7631D2DF72D00F17E7A /* EncryptUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7621D2DF72D00F17E7A /* EncryptUtils.m */; };
+		957FA76A1D2E511C00F17E7A /* LYTeacherViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA7691D2E511C00F17E7A /* LYTeacherViewController.m */; };
+		957FA76D1D2E566400F17E7A /* LYCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA76C1D2E566400F17E7A /* LYCommentCell.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
@@ -169,6 +171,10 @@
 		957FA75D1D2D06F600F17E7A /* LogManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LogManager.m; sourceTree = "<group>"; };
 		957FA7611D2DF72D00F17E7A /* EncryptUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptUtils.h; sourceTree = "<group>"; };
 		957FA7621D2DF72D00F17E7A /* EncryptUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptUtils.m; sourceTree = "<group>"; };
+		957FA7681D2E511C00F17E7A /* LYTeacherViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYTeacherViewController.h; path = Learn/LYTeacherViewController.h; sourceTree = "<group>"; };
+		957FA7691D2E511C00F17E7A /* LYTeacherViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYTeacherViewController.m; path = Learn/LYTeacherViewController.m; sourceTree = "<group>"; };
+		957FA76B1D2E566400F17E7A /* LYCommentCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYCommentCell.h; path = Learn/LYCommentCell.h; sourceTree = "<group>"; };
+		957FA76C1D2E566400F17E7A /* LYCommentCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYCommentCell.m; path = Learn/LYCommentCell.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -423,6 +429,46 @@
 			name = "加密";
 			sourceTree = "<group>";
 		};
+		957FA7641D2E502600F17E7A /* 卦例及历史 */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */,
+				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
+				957FA7181D274D0500F17E7A /* LYStudyViewController.h */,
+				957FA7191D274D0500F17E7A /* LYStudyViewController.m */,
+			);
+			name = "卦例及历史";
+			sourceTree = "<group>";
+		};
+		957FA7651D2E505500F17E7A /* 起卦排盘 */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49CB1D17FB9400C39546 /* LYClientViewController.h */,
+				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
+			);
+			name = "起卦排盘";
+			sourceTree = "<group>";
+		};
+		957FA7661D2E507100F17E7A /* 帮助 */ = {
+			isa = PBXGroup;
+			children = (
+				95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */,
+				95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */,
+			);
+			name = "帮助";
+			sourceTree = "<group>";
+		};
+		957FA7671D2E50CD00F17E7A /* 解卦评论页 */ = {
+			isa = PBXGroup;
+			children = (
+				957FA7681D2E511C00F17E7A /* LYTeacherViewController.h */,
+				957FA7691D2E511C00F17E7A /* LYTeacherViewController.m */,
+				957FA76B1D2E566400F17E7A /* LYCommentCell.h */,
+				957FA76C1D2E566400F17E7A /* LYCommentCell.m */,
+			);
+			name = "解卦评论页";
+			sourceTree = "<group>";
+		};
 		95ACB34C1CE5D05100062FCA = {
 			isa = PBXGroup;
 			children = (
@@ -447,10 +493,11 @@
 		95ACB3571CE5D05100062FCA /* LYApp */ = {
 			isa = PBXGroup;
 			children = (
+				95EC49CA1D17FB5D00C39546 /* 页面 */,
 				957FA7301D2A6D5400F17E7A /* 本地化 */,
 				95016F9D1D24BB09003460ED /* 网络请求 */,
 				95EC49D31D1929F100C39546 /* Vender */,
-				95EC49CA1D17FB5D00C39546 /* 页面 */,
+				957FA7671D2E50CD00F17E7A /* 解卦评论页 */,
 				95EC49C61D17E8EF00C39546 /* Gua */,
 				95ACB35B1CE5D05100062FCA /* AppDelegate.h */,
 				95ACB35C1CE5D05100062FCA /* AppDelegate.m */,
@@ -507,6 +554,9 @@
 		95EC49CA1D17FB5D00C39546 /* 页面 */ = {
 			isa = PBXGroup;
 			children = (
+				957FA7661D2E507100F17E7A /* 帮助 */,
+				957FA7651D2E505500F17E7A /* 起卦排盘 */,
+				957FA7641D2E502600F17E7A /* 卦例及历史 */,
 				957FA71B1D2A050000F17E7A /* 设置 */,
 				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
 				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
@@ -514,14 +564,6 @@
 				95EC49CF1D19114A00C39546 /* View */,
 				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
 				95EC49C81D17FA8500C39546 /* LYMainViewController.m */,
-				95EC49CB1D17FB9400C39546 /* LYClientViewController.h */,
-				95EC49CC1D17FB9400C39546 /* LYClientViewController.m */,
-				95EC49D91D1A5D4300C39546 /* LYHelpViewController.h */,
-				95EC49DA1D1A5D4300C39546 /* LYHelpViewController.m */,
-				95EC49E51D1BBB4D00C39546 /* LYMyHistoryViewController.h */,
-				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
-				957FA7181D274D0500F17E7A /* LYStudyViewController.h */,
-				957FA7191D274D0500F17E7A /* LYStudyViewController.m */,
 			);
 			name = "页面";
 			sourceTree = "<group>";
@@ -650,6 +692,7 @@
 				95016FD01D24C5B0003460ED /* AFURLRequestSerialization.m in Sources */,
 				95ACB38D1CE5D65D00062FCA /* YYView.m in Sources */,
 				95EC49E21D1A9F1300C39546 /* JingRoundView.m in Sources */,
+				957FA76A1D2E511C00F17E7A /* LYTeacherViewController.m in Sources */,
 				952697621D27C9D7001A6E3B /* LYTitleCell.m in Sources */,
 				95016FD91D24C5B0003460ED /* UIProgressView+AFNetworking.m in Sources */,
 				957FA7571D2CFE0600F17E7A /* DDLog.m in Sources */,
@@ -664,6 +707,7 @@
 				95EC49E71D1BBB4D00C39546 /* LYMyHistoryViewController.m in Sources */,
 				95ACB3931CE5DCD500062FCA /* BaGuaView.m in Sources */,
 				957FA72E1D2A695500F17E7A /* UIScrollView+SVInfiniteScrolling.m in Sources */,
+				957FA76D1D2E566400F17E7A /* LYCommentCell.m in Sources */,
 				957FA71A1D274D0500F17E7A /* LYStudyViewController.m in Sources */,
 				95016F9C1D24B7F5003460ED /* LYToast.m in Sources */,
 				957FA7561D2CFE0600F17E7A /* DDFileLogger.m in Sources */,
@@ -815,8 +859,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MoBiShenQi (Beijing) IT Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (87T73PR48V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 长鸿 李 (87T73PR48V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LYApp",
@@ -837,8 +881,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Distribution: MoBiShenQi (Beijing) IT Technology Co., Ltd.";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 1211054926@qq.com (U2JMQ294F3)";
+				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (87T73PR48V)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 长鸿 李 (87T73PR48V)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LYApp",

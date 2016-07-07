@@ -9,6 +9,7 @@
 #import "GuaItemDetailViewController.h"
 #import "GuaManager.h"
 #import "BaGuaView.h"
+#import "LYTeacherViewController.h"
 
 
 
@@ -45,6 +46,7 @@
     UIButton *backbutton;
     UILabel *navLabel;
     UIButton *statusButton;
+    UIButton *commentButton;
 }
 
 - (void)initUI
@@ -78,9 +80,14 @@
     
     self.view.backgroundColor = [UIColor whiteColor];
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 270)];
+    tableHeadView.backgroundColor = [UIColor clearColor];
+
     tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
     tableFootView.backgroundColor = [UIColor redColor];
-    tableHeadView.backgroundColor = [UIColor clearColor];
+    commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+    [commentButton setTitle:@"评论" forState:UIControlStateNormal];
+    [commentButton addTarget:self action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
+    [tableFootView addSubview:commentButton];
     
     _gua_who_ask_label = [self createGuaBaseLabel];
     [tableHeadView addSubview:_gua_who_ask_label];
@@ -209,9 +216,23 @@
 - (void)handleAction:(id)sender
 {
     if (sender == backbutton) {
-        [self.navigationController popViewControllerAnimated:YES];
- 
+        [self dismiss];
     }
+    else if(sender == commentButton)
+    {
+        [self toTeacherCommentV];
+    }
+}
+
+- (void)toTeacherCommentV
+{
+    LYTeacherViewController *VC = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LYTeacherViewController"];
+    [self.navigationController pushViewController:VC animated:YES];
+}
+
+- (void)dismiss
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 - (void)loadLiuJia
