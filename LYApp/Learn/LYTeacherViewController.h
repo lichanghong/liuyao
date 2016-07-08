@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface LYTeacherViewController : UIViewController<UITextViewDelegate>
+@property (nonatomic,strong)NSString *guaid;
 
 @end

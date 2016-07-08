@@ -43,6 +43,8 @@
 
 
 
++ (void)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
+
 
 
 

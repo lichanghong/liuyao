@@ -13,6 +13,25 @@
 
 @implementation HttpUtil
 
++ (void)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
+{
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/commitguaresult",
+                    kHostName];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:name?name:@""            forKey:@"name"];
+    [dic setObject:detail?detail:@""        forKey:@"detail"];
+    [dic setObject:[UserManager defaultManager].userid        forKey:@"uid"];
+    [dic setObject:gid?gid:@""        forKey:@"gid"];
+    [dic setObject:@(1)       forKey:@"isteacher"];
+    
+    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        success(obj);
+        
+    } failure:^(NSString *errmsg) {
+        failure(errmsg);
+    }];
+}
+
 + (void)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure
 {

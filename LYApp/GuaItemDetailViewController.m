@@ -227,6 +227,7 @@
 - (void)toTeacherCommentV
 {
     LYTeacherViewController *VC = [self.navigationController.storyboard instantiateViewControllerWithIdentifier:@"LYTeacherViewController"];
+     VC.guaid = _guaItem[@"g_id"];
     [self.navigationController pushViewController:VC animated:YES];
 }
 

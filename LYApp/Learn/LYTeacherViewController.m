@@ -9,6 +9,7 @@
 #import "LYTeacherViewController.h"
 #import "LYCommentCell.h"
 #import "JingRoundView.h"
+#import "HttpUtil.h"
 
 @interface LYTeacherViewController ()<UITableViewDelegate,UITableViewDataSource>
 
@@ -65,7 +66,78 @@
         [self.tableView setContentOffset:CGPointZero animated:YES];
         [_roundView forcePlay];
         [self.tableView setUserInteractionEnabled:NO];
-        
+        [self commitResult];
+    }
+}
+
+- (void)commitResult
+{
+    LYCommentCell *cell1=[self.tableView cellForRowAtIndexPath:[NSIndexPath
+                                                                indexPathForRow:0 inSection:0]];
+    LYCommentCell *cell2=[self.tableView cellForRowAtIndexPath:[NSIndexPath
+                                                                indexPathForRow:0 inSection:1]];
+    NSString *name =  nameTextField.text;
+    NSString *detail = cell1.textView.text;
+    NSString *result = cell2.textView.text;
+    BOOL hasErr=false;
+    if (name && name.length>2 && ![self isBlankString:name]) {
+        if (name.length>20) {
+            [LYToast showToast:@"称呼过长！"];
+            hasErr=true;
+        }
+        else
+        {
+            if (detail && detail.length<500 && ![self isBlankString:detail]) {
+                if (result && result.length<500 && ![self isBlankString:result]) {
+                    NSString *dd=[NSString stringWithFormat:@"%@{[]}%@",detail,result];
+                    [self doCommitWithName:name detail:dd];
+                }
+                else
+                {
+                    [LYToast showToast:@"您的解卦结果过长或格式错误"];
+                    hasErr=true;
+                }
+            }
+            else
+            {
+                [LYToast showToast:@"您的分析内容过长或格式错误"];
+                hasErr=true;
+            }
+        }
+    }
+    else
+    {
+        [LYToast showToast:@"请填写您的称呼"];
+        hasErr=true;
+    }
+    
+    if (hasErr) {
+        [self endCommit];
+    }
+}
+
+- (void)endCommit
+{
+    [_roundView forceStop];
+    [self.tableView setUserInteractionEnabled:YES];
+}
+- (void)doCommitWithName:(NSString *)name detail:(NSString *)detail
+{
+    if (_guaid) {
+        [HttpUtil doCommitGuaDetail:detail name:name gid:_guaid success:^(id json) {
+            NSLog(@"sdjalfsdjf = %@",json);
+            [self endCommit];
+        } failure:^(NSString *fail) {
+            [LYToast showToast:fail];
+            DDLogError(@"doCommitGuaDetail%@",fail);
+            [self endCommit];
+        }];
+    }
+    else
+    {
+        [LYToast showToast:@"未知错误,请联系管理员(9909)"];
+        DDLogError(@"未知错误,请联系管理员(9909)");
+        [self endCommit];
     }
 }
 
@@ -138,6 +210,19 @@
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView
 {
     [self.view endEditing:YES];
+}
+
+- (BOOL) isBlankString:(NSString *)string {
+    if (string == nil || string == NULL) {
+        return YES;
+    }
+    if ([string isKindOfClass:[NSNull class]]) {
+        return YES;
+    }
+    if ([[string stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]] length]==0) {
+        return YES;
+    }
+    return NO;
 }
 /*
 #pragma mark - Navigation
