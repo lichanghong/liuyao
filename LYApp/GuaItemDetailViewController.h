@@ -14,5 +14,6 @@
 
 @property (nonatomic,assign)BOOL isyourself;
 
+
 @end
 

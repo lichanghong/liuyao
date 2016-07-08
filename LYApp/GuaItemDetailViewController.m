@@ -10,6 +10,7 @@
 #import "GuaManager.h"
 #import "BaGuaView.h"
 #import "LYTeacherViewController.h"
+#import "LYTitleCell.h"
 
 
 
@@ -24,6 +25,10 @@
 
 
 @property (nonatomic,strong)UITableView *tableView;
+
+
+
+@property (nonatomic,assign)LYTitleCell_verifystate verifyState;
 
 
 @end
@@ -82,13 +87,20 @@
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 270)];
     tableHeadView.backgroundColor = [UIColor clearColor];
 
-    tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
-    tableFootView.backgroundColor = [UIColor redColor];
-    commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-    [commentButton setTitle:@"评论" forState:UIControlStateNormal];
-    [commentButton addTarget:self action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
-    [tableFootView addSubview:commentButton];
-    
+    if (!_isyourself) {
+        tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
+        tableFootView.backgroundColor = [UIColor redColor];
+        commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
+        [commentButton setTitle:@"评论" forState:UIControlStateNormal];
+        [commentButton addTarget:self action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
+        [tableFootView addSubview:commentButton];
+        [self.view addSubview:tableFootView];
+        _tableView.frame=CGRectMake(0, 40,KScreenWidth, KScreenHeight-80);
+    }
+    else
+    {
+        _tableView.frame=CGRectMake(0, 40,KScreenWidth, KScreenHeight-40);
+    }
     _gua_who_ask_label = [self createGuaBaseLabel];
     [tableHeadView addSubview:_gua_who_ask_label];
     
@@ -126,7 +138,46 @@
     [_gua_contentView addSubview:_baGuaView];
     
     [_tableView setTableHeaderView:tableHeadView];
-    [self.view addSubview:tableFootView];
+    
+    
+    LYTitleCell_verifystate state = [_guaItem[@"verify_state"] intValue];
+    self.verifyState = state;
+
+}
+
+- (void)setVerifyState:(LYTitleCell_verifystate)verifyState
+{
+    _verifyState = verifyState;
+    switch (_verifyState) {
+        case LYTitleCell_verifing:
+        {
+            [statusButton setTitle:@"审核中" forState:UIControlStateNormal];
+            [statusButton setImage:[UIImage imageNamed:@"verify_ing"] forState:UIControlStateNormal];
+        }
+            break;
+        case  LYTitleCell_verified:
+        {
+            [statusButton setTitle:@"审核通过" forState:UIControlStateNormal];
+            statusButton.imageView.image = nil;
+            [statusButton setImage:[UIImage imageNamed:@"verify_ok"] forState:UIControlStateNormal];
+        }
+            break;
+        case  LYTitleCell_failed:
+        {
+            [statusButton setTitle:@"审核失败" forState:UIControlStateNormal];
+            [statusButton setImage:[UIImage imageNamed:@"verify_fail"] forState:UIControlStateNormal];
+        }
+            break;
+        case  LYTitleCell_solved:
+        {
+            [statusButton setTitle:@"解卦完成" forState:UIControlStateNormal];
+            [statusButton setImage:[UIImage imageNamed:@"null"] forState:UIControlStateNormal];
+        }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath

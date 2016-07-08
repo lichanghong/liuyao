@@ -69,7 +69,8 @@
         NSString *time=   [NSString stringWithFormat:@"%@年%@月%@日%@时",timestr[0],timestr[1],timestr[2],timestr[3]];
         cell.detailLabel.text = [NSString stringWithFormat:@"%@起卦  %@ 之 %@ 卦",time,                                                    [[guaNames allKeys]lastObject],[[bguaNames allKeys]lastObject]];
     }
-    cell.verifyImage.image = [UIImage imageNamed:@"verify_ing"];
+    LYTitleCell_verifystate state = [dic[@"verify_state"] intValue];
+    cell.verifyState = state;
     return cell;
 }
 
@@ -126,7 +127,7 @@
     }];
 }
 
-- (void)loadDataWithPull:(BOOL)pull
+- (void)loadData:(BOOL)forceupdate
 {
     __weak LYMyHistoryViewController *wself = self;
     [HttpUtil doLoadGuaItemsSuccess:^(id json) {
@@ -138,7 +139,7 @@
                 if (datalist && datalist.count>0) {
                     wself.guaItems = [datalist mutableCopy];
                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
-                    if (guaitemArr && guaitemArr.count==datalist.count) {
+                    if (guaitemArr && guaitemArr.count==datalist.count && !forceupdate) {
                         //数据无更新，不处理
                     }
                     else
@@ -156,7 +157,7 @@
             else
             {
                 NSString *errmsg = json[@"errmsg"];
-                DDLogError(@"history loadDataWithPull %@ ",errmsg);
+                DDLogError(@"history loadData %@ ",errmsg);
                 [LYToast showToast:errmsg];
             }
         }
@@ -178,7 +179,7 @@
     [super viewDidLoad];
     [_tableView setTableHeaderView:[[UIView alloc]initWithFrame:CGRectMake(0, 0, 0,1)]];
     [_tableView addPullToRefreshWithActionHandler:^{
-        [self loadDataWithPull:YES];
+        [self loadData:YES];
     }];
     NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
     if (guaitemArr) {
@@ -187,7 +188,7 @@
     else
     _guaItems = [NSMutableArray array];
     
-    [self loadDataWithPull:NO];
+    [self loadData:NO];
     [self.tableView reloadData];
     // Do any additional setup after loading the view.
 }

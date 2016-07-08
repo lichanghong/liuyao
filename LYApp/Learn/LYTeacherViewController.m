@@ -37,8 +37,10 @@
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 180)];
     nameTextField = [[UITextField alloc]initWithFrame:CGRectMake(12, ViewH(tableHeadView)-72, KScreenWidth-24, 40)];
     nameTextField.placeholder = @"请输入您的称呼";
+    nameTextField.font = [UIFont systemFontOfSize:13];
     [nameTextField setBorderStyle:UITextBorderStyleRoundedRect];
     tableHeadView.backgroundColor = [UIColor clearColor];
+    [nameTextField setTextColor:[UIColor grayColor]];
     [_tableView setTableHeaderView:tableHeadView];
     [tableHeadView addSubview:nameTextField];
     
@@ -126,7 +128,9 @@
     if (_guaid) {
         [HttpUtil doCommitGuaDetail:detail name:name gid:_guaid success:^(id json) {
             NSLog(@"sdjalfsdjf = %@",json);
+            [LYToast showToast:@"已提交审核"];
             [self endCommit];
+            [self dismiss];
         } failure:^(NSString *fail) {
             [LYToast showToast:fail];
             DDLogError(@"doCommitGuaDetail%@",fail);

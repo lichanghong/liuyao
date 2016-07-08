@@ -436,6 +436,8 @@
 				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
 				957FA7181D274D0500F17E7A /* LYStudyViewController.h */,
 				957FA7191D274D0500F17E7A /* LYStudyViewController.m */,
+				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
+				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
 			);
 			name = "卦例及历史";
 			sourceTree = "<group>";
@@ -558,8 +560,6 @@
 				957FA7651D2E505500F17E7A /* 起卦排盘 */,
 				957FA7641D2E502600F17E7A /* 卦例及历史 */,
 				957FA71B1D2A050000F17E7A /* 设置 */,
-				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
-				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
 				95EC49EB1D1BBF9700C39546 /* 登录注册 */,
 				95EC49CF1D19114A00C39546 /* View */,
 				95EC49C71D17FA8500C39546 /* LYMainViewController.h */,
