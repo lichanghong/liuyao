@@ -11,7 +11,11 @@
 #import "BaGuaView.h"
 #import "LYTeacherViewController.h"
 #import "LYTitleCell.h"
-
+#import "Http/HttpUtil.h"
+#import "ResultItem.h"
+#import "LYLocalUtil.h"
+#import "LYSolveCell.h"
+#import "ResultDetailView.h"
 
 
 @interface GuaItemDetailViewController ()<UITableViewDelegate,UITableViewDataSource>
@@ -22,10 +26,11 @@
 
 @property (strong, nonatomic)  UIView  *gua_contentView;
 @property (strong, nonatomic)  BaGuaView *baGuaView;
+@property (strong, nonatomic)  NSMutableArray *ResultItems;
 
 
 @property (nonatomic,strong)UITableView *tableView;
-
+@property (nonatomic,strong)ResultDetailView *resultDetailView;
 
 
 @property (nonatomic,assign)LYTitleCell_verifystate verifyState;
@@ -53,6 +58,8 @@
     UIButton *statusButton;
     UIButton *commentButton;
 }
+
+
 
 - (void)initUI
 {
@@ -89,9 +96,9 @@
 
     if (!_isyourself) {
         tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
-        tableFootView.backgroundColor = [UIColor redColor];
-        commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, 100, 30)];
-        [commentButton setTitle:@"评论" forState:UIControlStateNormal];
+        tableFootView.backgroundColor = [UIColor colorForHex:@"804000"];
+        commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
+        [commentButton setTitle:@"帮他解卦" forState:UIControlStateNormal];
         [commentButton addTarget:self action:@selector(handleAction:) forControlEvents:UIControlEventTouchUpInside];
         [tableFootView addSubview:commentButton];
         [self.view addSubview:tableFootView];
@@ -138,8 +145,9 @@
     [_gua_contentView addSubview:_baGuaView];
     
     [_tableView setTableHeaderView:tableHeadView];
-    
-    
+    // 注册cell
+    [LYSolveCell registerCellWithTableView:self.tableView];
+
     LYTitleCell_verifystate state = [_guaItem[@"verify_state"] intValue];
     self.verifyState = state;
 
@@ -182,7 +190,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 44;
+    return 64;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
@@ -192,46 +200,39 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 0;
+    return _ResultItems.count;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GuaItemDetailViewController *detailVC =[[GuaItemDetailViewController alloc]init];
-//    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
-//    detailVC.isyourself = true;
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    ResultItem *item = [ResultItem responseWith:[_ResultItems objectAtIndex:indexPath.row]];
+    [_resultDetailView showInView:self.view WithResultItem:item];
+ //    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
 }
+
+
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-//    LYTitleCell *cell;
-//    static NSString *CellIdentifier = @"LYLearnCell";
-//    cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
-//    NSDictionary *dic = [_guaItems objectAtIndex:indexPath.row];
-//    NSArray *guaa = [dic[@"g_gua"]componentsSeparatedByString:@":"];
-//    
-//    int guaindex = [[guaa firstObject]intValue];
-//    int bianguaindex = [guaa[1] intValue];
-//    NSDictionary *guaNames = [[GuaManager shareManager].guaNames objectAtIndex:guaindex];
-//    NSDictionary *bguaNames = [[GuaManager shareManager].guaNames objectAtIndex:bianguaindex];
-//    NSArray      *timestr = [dic[@"g_date"] componentsSeparatedByString:@":"];
-//    cell.titleLabel.text = [NSString stringWithFormat:@"您问:%@",dic[@"g_question"]];
-//    
-//    if (timestr.count > 3 && [guaNames allKeys].count>0) {
-//        NSString *time=   [NSString stringWithFormat:@"%@年%@月%@日%@时",timestr[0],timestr[1],timestr[2],timestr[3]];
-//        cell.detailLabel.text = [NSString stringWithFormat:@"%@起卦  %@ 之 %@ 卦",time,                                                    [[guaNames allKeys]lastObject],[[bguaNames allKeys]lastObject]];
-//    }
-//    cell.verifyImage.image = [UIImage imageNamed:@"verify_ing"];
-    return nil;
+    LYSolveCell *cell;
+    cell = [tableView dequeueReusableCellWithIdentifier:[LYSolveCell identifier]];
+    ResultItem *item = [ResultItem responseWith:[_ResultItems objectAtIndex:indexPath.row]];
+    cell.name.text = [NSString stringWithFormat:@"卦师:%@", item.nickname];
+    cell.time.text = item.commit_time;
+    return cell;
 }
 
+- (void)createResultDetailView {
+    if (!_resultDetailView) {
+        _resultDetailView = [[ResultDetailView alloc]initWithTableHeadView:tableHeadView];
+    }
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
-    
+    [self createResultDetailView];
     NSDictionary *dic = _guaItem;
     NSArray *guaa = [dic[@"g_gua"]componentsSeparatedByString:@":"];
     guaindex = [[guaa firstObject]intValue];
@@ -257,6 +258,18 @@
         gua_name = [NSString stringWithFormat:@"%@起卦  %@ 》%@ 之 %@卦",gua_date,                                                    [[guaNames allValues]lastObject],[[guaNames allKeys]lastObject],[[bguaNames allKeys]lastObject]];
     }
     
+    [self loadData:NO];
+    
+    _ResultItems = [NSMutableArray array];
+    NSArray *resultitems = [LYLocalUtil unarchiveArrayWithFileName:[self resultItemsFileName]];
+    if (resultitems) {
+        for (NSDictionary *dic in resultitems) {
+            if (dic[@"g_id"]==_guaItem[@"g_id"]) {
+                [_ResultItems addObject:dic];
+            }
+        }
+    }
+
     [self loadLiuJia];
    
     [self refreshData];
@@ -273,6 +286,7 @@
     {
         [self toTeacherCommentV];
     }
+    
 }
 
 - (void)toTeacherCommentV
@@ -315,7 +329,60 @@
             
         }];
     }
+    
 
+}
+
+- (void)loadData:(BOOL)forceupdate
+{
+    // load gua question result
+    NSString *gid = _guaItem[@"g_id"];
+    __weak GuaItemDetailViewController *wself =self;
+    [HttpUtil doGetGuaResultWithGid:gid success:^(id json) {
+        NSLog(@"json = %@",json);
+        if (json) {
+            NSString *errorno = json[@"errno"];
+            if ([errorno intValue]==0) {
+                NSArray *datalist = json[@"data"];
+                if (datalist && datalist.count>0) {
+                    wself.ResultItems = [datalist mutableCopy];
+                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[wself resultItemsFileName]];
+                    if (guaitemArr && guaitemArr.count==datalist.count  && !forceupdate) {
+                        //数据无更新，不处理
+                    }
+                    else
+                    {
+                        [LYLocalUtil archiveArray:wself.ResultItems withFileName:[wself resultItemsFileName]];
+                    }
+                    [wself.tableView reloadData];
+
+                }
+                else
+                {
+                    DDLogError(@"jkjkkk data nil ");
+                    [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
+                }
+            }
+            else
+            {
+                NSString *errmsg = json[@"errmsg"];
+                DDLogError(@" detailvC errmsg %@ ",errmsg);
+                [LYToast showToast:errmsg];
+            }
+        }
+        else
+            DDLogError(@"lsjfllljklsdjkjsk = %@",json);
+
+        
+    } failure:^(NSString *errmsg) {
+        [LYToast showToast:errmsg];
+        DDLogError(@"%@",errmsg);
+    }];
+}
+
+- (NSString *)resultItemsFileName
+{
+    return [NSString stringWithFormat:@"ashjfklsjfads%@",_guaItem[@"g_id"]];
 }
 
 - (void)refreshData

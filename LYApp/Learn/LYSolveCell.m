@@ -8,10 +8,28 @@
 
 #import "LYSolveCell.h"
 
+#define Identifier @"LYSolveCell"
+#define NidName @"LYSolveCell"
+
 @implementation LYSolveCell
 
-- (void)awakeFromNib {
-    // Initialization code
++(void)registerCellWithTableView:(UITableView *)tableView
+{
+    UINib *nib = [UINib nibWithNibName:NidName bundle:nil];
+    [tableView registerNib:nib forCellReuseIdentifier:Identifier];
+}
+
++(NSString *)identifier
+{
+    return Identifier;
+}
+
+-(void)awakeFromNib{
+    [super awakeFromNib];
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
+    
+    self.layer.cornerRadius = 2.0f;
+    self.clipsToBounds = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

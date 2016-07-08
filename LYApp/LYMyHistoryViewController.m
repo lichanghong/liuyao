@@ -103,6 +103,11 @@
     }
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    return @"删除";
+}
+
 - (void)deleteGuaItemWithId:(NSString *)gid
 {
     [HttpUtil deleteGuaItemsWithId:gid success:^(id json) {

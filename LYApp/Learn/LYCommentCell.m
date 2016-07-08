@@ -19,13 +19,13 @@
 - (void)setIndexPath:(NSIndexPath *)indexPath
 {
     _indexPath = indexPath;
-    if (indexPath.section==0) {
-        _textView.text = @"我对此卦的分析是：";
-    }
-    else
-    {
-        _textView.text = @"经过分析，结果应该是：";
-    }
+//    if (indexPath.section==0) {
+//        _textView.text = @"我对此卦的分析是：";
+//    }
+//    else
+//    {
+//        _textView.text = @"经过分析，结果应该是：";
+//    }
     _textView.tag = indexPath.section;
 
 }

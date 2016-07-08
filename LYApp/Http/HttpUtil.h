@@ -13,6 +13,8 @@
 
 + (instancetype)shareInstance;
 
++ (void)doGetGuaResultWithGid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
+
 + (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw
                             success:(void (^)(id json))success
                             failure:(void (^)(NSString*errmsg))failure;

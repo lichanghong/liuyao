@@ -47,7 +47,21 @@ dispatch_sync(dispatch_get_main_queue(), block);\
 #define MaxX(v)                 CGRectGetMaxX((v).frame)
 #define MaxY(v)                 CGRectGetMaxY((v).frame)
 #define setY(v,y)   v.frame=CGRectMake(v.frame.origin.x, y , v.frame.size.width, v.frame.size.height)
+#define setH(v,h)   v.frame=CGRectMake(v.frame.origin.x,v.frame.origin.y, v.frame.size.width, h)
 // Include any system framework and library headers here that should be included in all compilation units.
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 #endif /* PrefixHeader_pch */
+
+
+
+
+/*/任务
+1，审核失败可修改
+2, 求卦者反馈
+ 
+ 
+ 
+ 
+ 
+ */
