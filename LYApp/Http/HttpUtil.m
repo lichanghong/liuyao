@@ -41,7 +41,6 @@
     
     [FetchBaseTask POST:api parameters:dic success:^(id obj) {
         success(obj);
-        
     } failure:^(NSString *errmsg) {
         failure(errmsg);
     }];

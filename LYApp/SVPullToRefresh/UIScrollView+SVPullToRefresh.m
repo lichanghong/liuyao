@@ -182,7 +182,7 @@ static char UIScrollViewPullToRefreshView;
         
         self.titles = [NSMutableArray arrayWithObjects:NSLocalizedString(@"Pull to refresh...",),
                              NSLocalizedString(@"Release to refresh...",),
-                             NSLocalizedString(@"Loading...",),
+                             NSLocalizedString(@"加载中...",),
                                 nil];
         
         self.subtitles = [NSMutableArray arrayWithObjects:@"", @"", @"", @"", nil];
