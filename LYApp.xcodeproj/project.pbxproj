@@ -56,6 +56,7 @@
 		957FA76D1D2E566400F17E7A /* LYCommentCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA76C1D2E566400F17E7A /* LYCommentCell.m */; };
 		957FA7701D2F8FE800F17E7A /* ResultItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA76F1D2F8FE800F17E7A /* ResultItem.m */; };
 		957FA77C1D2FB2AE00F17E7A /* ResultDetailView.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA77B1D2FB2AE00F17E7A /* ResultDetailView.m */; };
+		957FA77F1D334E0300F17E7A /* LYHelpResolveViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 957FA77E1D334E0300F17E7A /* LYHelpResolveViewController.m */; };
 		95ACB35A1CE5D05100062FCA /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB3591CE5D05100062FCA /* main.m */; };
 		95ACB35D1CE5D05100062FCA /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35C1CE5D05100062FCA /* AppDelegate.m */; };
 		95ACB3601CE5D05100062FCA /* GuaItemDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */; };
@@ -181,6 +182,8 @@
 		957FA76F1D2F8FE800F17E7A /* ResultItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultItem.m; path = Learn/ResultItem.m; sourceTree = "<group>"; };
 		957FA77A1D2FB2AE00F17E7A /* ResultDetailView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ResultDetailView.h; path = Learn/ResultDetailView.h; sourceTree = "<group>"; };
 		957FA77B1D2FB2AE00F17E7A /* ResultDetailView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ResultDetailView.m; path = Learn/ResultDetailView.m; sourceTree = "<group>"; };
+		957FA77D1D334E0300F17E7A /* LYHelpResolveViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LYHelpResolveViewController.h; path = Learn/LYHelpResolveViewController.h; sourceTree = "<group>"; };
+		957FA77E1D334E0300F17E7A /* LYHelpResolveViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LYHelpResolveViewController.m; path = Learn/LYHelpResolveViewController.m; sourceTree = "<group>"; };
 		95ACB3551CE5D05100062FCA /* LYApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LYApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		95ACB3591CE5D05100062FCA /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		95ACB35B1CE5D05100062FCA /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -442,6 +445,8 @@
 				95EC49E61D1BBB4D00C39546 /* LYMyHistoryViewController.m */,
 				957FA7181D274D0500F17E7A /* LYStudyViewController.h */,
 				957FA7191D274D0500F17E7A /* LYStudyViewController.m */,
+				957FA77D1D334E0300F17E7A /* LYHelpResolveViewController.h */,
+				957FA77E1D334E0300F17E7A /* LYHelpResolveViewController.m */,
 				95ACB35E1CE5D05100062FCA /* GuaItemDetailViewController.h */,
 				95ACB35F1CE5D05100062FCA /* GuaItemDetailViewController.m */,
 				957FA77A1D2FB2AE00F17E7A /* ResultDetailView.h */,
@@ -709,6 +714,7 @@
 				95016FD61D24C5B0003460ED /* UIActivityIndicatorView+AFNetworking.m in Sources */,
 				95EC49D61D192A0600C39546 /* UIColor+Hex.m in Sources */,
 				957FA7511D2CFE0600F17E7A /* CLIColor.m in Sources */,
+				957FA77F1D334E0300F17E7A /* LYHelpResolveViewController.m in Sources */,
 				95016FDA1D24C5B0003460ED /* UIRefreshControl+AFNetworking.m in Sources */,
 				95016FD21D24C5B0003460ED /* AFURLSessionManager.m in Sources */,
 				95ACB3961CE5E90200062FCA /* GuaManager.m in Sources */,
@@ -871,8 +877,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (87T73PR48V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 长鸿 李 (87T73PR48V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LYApp",
@@ -893,8 +899,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: 长鸿 李 (87T73PR48V)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: 长鸿 李 (87T73PR48V)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/LYApp",

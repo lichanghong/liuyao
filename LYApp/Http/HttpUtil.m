@@ -47,17 +47,23 @@
     }];
 }
 
-+ (void)doLoadGuaItemsSuccess:(void (^)(id))success
-                      failure:(void (^)(NSString* errmsg))failure
++ (void)doLoadGuaItemsWithType:(int)type Success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
                     kHostName];
-        [FetchBaseTask POST:api parameters:nil success:^(id obj) {
-            success(obj);
-            
-        } failure:^(NSString *errmsg) {
-            failure(errmsg);
-        }];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:@(type)?@(type):@"0"  forKey:@"type"];
+    if (type==1) {
+        NSString *uid = [UserManager defaultManager].userid;
+        [dic setObject:uid?uid:@""  forKey:@"uid"];
+    }
+    
+    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        success(obj);
+        
+    } failure:^(NSString *errmsg) {
+        failure(errmsg);
+    }];
 }
 
 + (void)doUploadGuaWithQuestion:(NSString *)question

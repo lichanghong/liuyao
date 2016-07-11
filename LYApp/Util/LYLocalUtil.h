@@ -24,5 +24,6 @@
 + (NSString *)historyVCDataFileName;
 
 + (NSString *)studyVCDataFileName;
++ (NSString *)helpVCDataFileName;
 
 @end

@@ -32,8 +32,10 @@
                         failure:(void (^)(NSString* errmsg))failure;
 
 
-+ (void)doLoadGuaItemsSuccess:(void (^)(id))success
-                      failure:(void (^)(NSString* errmsg))failure;
+/**
+ type = 0默认 1个人历史 2study已解决  3 help resolv
+ */
++ (void)doLoadGuaItemsWithType:(int)type Success:(void (^)(id))success failure:(void (^)(NSString *))failure;
 
 + (void)deleteGuaItemsWithId:(NSString *)gid  success:(void (^)(id))success
                      failure:(void (^)(NSString* errmsg))failure;

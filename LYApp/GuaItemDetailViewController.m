@@ -94,7 +94,7 @@
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 270)];
     tableHeadView.backgroundColor = [UIColor clearColor];
 
-    if (!_isyourself) {
+    if (self.isHelp) {
         tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
         tableFootView.backgroundColor = [UIColor colorForHex:@"804000"];
         commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
@@ -206,9 +206,9 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    ResultItem *item = [ResultItem responseWith:[_ResultItems objectAtIndex:indexPath.row]];
-    [_resultDetailView showInView:self.view WithResultItem:item];
- //    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
+//    GuaItemDetailViewController *detailVC =[[GuaItemDetailViewController alloc]init];
+//    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
+//    [self.navigationController pushViewController:detailVC animated:YES];
 }
 
 
@@ -329,8 +329,6 @@
             
         }];
     }
-    
-
 }
 
 - (void)loadData:(BOOL)forceupdate
@@ -344,23 +342,25 @@
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
-                if (datalist && datalist.count>0) {
-                    wself.ResultItems = [datalist mutableCopy];
-                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[wself resultItemsFileName]];
-                    if (guaitemArr && guaitemArr.count==datalist.count  && !forceupdate) {
-                        //数据无更新，不处理
+                if ([datalist respondsToSelector:@selector(count)]) {
+                    if (datalist && datalist.count>0) {
+                        wself.ResultItems = [datalist mutableCopy];
+                        NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[wself resultItemsFileName]];
+                        if (guaitemArr && guaitemArr.count==datalist.count  && !forceupdate) {
+                            //数据无更新，不处理
+                        }
+                        else
+                        {
+                            [LYLocalUtil archiveArray:wself.ResultItems withFileName:[wself resultItemsFileName]];
+                        }
+                        [wself.tableView reloadData];
+                        
                     }
                     else
                     {
-                        [LYLocalUtil archiveArray:wself.ResultItems withFileName:[wself resultItemsFileName]];
+                        DDLogError(@"jkjkkk data nil ");
+                        [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
                     }
-                    [wself.tableView reloadData];
-
-                }
-                else
-                {
-                    DDLogError(@"jkjkkk data nil ");
-                    [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
                 }
             }
             else

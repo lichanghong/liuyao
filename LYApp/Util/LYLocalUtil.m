@@ -41,7 +41,10 @@
     return @"jlkasfjaslkfhlhashfdsssfdsfd";
 }
 
-
++ (NSString *)helpVCDataFileName
+{
+    return @"aslhflkasdlfsdfadslflsd";
+}
 - (instancetype)initWithCoder:(NSCoder *)aDecoder
 {
 //    self.userid = [aDecoder decodeObjectForKey:kuserid];

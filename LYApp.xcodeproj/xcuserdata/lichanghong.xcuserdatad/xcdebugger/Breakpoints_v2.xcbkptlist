@@ -21,53 +21,5 @@
             </Actions>
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "LYApp/LYMyHistoryViewController.m"
-            timestampString = "489668699.828561"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "113"
-            endingLineNumber = "113"
-            landmarkName = "-deleteGuaItemWithId:"
-            landmarkType = "5">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "-[LYMyHistoryViewController deleteGuaItemWithId:]"
-                  moduleName = "LYApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lichanghong/Desktop/LYApp/LYApp/LYMyHistoryViewController.m"
-                  timestampString = "489669279.7007"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "113"
-                  endingLineNumber = "113"
-                  offsetFromSymbolStart = "76">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "__49-[LYMyHistoryViewController deleteGuaItemWithId:]_block_invoke"
-                  moduleName = "LYApp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/lichanghong/Desktop/LYApp/LYApp/LYMyHistoryViewController.m"
-                  timestampString = "489669279.700917"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "114"
-                  endingLineNumber = "114"
-                  offsetFromSymbolStart = "48">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
