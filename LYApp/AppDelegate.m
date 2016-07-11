@@ -10,7 +10,7 @@
 #import "UserManager.h"
 #import <JSPatch/JSPatch.h>
 #import "LogManager.h"
-
+#import "HttpUtil.h"
 
 @interface AppDelegate ()
 
@@ -70,7 +70,7 @@
     [[UIApplication sharedApplication]setStatusBarHidden:YES withAnimation:UIStatusBarAnimationNone];
     
     [LogManager defaultManager];
-
+    [UserManager defaultManager];
     
 #ifdef DEBUG
     [DDLog addLogger:[DDASLLogger sharedInstance]];
@@ -103,6 +103,8 @@
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
+    [HttpUtil shareInstance];
+
     // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
 //    [JSPatch sync];
 

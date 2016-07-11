@@ -19,7 +19,7 @@
 + (bool)clearData;
 + (NSString *)documentPathWithFile:(NSString *)filename;
 
-
++ (BOOL)clearCacheData;
 
 + (NSString *)historyVCDataFileName;
 

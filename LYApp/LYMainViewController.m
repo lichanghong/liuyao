@@ -21,6 +21,7 @@
     __weak IBOutlet UIButton *button3;
     
     __weak IBOutlet UIButton *button4;
+    __weak IBOutlet UIButton *button5;
     
 
 }
@@ -52,6 +53,7 @@
     button2.layer.cornerRadius = 6;
     button3.layer.cornerRadius = 6;
     button4.layer.cornerRadius = 6;
+    button5.layer.cornerRadius = 6;
     // Do any additional setup after loading the view.
 }
 

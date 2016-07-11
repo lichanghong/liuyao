@@ -59,12 +59,28 @@
     [UserManager clearData];
     NSError *err;
     NSError *err1;
+    NSError *err2;
     [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:[LYLocalUtil historyVCDataFileName]] error:&err];
     [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:[LYLocalUtil studyVCDataFileName]] error:&err1];
-    if (err1 || err) {
-        DDLogError(@"err=%@  --- err1=%@",err,err1);
+    [[NSFileManager defaultManager]removeItemAtPath:[LYLocalUtil documentPathWithFile:[LYLocalUtil helpVCDataFileName]] error:&err2];
+    if (err1 || err || err2) {
+        DDLogError(@"clearData err=%@  --- err1=%@  %@",err,err1,err2);
         return false;
     }
+    return YES;
+}
+
++ (bool)clearCacheData
+{
+    [LYLocalUtil clearData];
+    NSArray *allkeys = [[[NSUserDefaults standardUserDefaults]dictionaryRepresentation]allKeys];
+    for (NSString *key in allkeys)
+    {
+        [[NSUserDefaults standardUserDefaults]removeObjectForKey:key];
+    }
+    [[NSUserDefaults standardUserDefaults]synchronize];
+
+    [LYToast showToast:@"清除成功"];
     return YES;
 }
 

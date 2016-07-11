@@ -496,6 +496,7 @@
                         <outlet property="button2" destination="JyP-S7-I0a" id="BvZ-bI-ZDO"/>
                         <outlet property="button3" destination="kh6-EC-gLK" id="WPF-PW-cC5"/>
                         <outlet property="button4" destination="qDj-En-CRJ" id="LCp-MX-Qzz"/>
+                        <outlet property="button5" destination="oft-5t-Lpu" id="W5N-dx-z6D"/>
                         <segue destination="9fZ-Yk-Qcb" kind="show" identifier="main_to_history" id="R5o-hN-pWR"/>
                     </connections>
                 </viewController>

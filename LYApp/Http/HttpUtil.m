@@ -170,6 +170,20 @@
 }
 
 
++ (void)doUpdateOnlineTime
+{
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/update_onlinetime",
+                    kHostName];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    UserManager *manager = [UserManager defaultManager];
+    if (manager.userid) {
+        [dic setObject:manager.userid forKey:@"uid"];
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        } failure:^(NSString *errmsg) {
+            DDLogError(@"%@",errmsg);
+        }];
+    }
+}
 
 
 + (instancetype)shareInstance
@@ -180,6 +194,8 @@
             return _httputil;
         }
         _httputil =[[HttpUtil alloc]init];
+        [NSTimer scheduledTimerWithTimeInterval:15*60 target:self selector:@selector(doUpdateOnlineTime) userInfo:nil repeats:YES];
+
     }
     return _httputil;
 }

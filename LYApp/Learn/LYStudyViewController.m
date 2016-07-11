@@ -60,8 +60,9 @@
                     else
                     {
                         [LYLocalUtil archiveArray:wself.guaItems withFileName:[self guaItemsFileName]];
-                        [wself.tableView reloadData];
                     }
+                    [wself.tableView reloadData];
+
                 }
                 else
                 {

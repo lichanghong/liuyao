@@ -206,9 +206,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//    GuaItemDetailViewController *detailVC =[[GuaItemDetailViewController alloc]init];
-//    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
-//    [self.navigationController pushViewController:detailVC animated:YES];
+    ResultItem *item = [ResultItem responseWith:[_ResultItems objectAtIndex:indexPath.row]];
+    [_resultDetailView showInView:self.view WithResultItem:item];
 }
 
 
@@ -304,30 +303,32 @@
 - (void)loadLiuJia
 {
     __weak GuaItemDetailViewController *wself = self;
-    NSString *time=[timestr componentsJoinedByString:@":"];
-    NSArray *liuj =[[NSUserDefaults standardUserDefaults]objectForKey:time];
-    if (liuj) {
-        liujiaArr=liuj;
-        [self refreshData];
-    }
-    else
-    {
-        [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
-            if (nian.count>=4) {
-                liujiaArr = nian;
-                [[NSUserDefaults standardUserDefaults]setObject:liujiaArr forKey:time];
-                [[NSUserDefaults standardUserDefaults]synchronize];
-                [self refreshData];
-            }
-            else
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [wself loadLiuJia];
-                });
-                DDLogError(@"时间错误");
-            }
-            
-        }];
+    if (timestr) {
+        NSString *time=[timestr componentsJoinedByString:@":"];
+        NSArray *liuj =[[NSUserDefaults standardUserDefaults]objectForKey:time];
+        if (liuj) {
+            liujiaArr=liuj;
+            [self refreshData];
+        }
+        else
+        {
+            [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
+                if (nian.count>=4) {
+                    liujiaArr = nian;
+                    [[NSUserDefaults standardUserDefaults]setObject:liujiaArr forKey:time];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                    [self refreshData];
+                }
+                else
+                {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [wself loadLiuJia];
+                    });
+                    DDLogError(@"时间错误");
+                }
+                
+            }];
+        }
     }
 }
 
@@ -337,7 +338,7 @@
     NSString *gid = _guaItem[@"g_id"];
     __weak GuaItemDetailViewController *wself =self;
     [HttpUtil doGetGuaResultWithGid:gid success:^(id json) {
-        NSLog(@"json = %@",json);
+        NSLog(@"doGetGuaResultWithGid = %@",json);
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
@@ -361,6 +362,10 @@
                         DDLogError(@"jkjkkk data nil ");
                         [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
                     }
+                }
+                else
+                {
+                    [LYToast showToast:json[@"errmsg"]];
                 }
             }
             else

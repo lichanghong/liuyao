@@ -53,7 +53,8 @@
 //上传解卦
 + (void)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
 
-
+//更新登录时间
++ (void)doUpdateOnlineTime;
 
 
 
