@@ -33,6 +33,9 @@
     
     __weak IBOutlet UIScrollView *_scrollView;
     JingRoundView *roundView;
+    
+    
+    NSURLSessionDataTask *task;
 }
 
 - (void)viewDidLoad {
@@ -60,7 +63,7 @@
 {
     [self.view endEditing:YES];
 }
-
+ 
 
 - (IBAction)handleAction:(id)sender {
     [self.view endEditing:YES];
@@ -77,7 +80,7 @@
     {
         if ([self checkUsernameAndPwd]) {
             [self startLogin];
-            [HttpUtil doLoginWithUsername:username.text PW:password.text success:^(id json) {
+            task=[HttpUtil doLoginWithUsername:username.text PW:password.text success:^(id json) {
                 [self endLogin];
                 if (json) {
                     NSString *errorno = json[@"errno"];
@@ -141,7 +144,11 @@
 {
     [self dismissViewControllerAnimated:YES completion:nil];
 }
-
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task cancel];
+}
 - (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
 {
     if (buttonIndex==1) {

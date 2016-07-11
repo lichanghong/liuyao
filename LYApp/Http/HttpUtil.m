@@ -14,21 +14,22 @@
 @implementation HttpUtil
 
 
-+ (void)doGetGuaResultWithGid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
++ (NSURLSessionDataTask *)doGetGuaResultWithGid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaresult",
                     kHostName];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:gid?gid:@""            forKey:@"gid"];
     
-    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+    NSURLSessionDataTask * task=[FetchBaseTask POST:api parameters:dic success:^(id obj) {
         success(obj);
     } failure:^(NSString *errmsg) {
         failure(errmsg);
     }];
+    return task;
 }
 
-+ (void)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
++ (NSURLSessionDataTask *)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/commitguaresult",
                     kHostName];
@@ -39,28 +40,32 @@
     [dic setObject:gid?gid:@""        forKey:@"gid"];
     [dic setObject:@(1)       forKey:@"isteacher"];
     
-    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+    NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
         success(obj);
         
     } failure:^(NSString *errmsg) {
         failure(errmsg);
     }];
+    return task;
+
 }
 
-+ (void)doLoadGuaItemsSuccess:(void (^)(id))success
++ (NSURLSessionDataTask *)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
                     kHostName];
-        [FetchBaseTask POST:api parameters:nil success:^(id obj) {
+       NSURLSessionDataTask *task =  [FetchBaseTask POST:api parameters:nil success:^(id obj) {
             success(obj);
             
         } failure:^(NSString *errmsg) {
             failure(errmsg);
         }];
+    return task;
+
 }
 
-+ (void)doUploadGuaWithQuestion:(NSString *)question
++ (NSURLSessionDataTask *)doUploadGuaWithQuestion:(NSString *)question
                      gua_gender:(NSString *)gender
                        gua_date:(NSString *)date
                         gua_gua:(NSString *)gua
@@ -77,18 +82,20 @@
     
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/guaupload",
                     kHostName];
-        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
             success(obj);
             
         } failure:^(NSString *errmsg) {
             failure(errmsg);
         }];
+    return task;
+
 }
 
-+ (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSString* errmsg))failure
++ (NSURLSessionDataTask *)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)(NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
-        return;
+        return nil;
 
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/regist",
                     kHostName];
@@ -97,18 +104,20 @@
     [dic setObject:username forKey:@"username"];
     [dic setObject:[EncryptUtils md5:pw] forKey:@"password"];
 
-        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
             success(obj);
             
         } failure:^(NSString *errmsg) {
             failure(errmsg);
         }];
+    return task;
+
 }
 
-+ (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)( NSString* errmsg))failure
++ (NSURLSessionDataTask *)doLoginWithUsername:(NSString *)username PW:(NSString *)pw success:(void (^)(id))success failure:(void (^)( NSString* errmsg))failure
 {
     if( username==nil || pw==nil)
-    return;
+    return nil;
     
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/login",
                     kHostName];
@@ -117,51 +126,57 @@
     [dic setObject:username forKey:@"username"];
     [dic setObject:[EncryptUtils md5:pw] forKey:@"password"];
 //    客户端根据相同规则计算，random传过去
-        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
             success(obj);
             
         } failure:^(NSString *errmsg) {
             failure(errmsg);
         }];
+    return task;
+
 }
 
-+ (void)deleteGuaItemsWithId:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
++ (NSURLSessionDataTask *)deleteGuaItemsWithId:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     if( gid==nil)
-        return;
+        return nil;
     
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/deleteguaitem",
                     kHostName];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:gid forKey:@"g_id"];
     
-        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
             success(obj);
             
         } failure:^(NSString *errmsg) {
             failure(errmsg);
         }];
+    return task;
+
 }
 
-+ (void)doUploadErrorLogs:(NSString *)content
++ (NSURLSessionDataTask *)doUploadErrorLogs:(NSString *)content
                   success:(void (^)(id))success
                   failure:(void (^)(NSString* errmsg))failure
 {
     if( content==nil)
     {
         DDLogError(@"log content=nil");
-        return;
+        return nil;
     }
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/upload_client_errorlog",
                     kHostName];
     NSMutableDictionary *dic = [NSMutableDictionary dictionary];
     [dic setObject:content forKey:@"content"];
     
-    [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+   NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
         success(obj);
     } failure:^(NSString *errmsg) {
         failure(errmsg);
     }];
+    return task;
+
 }
 
 

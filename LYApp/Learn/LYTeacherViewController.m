@@ -29,6 +29,8 @@
     UIView *tableHeadView;
     UITextField *nameTextField;
 
+    
+    NSURLSessionDataTask *task;
 }
 
 - (void)viewDidLoad {
@@ -126,7 +128,7 @@
 - (void)doCommitWithName:(NSString *)name detail:(NSString *)detail
 {
     if (_guaid) {
-        [HttpUtil doCommitGuaDetail:detail name:name gid:_guaid success:^(id json) {
+       task= [HttpUtil doCommitGuaDetail:detail name:name gid:_guaid success:^(id json) {
             NSLog(@"sdjalfsdjf = %@",json);
             [LYToast showToast:@"已提交审核"];
             [self endCommit];
@@ -227,6 +229,12 @@
         return YES;
     }
     return NO;
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task cancel];
 }
 /*
 #pragma mark - Navigation

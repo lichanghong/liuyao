@@ -22,7 +22,7 @@
 @implementation LYStudyViewController
 {
     IBOutlet NSObject *_backButton;
-
+    NSURLSessionDataTask *task ;
 }
 
 - (void)viewDidLoad {
@@ -45,7 +45,8 @@
 - (void)loadDataWithPull:(BOOL)pull
 {
     __weak LYStudyViewController *wself = self;
-    [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+    [task cancel];
+   task = [HttpUtil doLoadGuaItemsSuccess:^(id json) {
         [wself.tableView.pullToRefreshView stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
@@ -94,6 +95,12 @@
     if (sender == _backButton) {
         [self.navigationController popViewControllerAnimated:YES];
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task cancel];
 }
 
 - (void)didReceiveMemoryWarning {

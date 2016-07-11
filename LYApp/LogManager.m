@@ -17,6 +17,9 @@
 #define UPLOADLOGS_DIR_NAME  @"uploadLogs"
 
 @implementation LogManager
+{
+    NSURLSessionDataTask *task;
+}
 
 + (instancetype)defaultManager
 {
@@ -98,8 +101,10 @@
     NSString *logcontent =[NSString stringWithFormat:@"ios %@",[self logContents]];
     if (logcontent) {
         [self moveLogsToTempLogs:[self uploadDir]];
-        
-        [HttpUtil doUploadErrorLogs:logcontent success:^(id result) {
+        if ([task respondsToSelector:@selector(cancel)]) {
+            [task cancel];
+        }
+        task=[HttpUtil doUploadErrorLogs:logcontent success:^(id result) {
             //                         //记录上传成功的时间，reason:需检测下次上传距离这次24小时
             [[NSUserDefaults standardUserDefaults] setObject:@([[NSDate date]timeIntervalSinceNow]) forKey:@"APP_LOG_UPLOAD_TIME"];
             [self deleteLoggersWhenPostSuccess:[self uploadDir]];

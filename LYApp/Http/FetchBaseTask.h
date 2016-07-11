@@ -11,7 +11,7 @@
 @interface FetchBaseTask : NSObject
 
 
-+ (void)POST:(NSString *)URLString
++ (NSURLSessionDataTask *)POST:(NSString *)URLString
   parameters:(id)parameters
      success:(void (^)(id  obj))success
      failure:(void (^)(NSString*errmsg))failure;

@@ -13,18 +13,18 @@
 
 + (instancetype)shareInstance;
 
-+ (void)doGetGuaResultWithGid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
++ ( NSURLSessionDataTask *)doGetGuaResultWithGid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
 
-+ (void)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw
++ (NSURLSessionDataTask *)doRegistNewUserWithUsername:(NSString *)username PW:(NSString *)pw
                             success:(void (^)(id json))success
                             failure:(void (^)(NSString*errmsg))failure;
 
-+ (void)doLoginWithUsername:(NSString *)username PW:(NSString *)pw
++ (NSURLSessionDataTask *)doLoginWithUsername:(NSString *)username PW:(NSString *)pw
                             success:(void (^)(id json))success
                             failure:(void (^)(NSString* errmsg))failure;
 
  
-+ (void)doUploadGuaWithQuestion:(NSString *)question
++ (NSURLSessionDataTask *)doUploadGuaWithQuestion:(NSString *)question
                      gua_gender:(NSString *)gender
                        gua_date:(NSString *)date
                         gua_gua:(NSString *)gua
@@ -32,20 +32,20 @@
                         failure:(void (^)(NSString* errmsg))failure;
 
 
-+ (void)doLoadGuaItemsSuccess:(void (^)(id))success
++ (NSURLSessionDataTask *)doLoadGuaItemsSuccess:(void (^)(id))success
                       failure:(void (^)(NSString* errmsg))failure;
 
-+ (void)deleteGuaItemsWithId:(NSString *)gid  success:(void (^)(id))success
++ (NSURLSessionDataTask *)deleteGuaItemsWithId:(NSString *)gid  success:(void (^)(id))success
                      failure:(void (^)(NSString* errmsg))failure;
 
 
-+ (void)doUploadErrorLogs:(NSString *)content
++ (NSURLSessionDataTask *)doUploadErrorLogs:(NSString *)content
                         success:(void (^)(id))success
                         failure:(void (^)(NSString* errmsg))failure;
 
 
 
-+ (void)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
++ (NSURLSessionDataTask *)doCommitGuaDetail:(NSString *)detail name:(NSString *)name gid:(NSString *)gid success:(void (^)(id))success failure:(void (^)(NSString *))failure;
 
 
 

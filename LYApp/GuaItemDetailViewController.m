@@ -57,6 +57,8 @@
     UILabel *navLabel;
     UIButton *statusButton;
     UIButton *commentButton;
+    
+    NSURLSessionDataTask * task;
 }
 
 
@@ -229,6 +231,12 @@
     }
 }
 
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task cancel];
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
     [self initUI];
@@ -338,7 +346,7 @@
     // load gua question result
     NSString *gid = _guaItem[@"g_id"];
     __weak GuaItemDetailViewController *wself =self;
-    [HttpUtil doGetGuaResultWithGid:gid success:^(id json) {
+    task=[HttpUtil doGetGuaResultWithGid:gid success:^(id json) {
         NSLog(@"json = %@",json);
         if (json) {
             NSString *errorno = json[@"errno"];

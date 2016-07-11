@@ -12,7 +12,7 @@
 
 @implementation FetchBaseTask
 
-+ (void)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSString *))failure
++ (NSURLSessionDataTask *)POST:(NSString *)URLString parameters:(id)parameters success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     AFHTTPSessionManager *manager = [AFHTTPSessionManager manager];
     u_int32_t value = (arc4random() % 9999999) + 1001010;
@@ -24,7 +24,7 @@
     [parameters setObject:@(t) forKey:@"timestamp"];
     [parameters setObject:[UserManager token:t random:value] forKey:@"token"];
     
-    [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress){
+   NSURLSessionDataTask * task = [manager POST:URLString parameters:parameters progress:^(NSProgress * _Nonnull uploadProgress){
     } success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         success(responseObject);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
@@ -38,9 +38,12 @@
         else if (error.code==-1009) {
             failure(@"您未连接网络");
         }
+        else if(error.code == -999)
+        {}
         else
             failure(error.localizedDescription);
     }];
+    return task;
 }
  
 

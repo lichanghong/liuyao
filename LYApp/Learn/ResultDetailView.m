@@ -75,10 +75,9 @@
 
 - (void)dismiss {
     [UIView animateWithDuration:0.3 animations:^{
-//        self.detailScrollView.frame = CGRectMake(0, KScreenHeight, KScreenWidth,  ABS(ViewHeight(_detailScrollView)));
+        _detailScrollView.frame = CGRectMake(0, KScreenHeight, KScreenWidth, ViewH(_detailScrollView));
     } completion:^(BOOL finished) {
         [self removeFromSuperview];
-//        _detailScrollView.frame = CGRectMake(0, KScreenHeight, KScreenWidth, ViewHeight(_reportContent));
     }];
 }
 

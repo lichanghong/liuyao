@@ -24,6 +24,10 @@
 @implementation LYMyHistoryViewController
 {
     __weak IBOutlet UIButton *_backButton;
+    
+    
+    NSURLSessionDataTask *task1;
+    NSURLSessionDataTask *task2;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -110,7 +114,8 @@
 
 - (void)deleteGuaItemWithId:(NSString *)gid
 {
-    [HttpUtil deleteGuaItemsWithId:gid success:^(id json) {
+    [task1 cancel];
+    task1=[HttpUtil deleteGuaItemsWithId:gid success:^(id json) {
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
@@ -135,7 +140,8 @@
 - (void)loadData:(BOOL)forceupdate
 {
     __weak LYMyHistoryViewController *wself = self;
-    [HttpUtil doLoadGuaItemsSuccess:^(id json) {
+    [task2 cancel];
+    task2=[HttpUtil doLoadGuaItemsSuccess:^(id json) {
         [wself.tableView.pullToRefreshView stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
@@ -209,7 +215,12 @@
         [self.navigationController popViewControllerAnimated:YES];
     }
 }
-
+-(void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task1 cancel];
+    [task2 cancel];
+}
 
 
 /*

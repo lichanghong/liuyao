@@ -23,6 +23,9 @@
     __weak IBOutlet UIButton *_registerButton;
     __weak IBOutlet UIButton *_protocolButton;
     UIActivityIndicatorView  *_indicatorView;
+    
+    
+    NSURLSessionDataTask *task;
 }
 
 - (IBAction)handleAction:(id)sender {
@@ -33,7 +36,7 @@
     {
         if ([self checkUsernameAndPwd]) {
             [self startRegist];
-            [HttpUtil doRegistNewUserWithUsername:username.text PW:password.text success:^(id json) {
+           task= [HttpUtil doRegistNewUserWithUsername:username.text PW:password.text success:^(id json) {
                 [self endRegist];
                 if (json) {
                     NSString *errorno = json[@"errno"];
@@ -74,6 +77,12 @@
 - (void)dismiss
 {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [super viewDidDisappear:animated];
+    [task cancel];
 }
 
 - (BOOL)checkUsernameAndPwd
