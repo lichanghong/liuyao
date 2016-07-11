@@ -141,15 +141,15 @@
 {
     __weak LYMyHistoryViewController *wself = self;
     [task2 cancel];
-    task2=[HttpUtil doLoadGuaItemsSuccess:^(id json) {
+     task2=[HttpUtil doLoadGuaItemsWithType:1 Success:^(id json) {
         [wself.tableView.pullToRefreshView stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
-                if (datalist && datalist.count>0) {
+                if (datalist &&[datalist respondsToSelector:@selector(count)] && datalist.count>0) {
                     wself.guaItems = [datalist mutableCopy];
-                   NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
+                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
                     if (guaitemArr && guaitemArr.count==datalist.count && !forceupdate) {
                         //数据无更新，不处理
                     }
@@ -197,7 +197,7 @@
         _guaItems = [guaitemArr mutableCopy];
     }
     else
-    _guaItems = [NSMutableArray array];
+        _guaItems = [NSMutableArray array];
     
     [self loadData:NO];
     [self.tableView reloadData];

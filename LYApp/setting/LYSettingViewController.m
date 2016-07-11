@@ -61,7 +61,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 1;
+    return 3;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -73,15 +73,24 @@
     if (cell == nil) {
         cell = [[LYSettingCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier1];
     }
-    
-    if ([UserManager defaultManager].userid) {
-        cell.nameLabel.text = [NSString stringWithFormat:@"退出登录"];
-        cell.nameLabel.textColor = [UIColor redColor];
-
-    }else
+    if (indexPath.row==0) {
+        cell.nameLabel.text = [NSString stringWithFormat:@"联系我们"];
+    }
+    else if (indexPath.row==1)
     {
-        cell.nameLabel.text = [NSString stringWithFormat:@"登录"];
-        cell.nameLabel.textColor = [UIColor colorForHex:@"1DA645"];
+        cell.nameLabel.text = [NSString stringWithFormat:@"清除缓存"];
+    }
+    else if (indexPath.row==2)
+    {
+        if ([UserManager defaultManager].userid) {
+            cell.nameLabel.text = [NSString stringWithFormat:@"退出登录"];
+            cell.nameLabel.textColor = [UIColor redColor];
+            
+        }else
+        {
+            cell.nameLabel.text = [NSString stringWithFormat:@"登录"];
+            cell.nameLabel.textColor = [UIColor colorForHex:@"1DA645"];
+        }
     }
     cell.accessoryType =  UITableViewCellAccessoryNone;
     
@@ -91,7 +100,24 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
-    [self logout];
+
+    if (indexPath.row==0) {
+        [self contactUs];
+    }
+    else if (indexPath.row==1)
+    {
+        [LYLocalUtil clearCacheData];
+    }
+    else if (indexPath.row==2)
+    {
+        [self logout];
+    }
+}
+
+- (void)contactUs
+{
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"联系我们" message:@"我们的QQ:1197678813\n我们的邮箱:haihong@139.com" delegate:self cancelButtonTitle:@"确定" otherButtonTitles:nil, nil];
+    [alert show];
 }
 
 - (void)logout

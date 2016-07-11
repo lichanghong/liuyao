@@ -96,7 +96,7 @@
     tableHeadView = [[UIView alloc]initWithFrame:CGRectMake(0, 40, KScreenWidth, 270)];
     tableHeadView.backgroundColor = [UIColor clearColor];
 
-    if (!_isyourself) {
+    if (self.isHelp) {
         tableFootView = [[UIView alloc]initWithFrame:CGRectMake(0, KScreenHeight-40, KScreenWidth, 40)];
         tableFootView.backgroundColor = [UIColor colorForHex:@"804000"];
         commentButton = [[UIButton alloc]initWithFrame:CGRectMake(0, 0, KScreenWidth, 40)];
@@ -210,7 +210,6 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     ResultItem *item = [ResultItem responseWith:[_ResultItems objectAtIndex:indexPath.row]];
     [_resultDetailView showInView:self.view WithResultItem:item];
- //    detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
 }
 
 
@@ -312,33 +311,33 @@
 - (void)loadLiuJia
 {
     __weak GuaItemDetailViewController *wself = self;
-    NSString *time=[timestr componentsJoinedByString:@":"];
-    NSArray *liuj =[[NSUserDefaults standardUserDefaults]objectForKey:time];
-    if (liuj) {
-        liujiaArr=liuj;
-        [self refreshData];
+    if (timestr) {
+        NSString *time=[timestr componentsJoinedByString:@":"];
+        NSArray *liuj =[[NSUserDefaults standardUserDefaults]objectForKey:time];
+        if (liuj) {
+            liujiaArr=liuj;
+            [self refreshData];
+        }
+        else
+        {
+            [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
+                if (nian.count>=4) {
+                    liujiaArr = nian;
+                    [[NSUserDefaults standardUserDefaults]setObject:liujiaArr forKey:time];
+                    [[NSUserDefaults standardUserDefaults]synchronize];
+                    [self refreshData];
+                }
+                else
+                {
+                    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                        [wself loadLiuJia];
+                    });
+                    DDLogError(@"时间错误");
+                }
+                
+            }];
+        }
     }
-    else
-    {
-        [[GuaManager shareManager]loadGanZhWith:@[timestr[0],timestr[1],timestr[2],timestr[3]] ganzhis:^(NSArray *nian) {
-            if (nian.count>=4) {
-                liujiaArr = nian;
-                [[NSUserDefaults standardUserDefaults]setObject:liujiaArr forKey:time];
-                [[NSUserDefaults standardUserDefaults]synchronize];
-                [self refreshData];
-            }
-            else
-            {
-                dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(30 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-                    [wself loadLiuJia];
-                });
-                DDLogError(@"时间错误");
-            }
-            
-        }];
-    }
-    
-
 }
 
 - (void)loadData:(BOOL)forceupdate
@@ -352,23 +351,29 @@
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
-                if (datalist && datalist.count>0) {
-                    wself.ResultItems = [datalist mutableCopy];
-                    NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[wself resultItemsFileName]];
-                    if (guaitemArr && guaitemArr.count==datalist.count  && !forceupdate) {
-                        //数据无更新，不处理
+                if ([datalist respondsToSelector:@selector(count)]) {
+                    if (datalist && datalist.count>0) {
+                        wself.ResultItems = [datalist mutableCopy];
+                        NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[wself resultItemsFileName]];
+                        if (guaitemArr && guaitemArr.count==datalist.count  && !forceupdate) {
+                            //数据无更新，不处理
+                        }
+                        else
+                        {
+                            [LYLocalUtil archiveArray:wself.ResultItems withFileName:[wself resultItemsFileName]];
+                        }
+                        [wself.tableView reloadData];
+                        
                     }
                     else
                     {
-                        [LYLocalUtil archiveArray:wself.ResultItems withFileName:[wself resultItemsFileName]];
+                        DDLogError(@"jkjkkk data nil ");
+                        [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
                     }
-                    [wself.tableView reloadData];
-
                 }
                 else
                 {
-                    DDLogError(@"jkjkkk data nil ");
-                    [LYToast showToast:@"服务器错误,请联系管理员(1060)"];
+                    [LYToast showToast:json[@"errmsg"]];
                 }
             }
             else

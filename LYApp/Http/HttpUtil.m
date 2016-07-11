@@ -42,7 +42,6 @@
     
     NSURLSessionDataTask *task = [FetchBaseTask POST:api parameters:dic success:^(id obj) {
         success(obj);
-        
     } failure:^(NSString *errmsg) {
         failure(errmsg);
     }];
@@ -50,19 +49,24 @@
 
 }
 
-+ (NSURLSessionDataTask *)doLoadGuaItemsSuccess:(void (^)(id))success
-                      failure:(void (^)(NSString* errmsg))failure
++ (NSURLSessionDataTask *)doLoadGuaItemsWithType:(int)type Success:(void (^)(id))success failure:(void (^)(NSString *))failure
 {
     NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/getguaitem",
                     kHostName];
-       NSURLSessionDataTask *task =  [FetchBaseTask POST:api parameters:nil success:^(id obj) {
-            success(obj);
-            
-        } failure:^(NSString *errmsg) {
-            failure(errmsg);
-        }];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    [dic setObject:@(type)?@(type):@"0"  forKey:@"type"];
+    if (type==1) {
+        NSString *uid = [UserManager defaultManager].userid;
+        [dic setObject:uid?uid:@""  forKey:@"uid"];
+    }
+    
+    NSURLSessionDataTask *task=[FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        success(obj);
+        
+    } failure:^(NSString *errmsg) {
+        failure(errmsg);
+    }];
     return task;
-
 }
 
 + (NSURLSessionDataTask *)doUploadGuaWithQuestion:(NSString *)question
@@ -180,6 +184,20 @@
 }
 
 
++ (void)doUpdateOnlineTime
+{
+    NSString * api=[[NSString alloc] initWithFormat:@"%@/admin.php/user/update_onlinetime",
+                    kHostName];
+    NSMutableDictionary *dic = [NSMutableDictionary dictionary];
+    UserManager *manager = [UserManager defaultManager];
+    if (manager.userid) {
+        [dic setObject:manager.userid forKey:@"uid"];
+        [FetchBaseTask POST:api parameters:dic success:^(id obj) {
+        } failure:^(NSString *errmsg) {
+            DDLogError(@"%@",errmsg);
+        }];
+    }
+}
 
 
 + (instancetype)shareInstance
@@ -190,6 +208,8 @@
             return _httputil;
         }
         _httputil =[[HttpUtil alloc]init];
+        [NSTimer scheduledTimerWithTimeInterval:15*60 target:self selector:@selector(doUpdateOnlineTime) userInfo:nil repeats:YES];
+
     }
     return _httputil;
 }

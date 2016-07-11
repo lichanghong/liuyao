@@ -13,6 +13,7 @@
 @property (nonatomic,strong)NSDictionary *guaItem;
 
 @property (nonatomic,assign)BOOL isyourself;
+@property (nonatomic,assign)BOOL isHelp;
 
 
 @end

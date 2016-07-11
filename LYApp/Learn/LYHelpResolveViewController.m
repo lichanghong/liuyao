@@ -1,29 +1,32 @@
 //
-//  LYStudyViewController.m
+//  LYHelpResolveViewController.m
 //  LYApp
 //
-//  Created by lichanghong on 16/6/23.
+//  Created by lichanghong on 16/7/11.
 //  Copyright © 2016年 lichanghong. All rights reserved.
 //
 
-#import "LYStudyViewController.h"
+#import "LYHelpResolveViewController.h"
+#import "LYTitleCell.h"
 #import "HttpUtil.h"
 #import "GuaManager.h"
-#import "LYTitleCell.h"
 #import "GuaItemDetailViewController.h"
 #import "SVPullToRefresh.h"
 #import "LYLocalUtil.h"
 
-@interface LYStudyViewController ()<UITableViewDelegate,UITableViewDataSource>
+
+@interface LYHelpResolveViewController ()<UITableViewDelegate,UITableViewDataSource>
+
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+
+@property (weak, nonatomic) IBOutlet UIButton *backButton;
+
 @property (nonatomic,strong)NSMutableArray *guaItems;
+
+
 @end
 
-@implementation LYStudyViewController
-{
-    IBOutlet NSObject *_backButton;
-    NSURLSessionDataTask *task ;
-}
+@implementation LYHelpResolveViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -38,21 +41,21 @@
         _guaItems = [guaitemArr mutableCopy];
     }
     else
-    _guaItems = [NSMutableArray array];
+        _guaItems = [NSMutableArray array];
+
     // Do any additional setup after loading the view.
 }
 
 - (void)loadDataWithPull:(BOOL)pull
 {
-    __weak LYStudyViewController *wself = self;
-    [task cancel];
-    task=[HttpUtil doLoadGuaItemsWithType:2 Success:^(id json) {
+    __weak LYHelpResolveViewController *wself = self;
+    [HttpUtil doLoadGuaItemsWithType:3 Success:^(id json) {
         [wself.tableView.pullToRefreshView stopAnimating];
         if (json) {
             NSString *errorno = json[@"errno"];
             if ([errorno intValue]==0) {
                 NSArray *datalist = json[@"data"];
-                if (datalist && [datalist respondsToSelector:@selector(count)] &&  datalist.count>0) {
+                if (datalist && [datalist respondsToSelector:@selector(count)] && datalist.count>0) {
                     wself.guaItems = [datalist mutableCopy];
                     NSArray *guaitemArr = [LYLocalUtil unarchiveArrayWithFileName:[self guaItemsFileName]];
                     if (guaitemArr && guaitemArr.count==datalist.count) {
@@ -63,7 +66,6 @@
                         [LYLocalUtil archiveArray:wself.guaItems withFileName:[self guaItemsFileName]];
                     }
                     [wself.tableView reloadData];
-
                 }
                 else
                 {
@@ -84,31 +86,25 @@
         DDLogError(@"lll = %@",errmsg);
         [wself.tableView.pullToRefreshView stopAnimating];
         [LYToast showToast:errmsg];
+
     }];
-  
 }
 
 - (NSString *)guaItemsFileName
 {
-    return [LYLocalUtil studyVCDataFileName];
+    return [LYLocalUtil helpVCDataFileName];
 }
 
 - (IBAction)handleAction:(id)sender {
     if (sender == _backButton) {
-        [self.navigationController popViewControllerAnimated:YES];
+        [self dismiss];
     }
 }
-
-- (void)viewDidDisappear:(BOOL)animated
+- (void)dismiss
 {
-    [super viewDidDisappear:animated];
-    [task cancel];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -130,6 +126,7 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     GuaItemDetailViewController *detailVC =[[GuaItemDetailViewController alloc]init];
     detailVC.guaItem = [_guaItems objectAtIndex:indexPath.row];
+    detailVC.isHelp = true;
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 
@@ -140,23 +137,27 @@
     cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
     NSDictionary *dic = [_guaItems objectAtIndex:indexPath.row];
     NSArray *guaa = [dic[@"g_gua"]componentsSeparatedByString:@":"];
-
+    
     int guaindex = [[guaa firstObject]intValue];
     int bianguaindex = [guaa[1] intValue];
     NSDictionary *guaNames = [[GuaManager shareManager].guaNames objectAtIndex:guaindex];
     NSDictionary *bguaNames = [[GuaManager shareManager].guaNames objectAtIndex:bianguaindex];
     NSArray      *timestr = [dic[@"g_date"] componentsSeparatedByString:@":"];
-    NSString *sex = [dic[@"g_gender"] isEqualToString:@"1"]?@"先生":@"女士";
-    cell.titleLabel.text = [NSString stringWithFormat:@"一位%@ 问:%@",sex,dic[@"g_question"]];
-
+    cell.titleLabel.text = [NSString stringWithFormat:@"您问:%@",dic[@"g_question"]];
+    
     if (timestr.count > 3 && [guaNames allKeys].count>0) {
         NSString *time=   [NSString stringWithFormat:@"%@年%@月%@日%@时",timestr[0],timestr[1],timestr[2],timestr[3]];
         cell.detailLabel.text = [NSString stringWithFormat:@"%@起卦  %@ 之 %@ 卦",time,                                                    [[guaNames allKeys]lastObject],[[bguaNames allKeys]lastObject]];
     }
-    
+    LYTitleCell_verifystate state = [dic[@"verify_state"] intValue];
+    cell.verifyState = state;
     return cell;
 }
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
 /*
 #pragma mark - Navigation
